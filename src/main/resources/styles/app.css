@@ -52,3 +52,7 @@
 .content-style{
     -fx-background-color: #1E293B;
 }
+.root {
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}

@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -29,10 +30,10 @@ public class HelloApplication extends Application {
                 getClass().getResource("/styles/app.css").toExternalForm(),
                 getClass().getResource("/styles/console-style.css").toExternalForm()
         );
-
+        stage.initStyle(StageStyle.UNDECORATED);
         stage.setWidth(1300);
         stage.setHeight(700);
-        stage.setMaximized(true);
+        stage.setMaximized(false);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
