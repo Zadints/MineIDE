@@ -1,16 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.mineide.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+<VBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="1300.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1300.0" styleClass="body" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mineide.HelloController">
+    <BorderPane prefHeight="692.0" prefWidth="1300.0">
+        <center>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" styleClass="content-style" />
+        </center>
+
+        <left>
+            <Pane prefHeight="683.0" prefWidth="234.0" styleClass="sidebar-style" BorderPane.alignment="CENTER">
+                <children>
+                    <Label layoutX="100.0" layoutY="24.0" styleClass="app-title-text" text="MineIDE">
+                        <font>
+                            <Font name="System Bold" size="18.0" />
+                        </font>
+                    </Label>
+                    <ImageView fitHeight="38.0" fitWidth="40.0" layoutX="20.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" styleClass="app-image" />
+                    <Line endX="120.0" endY="-27.0" layoutX="101.0" layoutY="98.0" startX="-87.5" startY="-27.0" />
+                    <VBox layoutX="-1.0" layoutY="80.0" prefHeight="203.0" prefWidth="233.0">
+                        <children>
+                            <Button alignment="BASELINE_LEFT" layoutY="250.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Servers">
+                                <graphic>
+                                    <FontIcon iconLiteral="fas-users-cog" iconSize="14" styleClass="sidebar-icons"/>
+                                </graphic>
+                            </Button>
+                            <Button alignment="BASELINE_LEFT" layoutY="296.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Administration">
+                                <graphic>
+                                    <FontIcon iconLiteral="fas-sliders-h" iconSize="14" styleClass="sidebar-icons"/>
+                                </graphic>
+                            </Button>
+                            <Label layoutX="13.0" layoutY="217.0" prefHeight="27.0" prefWidth="130.0" styleClass="category-text" text="Minecraft Server">                            </Label>
+                            <Button alignment="BASELINE_LEFT" layoutY="342.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Console">
+                                <graphic>
+                                    <FontIcon iconLiteral="fas-gamepad" iconSize="14" styleClass="sidebar-icons"/>
+                                </graphic>
+                            </Button>
+                            <Button alignment="BASELINE_LEFT" layoutY="388.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Files">
+                                <graphic>
+                                    <FontIcon iconLiteral="fas-folder-open" iconSize="14" styleClass="sidebar-icons"/>
+                                </graphic>
+                            </Button>
+                            <Button alignment="BASELINE_LEFT" layoutY="499.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Setting">
+                                <graphic>
+                                    <FontIcon iconLiteral="fas-cog" iconSize="14" styleClass="sidebar-icons"/>
+                                </graphic>
+                            </Button>
+                            <Button alignment="BASELINE_LEFT" layoutY="545.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Backups">
+                                <graphic>
+                                    <FontIcon iconLiteral="fas-archive" iconSize="14" styleClass="sidebar-icons"/>
+                                </graphic>
+                            </Button>
+                            <Button alignment="BASELINE_LEFT" layoutY="591.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Databases">
+                                <graphic>
+                                    <FontIcon iconLiteral="fas-database" iconSize="14" styleClass="sidebar-icons"/>
+                                </graphic>
+                            </Button>
+                            <Button alignment="BASELINE_LEFT" layoutY="637.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Users">
+                                <graphic>
+                                    <FontIcon iconLiteral="fas-users" iconSize="14" styleClass="sidebar-icons"/>
+                                </graphic>
+                            </Button>
+                            <Button alignment="BASELINE_LEFT" layoutY="637.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Startup">
+                                <graphic>
+                                    <FontIcon iconLiteral="fas-rocket" iconSize="14" styleClass="sidebar-icons"/>
+                                </graphic>
+                            </Button>
+                        </children>
+                    </VBox>
+
+
+                </children>
+            </Pane>
+        </left>
+    </BorderPane>
+
+    <Label fx:id="welcomeText" />
 </VBox>

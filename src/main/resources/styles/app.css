@@ -1,0 +1,54 @@
+.sidebar-buttons{
+    -fx-background-color: transparent;
+    -fx-text-fill: White;
+    -fx-border-width: 0px;
+    -fx-padding: 15 15 15 32px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Geist";
+    -fx-font-family: "Geist SemiBold";
+    -fx-graphic-text-gap: 10px;
+
+}
+.sidebar-buttons:hover{
+    -fx-background-color: #1B4FD7;
+}
+.sidebar-icons{
+    -fx-icon-color: White;
+}
+
+
+.category-text{
+    -fx-text-fill: White;
+    -fx-padding: 10 5 5 32px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Geist";
+    -fx-font-family: "Geist Regular";
+}
+
+.app-title-text{
+    -fx-text-fill: White;
+    -fx-padding: 0 0 0 32px;
+    -fx-font-size: 20px;
+    -fx-font-family: "Geist";
+    -fx-font-family: "Geist light";
+}
+
+.server-name-text{
+}
+
+.status-server-text{
+}
+
+.server-image{
+}
+.app-image{
+}
+
+
+.sidebar-style{
+    -fx-background-color: #111629;
+}
+
+.content-style{
+    -fx-background-color: #1E293B;
+}
