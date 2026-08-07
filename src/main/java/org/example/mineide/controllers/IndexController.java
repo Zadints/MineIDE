@@ -1,12 +1,17 @@
 package org.example.mineide.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
-public class mineIdeController {
+import java.io.IOException;
+
+public class IndexController {
 
 
     @FXML
@@ -63,4 +68,23 @@ public class mineIdeController {
         stage.setMaximized(!stage.isMaximized());
     }
 
+    @FXML
+    private BorderPane root;
+
+    @FXML
+    protected void onServersClick() {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/org/example/mineide/center/servers.fxml")
+            );
+
+            Parent view = loader.load();
+
+            root.setCenter(view);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.mineide.controllers.center.ServesController"
+            prefHeight="660" prefWidth="1067" style="-fx-background-color: transparent;">
+    <children>
+        <FlowPane layoutX="35.0" layoutY="98.0" prefHeight="515.0" prefWidth="301.0" />
+        <Label layoutX="35.0" layoutY="52.0" prefHeight="17.0" prefWidth="97.0" text="Mis Servidores" AnchorPane.bottomAnchor="591.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="935.0" AnchorPane.topAnchor="52.0" />
+        <Button layoutX="913.0" layoutY="606.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="+  Crear Servidor" />
+        <Button layoutX="765.0" layoutY="606.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Cancelar" />
+        <TextField layoutX="365.0" layoutY="157.0" prefHeight="25.0" prefWidth="228.0" />
+        <Text layoutX="365.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresa el nombre del servidor el cuál aparecerá en tu lista de servidores" wrappingWidth="228.0">
+        </Text>
+        <Text layoutX="365.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre del servidor" wrappingWidth="222.0" />
+        <TextField layoutX="504.0" layoutY="452.0" prefHeight="25.0" prefWidth="82.0" />
+        <Text layoutX="368.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Puerto a utilizar" wrappingWidth="113.201171875" />
+        <Text layoutX="666.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logo del servidor" wrappingWidth="97.0" />
+        <ImageView fitHeight="82.0" fitWidth="91.0" layoutX="932.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true" />
+        <Text layoutX="666.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecciona una imagen de cualquier formato y súbela para que tu serviror tenga una digna presencia." wrappingWidth="253.201171875">
+        </Text>
+        <Slider layoutX="365.0" layoutY="231.0" prefHeight="14.0" prefWidth="228.0" />
+        <Text layoutX="368.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ram asignado a tu servidor" wrappingWidth="154.0" />
+        <Text layoutX="368.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disco Asignado a tu servidor" wrappingWidth="154.0" />
+        <Slider layoutX="365.0" layoutY="297.0" prefHeight="14.0" prefWidth="228.0" />
+        <Text layoutX="465.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disponible: 8GB" wrappingWidth="113.201171875">
+        </Text>
+        <Text layoutX="465.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disponible: 8GB" wrappingWidth="113.201171875">
+            <font>
+                <Font size="10.0" />
+            </font>
+        </Text>
+        <Text layoutX="368.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cpu Asignado" wrappingWidth="154.0" />
+        <Slider layoutX="368.0" layoutY="369.0" prefHeight="14.0" prefWidth="222.0" />
+        <Text layoutX="476.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="200cpu" wrappingWidth="113.201171875">
+        </Text>
+        <ComboBox layoutX="666.0" layoutY="215.0" prefHeight="33.0" prefWidth="154.0" />
+        <Text layoutX="666.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Actualizar automaticamente ?" wrappingWidth="210.0" />
+        <Text layoutX="666.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Actualizar la  versió nde minercaft automáticamente si sale una nueva?" wrappingWidth="301.0">
+
+        </Text>
+        <ComboBox layoutX="666.0" layoutY="301.0" prefHeight="33.0" prefWidth="270.0" />
+        <Text layoutX="666.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sofware de minecraft y versión" wrappingWidth="210.0" />
+        <Text layoutX="666.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Purpur, Spigot, Paper..." wrappingWidth="210.0">
+
+        </Text>
+        <Text layoutX="368.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si nno se llena elegimos cada vez que se encienda el servidor un puerto libre" wrappingWidth="127.99999999999989">
+
+        </Text>
+        <ComboBox layoutX="824.0" layoutY="215.0" prefHeight="33.0" prefWidth="113.0" />
+        <Text layoutX="824.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La versión de minercaft" wrappingWidth="138.0">
+
+        </Text>
+        <ComboBox layoutX="944.0" layoutY="215.0" prefHeight="33.0" prefWidth="113.0" />
+        <Text layoutX="944.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sofware build" wrappingWidth="138.0">
+
+        </Text>
+    </children>
+</AnchorPane>

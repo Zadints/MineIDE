@@ -8,8 +8,8 @@
 <?import org.kordamp.ikonli.javafx.*?>
 <?import java.lang.String?>
 
-<VBox alignment="TOP_CENTER" maxHeight="700" maxWidth="1300.0" minHeight="700" minWidth="1300.0" prefHeight="700.0" prefWidth="1300.0" styleClass="root" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mineide.controllers.mineIdeController">
-    <BorderPane prefHeight="700" prefWidth="1300" VBox.vgrow="ALWAYS">
+<VBox alignment="TOP_CENTER" maxHeight="700" maxWidth="1300.0" minHeight="700" minWidth="1300.0" prefHeight="700.0" prefWidth="1300.0" styleClass="root" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mineide.controllers.IndexController">
+    <BorderPane fx:id="root" prefHeight="700" prefWidth="1300" VBox.vgrow="ALWAYS">
         <center>
             <Pane prefHeight="Infinity" prefWidth="Infinity" styleClass="content-style" BorderPane.alignment="CENTER" />
         </center>
@@ -54,7 +54,7 @@
                                 styleClass="app-title-text"/>
 
                     </HBox>
-                    <Button alignment="BASELINE_LEFT" layoutY="250.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Servers">
+                    <Button onAction="#onServersClick" alignment="BASELINE_LEFT" layoutY="250.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Servers">
                         <graphic>
                             <FontIcon iconLiteral="fas-users-cog" iconSize="14" styleClass="sidebar-icons" />
                         </graphic>

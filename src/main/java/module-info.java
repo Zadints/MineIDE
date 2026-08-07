@@ -12,7 +12,9 @@ module org.example.mineide {
     requires com.almasb.fxgl.all;
 
     opens org.example.mineide to javafx.fxml;
+    opens org.example.mineide.controllers to javafx.fxml;
+    opens org.example.mineide.controllers.center to javafx.fxml;
+
     exports org.example.mineide;
     exports org.example.mineide.controllers;
-    opens org.example.mineide.controllers to javafx.fxml;
 }

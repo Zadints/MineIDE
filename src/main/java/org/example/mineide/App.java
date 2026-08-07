@@ -10,7 +10,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Font.loadFont(
@@ -28,11 +28,11 @@ public class HelloApplication extends Application {
         Font.loadFont(
                 getClass().getResourceAsStream("/fonts/Geist-ExtraBold.ttf"),14
         );
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("mine-ide.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("index.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().addAll(
-                getClass().getResource("/styles/app.css").toExternalForm(),
-                getClass().getResource("/styles/console-style.css").toExternalForm()
+                getClass().getResource("/styles/index.css").toExternalForm(),
+                getClass().getResource("/styles/center-styles.css").toExternalForm()
         );
         stage.initStyle(StageStyle.UNDECORATED);
         stage.initStyle(StageStyle.TRANSPARENT);
