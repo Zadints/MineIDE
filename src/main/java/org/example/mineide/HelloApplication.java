@@ -3,6 +3,7 @@ package org.example.mineide;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -24,17 +25,22 @@ public class HelloApplication extends Application {
         Font.loadFont(
                 getClass().getResourceAsStream("/fonts/Geist-Bold.ttf"),14
         );
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        Font.loadFont(
+                getClass().getResourceAsStream("/fonts/Geist-ExtraBold.ttf"),14
+        );
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("mine-ide.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().addAll(
                 getClass().getResource("/styles/app.css").toExternalForm(),
                 getClass().getResource("/styles/console-style.css").toExternalForm()
         );
         stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
         stage.setWidth(1300);
         stage.setHeight(700);
         stage.setMaximized(false);
-        stage.setTitle("Hello!");
+        stage.setTitle("MineIDE ");
         stage.setScene(scene);
         stage.show();
     }

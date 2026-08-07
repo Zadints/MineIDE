@@ -13,4 +13,6 @@ module org.example.mineide {
 
     opens org.example.mineide to javafx.fxml;
     exports org.example.mineide;
+    exports org.example.mineide.controllers;
+    opens org.example.mineide.controllers to javafx.fxml;
 }
