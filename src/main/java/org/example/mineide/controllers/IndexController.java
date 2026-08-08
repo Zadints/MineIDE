@@ -87,4 +87,20 @@ public class IndexController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    protected void onBackupsClick() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/org/example/mineide/center/backups.fxml")
+            );
+
+            Parent view = loader.load();
+
+            root.setCenter(view);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

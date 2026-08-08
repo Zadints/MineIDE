@@ -11,7 +11,12 @@
 <VBox alignment="TOP_CENTER" maxHeight="700" maxWidth="1300.0" minHeight="700" minWidth="1300.0" prefHeight="700.0" prefWidth="1300.0" styleClass="root" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mineide.controllers.IndexController">
     <BorderPane fx:id="root" prefHeight="700" prefWidth="1300" VBox.vgrow="ALWAYS">
         <center>
-            <Pane prefHeight="Infinity" prefWidth="Infinity" styleClass="content-style" BorderPane.alignment="CENTER" />
+            <Pane styleClass="content-style"
+                  BorderPane.alignment="CENTER"
+                  minWidth="0"
+                  minHeight="0"
+                  maxWidth="Infinity"
+                  maxHeight="Infinity"/>
         </center>
         <top>
             <HBox fx:id="titleBar"
@@ -25,6 +30,7 @@
                 <Circle radius="6" styleClass="tab-mac-3"/>
 
                 <Pane HBox.hgrow="ALWAYS"/>
+
 
                 <Button fx:id="btnMinimize" onAction="#onMinimizeClick" text="—" styleClass="tab-buttons "/>
                 <Button fx:id="btnMaximize" onAction="#onMaximizeClick" text="□" styleClass="tab-buttons"/>
@@ -59,7 +65,7 @@
                             <FontIcon iconLiteral="fas-users-cog" iconSize="14" styleClass="sidebar-icons" />
                         </graphic>
                     </Button>
-                    <Button alignment="BASELINE_LEFT" layoutY="296.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Administration">
+                    <Button  alignment="BASELINE_LEFT" layoutY="296.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Administration">
                         <graphic>
                             <FontIcon iconLiteral="fas-sliders-h" iconSize="14" styleClass="sidebar-icons" />
                         </graphic>
@@ -80,7 +86,7 @@
                             <FontIcon iconLiteral="fas-cog" iconSize="14" styleClass="sidebar-icons" />
                         </graphic>
                     </Button>
-                    <Button alignment="BASELINE_LEFT" layoutY="545.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Backups">
+                    <Button onAction="#onBackupsClick" alignment="BASELINE_LEFT" layoutY="545.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Backups">
                         <graphic>
                             <FontIcon iconLiteral="fas-archive" iconSize="14" styleClass="sidebar-icons" />
                         </graphic>

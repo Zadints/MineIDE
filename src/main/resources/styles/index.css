@@ -4,8 +4,7 @@
     -fx-border-width: 0px;
     -fx-padding: 15 15 15 32px;
     -fx-font-size: 14px;
-    -fx-font-family: "Geist";
-    -fx-font-family: "Geist SemiBold";
+    -fx-font-family: "Poppins Regular";
     -fx-graphic-text-gap: 10px;
 }
 .sidebar-buttons:hover{
@@ -21,8 +20,7 @@
     -fx-text-fill: #B0B0B0;
     -fx-padding: 10 5 5 32px;
     -fx-font-size: 13px;
-    -fx-font-family: "Geist";
-    -fx-font-family: "Geist Regular";
+    -fx-font-family: "Poppins Light";
 }
 
 .tab-bar{
@@ -65,8 +63,7 @@
     -fx-text-fill: White;
     -fx-padding: 0 0 0 20px;
     -fx-font-size: 20px;
-    -fx-font-family: "Geist";
-    -fx-font-family: "Geist extraBold";
+    -fx-font-family: "Poppins Black";
 }
 .logo-svg {
     -fx-fill: #22A5F1;
@@ -90,9 +87,14 @@
     -fx-background-radius: 20 20 20 0;
 }
 
-
+.content-title{
+    -fx-text-fill: White;
+    -fx-padding: 20 0 0 20px;
+    -fx-font-size: 22px;
+    -fx-font-family: "Poppins Black";
+}
 
 .root {
-    -fx-background-color: #1e1e1e;
+    -fx-background-color: #111629;
     -fx-background-radius: 20;
 }

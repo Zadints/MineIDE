@@ -14,19 +14,20 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Font.loadFont(
-                getClass().getResourceAsStream("/fonts/Geist-SemiBold.ttf"),14
+                getClass().getResourceAsStream("/fonts/Poppins-Regular.ttf"),14
         );
         Font.loadFont(
-                getClass().getResourceAsStream("/fonts/Geist-Medium.ttf"),14
+                getClass().getResourceAsStream("/fonts/Poppins-Light.ttf"),14
+        );
+
+        Font.loadFont(
+                getClass().getResourceAsStream("/fonts/Poppins-Bold.ttf"),14
         );
         Font.loadFont(
-                getClass().getResourceAsStream("/fonts/Geist-Regular.ttf"),14
+                getClass().getResourceAsStream("/fonts/Poppins-Black.ttf"),14
         );
         Font.loadFont(
-                getClass().getResourceAsStream("/fonts/Geist-Bold.ttf"),14
-        );
-        Font.loadFont(
-                getClass().getResourceAsStream("/fonts/Geist-ExtraBold.ttf"),14
+                getClass().getResourceAsStream("/fonts/PixelifySans-Regular.ttf"),14
         );
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("index.fxml"));
         Scene scene = new Scene(fxmlLoader.load());

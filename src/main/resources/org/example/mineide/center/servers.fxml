@@ -9,57 +9,139 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.mineide.controllers.center.ServesController"
-            prefHeight="660" prefWidth="1067" style="-fx-background-color: transparent;">
+            styleClass="content-style">
     <children>
-        <FlowPane layoutX="35.0" layoutY="98.0" prefHeight="515.0" prefWidth="301.0" />
-        <Label layoutX="35.0" layoutY="52.0" prefHeight="17.0" prefWidth="97.0" text="Mis Servidores" AnchorPane.bottomAnchor="591.0" AnchorPane.leftAnchor="35.0" AnchorPane.rightAnchor="935.0" AnchorPane.topAnchor="52.0" />
-        <Button layoutX="913.0" layoutY="606.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="+  Crear Servidor" />
-        <Button layoutX="765.0" layoutY="606.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Cancelar" />
-        <TextField layoutX="365.0" layoutY="157.0" prefHeight="25.0" prefWidth="228.0" />
-        <Text layoutX="365.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresa el nombre del servidor el cuál aparecerá en tu lista de servidores" wrappingWidth="228.0">
-        </Text>
-        <Text layoutX="365.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre del servidor" wrappingWidth="222.0" />
-        <TextField layoutX="504.0" layoutY="452.0" prefHeight="25.0" prefWidth="82.0" />
-        <Text layoutX="368.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Puerto a utilizar" wrappingWidth="113.201171875" />
-        <Text layoutX="666.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logo del servidor" wrappingWidth="97.0" />
-        <ImageView fitHeight="82.0" fitWidth="91.0" layoutX="932.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true" />
-        <Text layoutX="666.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecciona una imagen de cualquier formato y súbela para que tu serviror tenga una digna presencia." wrappingWidth="253.201171875">
-        </Text>
-        <Slider layoutX="365.0" layoutY="231.0" prefHeight="14.0" prefWidth="228.0" />
-        <Text layoutX="368.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ram asignado a tu servidor" wrappingWidth="154.0" />
-        <Text layoutX="368.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disco Asignado a tu servidor" wrappingWidth="154.0" />
-        <Slider layoutX="365.0" layoutY="297.0" prefHeight="14.0" prefWidth="228.0" />
-        <Text layoutX="465.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disponible: 8GB" wrappingWidth="113.201171875">
-        </Text>
-        <Text layoutX="465.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disponible: 8GB" wrappingWidth="113.201171875">
-            <font>
-                <Font size="10.0" />
-            </font>
-        </Text>
-        <Text layoutX="368.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cpu Asignado" wrappingWidth="154.0" />
-        <Slider layoutX="368.0" layoutY="369.0" prefHeight="14.0" prefWidth="222.0" />
-        <Text layoutX="476.0" layoutY="401.0" strokeType="OUTSIDE" strokeWidth="0.0" text="200cpu" wrappingWidth="113.201171875">
-        </Text>
-        <ComboBox layoutX="666.0" layoutY="215.0" prefHeight="33.0" prefWidth="154.0" />
-        <Text layoutX="666.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Actualizar automaticamente ?" wrappingWidth="210.0" />
-        <Text layoutX="666.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Actualizar la  versió nde minercaft automáticamente si sale una nueva?" wrappingWidth="301.0">
-
-        </Text>
-        <ComboBox layoutX="666.0" layoutY="301.0" prefHeight="33.0" prefWidth="270.0" />
-        <Text layoutX="666.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sofware de minecraft y versión" wrappingWidth="210.0" />
-        <Text layoutX="666.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Purpur, Spigot, Paper..." wrappingWidth="210.0">
-
-        </Text>
-        <Text layoutX="368.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Si nno se llena elegimos cada vez que se encienda el servidor un puerto libre" wrappingWidth="127.99999999999989">
-
-        </Text>
-        <ComboBox layoutX="824.0" layoutY="215.0" prefHeight="33.0" prefWidth="113.0" />
-        <Text layoutX="824.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="La versión de minercaft" wrappingWidth="138.0">
-
-        </Text>
-        <ComboBox layoutX="944.0" layoutY="215.0" prefHeight="33.0" prefWidth="113.0" />
-        <Text layoutX="944.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sofware build" wrappingWidth="138.0">
-
-        </Text>
+        <GridPane layoutX="14.0" layoutY="27.0" prefHeight="616.0" prefWidth="1025.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="547.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="546.0" minHeight="10.0" prefHeight="155.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="546.0" minHeight="10.0" prefHeight="173.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="546.0" minHeight="10.0" prefHeight="117.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="546.0" minHeight="10.0" prefHeight="104.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label prefHeight="17.0" prefWidth="250.0" text="Mis Servidores" styleClass="content-title"/>
+                <FlowPane prefHeight="515.0" prefWidth="301.0" GridPane.rowIndex="1" />
+                <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre del servidor" wrappingWidth="222.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresa el nombre del servidor el cuál aparecerá en tu lista de servidores" wrappingWidth="228.0">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </Text>
+                        <TextField prefHeight="25.0" prefWidth="228.0" />
+                    </children>
+                </VBox>
+                <VBox prefHeight="160.0" prefWidth="504.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ram asignado a tu servidor" wrappingWidth="154.0" />
+                        <Slider prefHeight="14.0" prefWidth="228.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Disponible: 8GB" wrappingWidth="113.201171875">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Disco Asignado a tu servidor" wrappingWidth="154.0" />
+                        <Slider prefHeight="14.0" prefWidth="228.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Disponible: 8GB" wrappingWidth="113.201171875">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cpu Asignado" wrappingWidth="154.0" />
+                        <Slider prefHeight="14.0" prefWidth="222.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="200cpu" wrappingWidth="113.201171875">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </VBox>
+                <VBox prefHeight="200.0" prefWidth="269.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Puerto a utilizar" wrappingWidth="113.201171875" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Si nno se llena elegimos cada vez que se encienda el servidor un puerto libre" wrappingWidth="127.99999999999989">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </Text>
+                        <TextField prefHeight="25.0" prefWidth="82.0" />
+                    </children>
+                </VBox>
+                <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sofware de minecraft y versión" wrappingWidth="210.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Actualizar automaticamente ?" wrappingWidth="210.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Actualizar la  versió nde minercaft automáticamente si sale una nueva?" wrappingWidth="301.0">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </Text>
+                        <ComboBox prefHeight="33.0" prefWidth="270.0" />
+                    </children>
+                </VBox>
+                <HBox prefHeight="39.0" prefWidth="346.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                    <children>
+                        <VBox prefHeight="39.0" prefWidth="114.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Purpur, Spigot, Paper..." wrappingWidth="111.0">
+                                    <font>
+                                        <Font size="10.0" />
+                                    </font>
+                                </Text>
+                                <ComboBox prefHeight="33.0" prefWidth="113.0" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="53.0" prefWidth="128.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sofware build" wrappingWidth="138.0">
+                                    <font>
+                                        <Font size="10.0" />
+                                    </font>
+                                </Text>
+                                <ComboBox prefHeight="33.0" prefWidth="154.0" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="49.0" prefWidth="111.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="La versión de minercaft" wrappingWidth="138.0">
+                                    <font>
+                                        <Font size="10.0" />
+                                    </font>
+                                </Text>
+                                <ComboBox prefHeight="33.0" prefWidth="113.0" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                    <children>
+                        <VBox prefHeight="50.0" prefWidth="228.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Logo del servidor" wrappingWidth="97.0" />
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Selecciona una imagen de cualquier formato y súbela para que tu serviror tenga una digna presencia." wrappingWidth="253.201171875">
+                                    <font>
+                                        <Font size="10.0" />
+                                    </font>
+                                </Text>
+                            </children>
+                        </VBox>
+                        <ImageView fitHeight="82.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true" />
+                    </children>
+                </HBox>
+                <HBox prefHeight="27.0" prefWidth="301.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                    <children>
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Cancelar" />
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="+  Crear Servidor" />
+                    </children>
+                </HBox>
+            </children>
+        </GridPane>
     </children>
 </AnchorPane>

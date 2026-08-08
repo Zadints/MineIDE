@@ -1,0 +1,25 @@
+/* the styles backups */
+.vbox-backups {
+    -fx-padding: 15 20 15 0px;
+}
+.buton-create-backups{
+    -fx-padding: 10px;
+    -fx-font-size: 12px;
+    -fx-font-family: "Poppins Bold";
+    -fx-border-width: 0px;
+    -fx-text-fill: White;
+    -fx-background-color: #22A5F1;
+    -fx-background-radius: 20 20 20 0;
+}
+
+.text-no-backups{
+    -fx-text-fill: #7D838E;
+    -fx-font-size: 13px;
+    -fx-font-family: "Poppins Bold";
+}
+
+.flowPane-backups{
+    -fx-alignment: center;
+    -fx-spacing: 15px;
+
+}
