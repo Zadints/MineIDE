@@ -36,6 +36,16 @@
                             </font>
                         </Text>
                         <TextField prefHeight="25.0" prefWidth="228.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Directory where create server" wrappingWidth="222.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ingres the path to the directory the IDE will use to save files of your server and configuration files" wrappingWidth="228.0">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </Text>
+                        <HBox>
+                            <TextField prefHeight="25.0" prefWidth="228.0" promptText="Directory"/>
+                            <Button text="examinar" onAction="#directoryselect"/>
+                        </HBox>
                     </children>
                 </VBox>
                 <VBox prefHeight="160.0" prefWidth="504.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
