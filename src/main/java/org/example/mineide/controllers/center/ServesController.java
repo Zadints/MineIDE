@@ -2,6 +2,7 @@ package org.example.mineide.controllers.center;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
@@ -30,16 +31,20 @@ public class ServesController {
         System.out.println(path);
         pathfield.setText(path.toString());
     }
+    @FXML
+    private ComboBox softwarebox;
     void serverCreate(ActionEvent event) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
 
-        String software = "hola";
+        String software = softwarebox.getValue().toString();
+        String build = "luego";
         String version = "no";
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://lrweb.dpdns.org/mcDowload"))
                 .header("software", software)
                 .header("version", version)
+                .header("build", build)
                 .GET()
                 .build();
         HttpResponse<byte[]> response = client.send(request, HttpResponse.BodyHandlers.ofByteArray());

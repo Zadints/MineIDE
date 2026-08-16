@@ -107,12 +107,13 @@
                                         <Font size="10.0" />
                                     </font>
                                 </Text>
-                                <ComboBox prefHeight="33.0" prefWidth="113.0">
+                                <ComboBox fx:id="softwarebox" prefHeight="33.0" prefWidth="113.0">
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
                                             <String fx:value="paper"/>
                                             <String fx:value="pupur"/>
                                             <String fx:value="neoforge"/>
+                                            <String fx:value="fabric"/>
                                         </FXCollections>
 
                                     </items>
