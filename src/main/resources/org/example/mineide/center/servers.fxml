@@ -5,6 +5,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
@@ -29,13 +31,23 @@
                 <FlowPane prefHeight="515.0" prefWidth="301.0" GridPane.rowIndex="1" />
                 <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre del servidor" wrappingWidth="222.0" />
+                        <Text  strokeType="OUTSIDE" strokeWidth="0.0" text="Name of the Server" wrappingWidth="222.0" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresa el nombre del servidor el cuál aparecerá en tu lista de servidores" wrappingWidth="228.0">
                             <font>
                                 <Font size="10.0" />
                             </font>
                         </Text>
-                        <TextField prefHeight="25.0" prefWidth="228.0" />
+                        <TextField fx:id="namefield" promptText="name of the server" prefHeight="25.0" prefWidth="228.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Directory where create server" wrappingWidth="222.0" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ingres the path to the directory the IDE will use to save files of your server and configuration files" wrappingWidth="228.0">
+                            <font>
+                                <Font size="10.0" />
+                            </font>
+                        </Text>
+                        <HBox>
+                            <TextField fx:id="pathfield" prefHeight="25.0" prefWidth="228.0" promptText="Directory"/>
+                            <Button text="examinar" onAction="#directoryselect"/>
+                        </HBox>
                     </children>
                 </VBox>
                 <VBox prefHeight="160.0" prefWidth="504.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -66,7 +78,7 @@
                 <VBox prefHeight="200.0" prefWidth="269.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                     <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Puerto a utilizar" wrappingWidth="113.201171875" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Si nno se llena elegimos cada vez que se encienda el servidor un puerto libre" wrappingWidth="127.99999999999989">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Si no se llena elegimos cada vez que se encienda el servidor un puerto libre" wrappingWidth="127.99999999999989">
                             <font>
                                 <Font size="10.0" />
                             </font>
@@ -95,7 +107,17 @@
                                         <Font size="10.0" />
                                     </font>
                                 </Text>
-                                <ComboBox prefHeight="33.0" prefWidth="113.0" />
+                                <ComboBox fx:id="softwarebox" prefHeight="33.0" prefWidth="113.0">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="paper"/>
+                                            <String fx:value="pupur"/>
+                                            <String fx:value="neoforge"/>
+                                            <String fx:value="fabric"/>
+                                        </FXCollections>
+
+                                    </items>
+                                </ComboBox>
                             </children>
                         </VBox>
                         <VBox prefHeight="53.0" prefWidth="128.0">
