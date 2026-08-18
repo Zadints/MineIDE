@@ -89,6 +89,37 @@ public class IndexController {
     }
 
     @FXML
+    protected  void onFilesClick(){
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/org/example/mineide/center/files.fxml")
+            );
+
+            Parent view = loader.load();
+
+            root.setCenter(view);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    protected void onConsoleClick () {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/org/example/mineide/center/console.fxml")
+            );
+
+            Parent view = loader.load();
+
+            root.setCenter(view);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     protected void onBackupsClick() {
         try {
             FXMLLoader loader = new FXMLLoader(
