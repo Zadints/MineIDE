@@ -3,6 +3,8 @@ module org.example.mineide {
     requires javafx.fxml;
     requires javafx.web;
 
+    requires java.net.http;
+
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires net.synedra.validatorfx;
