@@ -33,12 +33,14 @@ public class ServesController {
     }
     @FXML
     private ComboBox softwarebox;
+    @FXML
+    private ComboBox versionbox;
     void serverCreate(ActionEvent event) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
 
         String software = softwarebox.getValue().toString();
-        String build = "luego";
-        String version = "no";
+        String build = versionbox.getValue().toString();
+        String version = versionbox.getValue().toString();
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://lrweb.dpdns.org/mcDowload"))

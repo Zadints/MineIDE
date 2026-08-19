@@ -132,12 +132,12 @@
                         </VBox>
                         <VBox prefHeight="49.0" prefWidth="111.0">
                             <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="La versión de minercaft" wrappingWidth="138.0">
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0"  text="La versión de minercaft" wrappingWidth="138.0">
                                     <font>
                                         <Font size="10.0" />
                                     </font>
                                 </Text>
-                                <ComboBox prefHeight="33.0" prefWidth="113.0" />
+                                <ComboBox fx:id="versionbox" prefHeight="33.0" prefWidth="113.0" />
                             </children>
                         </VBox>
                     </children>
