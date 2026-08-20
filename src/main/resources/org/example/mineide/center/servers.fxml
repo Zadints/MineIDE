@@ -95,14 +95,20 @@
                                 <Font size="10.0" />
                             </font>
                         </Text>
-                        <ComboBox prefHeight="33.0" prefWidth="270.0" />
+                        <VBox>
+                            <fx:define>
+                                <ToggleGroup fx:id="updateOption"/>
+                            </fx:define>
+                            <RadioButton fx:id="rbOpcion1" text="Opción 1" toggleGroup="$updateOption" selected="true"/>
+                            <RadioButton fx:id="rbOpcion2" text="Opción 2" toggleGroup="$updateOption"/>
+                        </VBox>
                     </children>
                 </VBox>
                 <HBox prefHeight="39.0" prefWidth="346.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                     <children>
                         <VBox prefHeight="39.0" prefWidth="114.0">
                             <children>
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Purpur, Spigot, Paper..." wrappingWidth="111.0">
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select the software" wrappingWidth="111.0">
                                     <font>
                                         <Font size="10.0" />
                                     </font>
@@ -110,12 +116,11 @@
                                 <ComboBox fx:id="softwarebox" prefHeight="33.0" prefWidth="113.0">
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
-                                            <String fx:value="paper"/>
+                                            <String fx:value="papermc"/>
                                             <String fx:value="pupur"/>
                                             <String fx:value="neoforge"/>
                                             <String fx:value="fabric"/>
                                         </FXCollections>
-
                                     </items>
                                 </ComboBox>
                             </children>
@@ -127,7 +132,16 @@
                                         <Font size="10.0" />
                                     </font>
                                 </Text>
-                                <ComboBox prefHeight="33.0" prefWidth="154.0" />
+                                <ComboBox fx:id="buildbox" prefHeight="33.0" prefWidth="154.0">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="112"/>
+                                            <String fx:value="111"/>
+                                            <String fx:value="110"/>
+                                            <String fx:value="109"/>
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
                             </children>
                         </VBox>
                         <VBox prefHeight="49.0" prefWidth="111.0">
@@ -137,7 +151,16 @@
                                         <Font size="10.0" />
                                     </font>
                                 </Text>
-                                <ComboBox fx:id="versionbox" prefHeight="33.0" prefWidth="113.0" />
+                                <ComboBox fx:id="versionbox" prefHeight="33.0" prefWidth="113.0">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="26.2"/>
+                                            <String fx:value="26.12"/>
+                                            <String fx:value="26.1"/>
+                                            <String fx:value="26"/>
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
                             </children>
                         </VBox>
                     </children>
@@ -160,7 +183,7 @@
                 <HBox prefHeight="27.0" prefWidth="301.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                     <children>
                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="Cancelar" />
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="+  Crear Servidor" />
+                        <Button onAction="#serverCreate" mnemonicParsing="false" prefHeight="25.0" prefWidth="128.0" text="+  Crear Servidor" />
                     </children>
                 </HBox>
             </children>

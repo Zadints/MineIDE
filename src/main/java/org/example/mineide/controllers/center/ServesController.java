@@ -3,7 +3,9 @@ package org.example.mineide.controllers.center;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -14,11 +16,18 @@ import java.nio.file.*;
 import java.io.File;
 
 public class ServesController {
+    @FXML
+    private ToggleGroup updateoption;
+    @FXML
+    void initialize(){
+        updateoption.selectedToggleProperty().addListener((obs, anterior, actual) -> {
+            RadioButton selected = (RadioButton) actual;
+            if
+        });
+    }
     Path path;
-    @FXML
-    private TextField pathfield;
-    @FXML
-    private TextField namefield;
+    @FXML private TextField pathfield;
+    @FXML private TextField namefield;
     @FXML
     void directoryselect(ActionEvent event){
         DirectoryChooser carpeta = new DirectoryChooser();
@@ -27,19 +36,24 @@ public class ServesController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
         File file = carpeta.showDialog(stage);
-        path = file.toPath();
-        System.out.println(path);
-        pathfield.setText(path.toString());
+        try {
+            path = file.toPath();
+            System.out.println(path);
+            pathfield.setText(path.toString());
+        } catch (Exception e) {
+            System.out.println("Ninguna carpeta selecionada se usara el path predeterminado: " + System.getProperty("user.home") + File.separator + "desktop");
+            pathfield.setText(System.getProperty("user.home") + File.separator + "Desktop");
+        }
     }
+    @FXML private ComboBox softwarebox;
+    @FXML private ComboBox versionbox;
+    @FXML private ComboBox buildbox;
     @FXML
-    private ComboBox softwarebox;
-    @FXML
-    private ComboBox versionbox;
     void serverCreate(ActionEvent event) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
 
         String software = softwarebox.getValue().toString();
-        String build = versionbox.getValue().toString();
+        String build = buildbox.getValue().toString();
         String version = versionbox.getValue().toString();
 
         HttpRequest request = HttpRequest.newBuilder()

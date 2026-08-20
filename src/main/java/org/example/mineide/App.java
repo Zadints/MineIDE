@@ -38,8 +38,8 @@ public class App extends Application {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
-        stage.setWidth(1250);
-        stage.setHeight(670);
+        stage.setWidth(1300);
+        stage.setHeight(700);
         stage.setMaximized(false);
         stage.setTitle("MineIDE ");
         stage.setScene(scene);
