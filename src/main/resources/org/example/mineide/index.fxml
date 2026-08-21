@@ -10,8 +10,8 @@
 
 <StackPane xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mineide.controllers.IndexController">
 
-    <VBox alignment="TOP_CENTER" maxHeight="700" maxWidth="1300.0" minHeight="700" minWidth="1300.0" prefHeight="700.0" prefWidth="1300.0" styleClass="root" >
-        <BorderPane fx:id="root" prefHeight="700" prefWidth="1300" VBox.vgrow="ALWAYS">
+    <VBox fx:id="root" alignment="TOP_CENTER" minHeight="700" minWidth="1300.0" prefHeight="700.0" prefWidth="1300.0" styleClass="root" >
+        <BorderPane fx:id="brPanel"  minHeight="700" minWidth="1300" VBox.vgrow="ALWAYS">
             <center>
                 <Pane styleClass="content-style"
                       BorderPane.alignment="CENTER"

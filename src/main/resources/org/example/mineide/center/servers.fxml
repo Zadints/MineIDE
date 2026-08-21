@@ -28,16 +28,13 @@
             </rowConstraints>
             <children>
                 <Label prefHeight="17.0" prefWidth="250.0" text="Mis Servidores" styleClass="content-title"/>
-                <FlowPane prefHeight="515.0" prefWidth="301.0" GridPane.rowIndex="1" />
+                <FlowPane prefHeight="515.0" prefWidth="301.0" GridPane.rowIndex="1" styleClass="my-serves-list"/>
                 <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <children>
-                        <Text  strokeType="OUTSIDE" strokeWidth="0.0" text="Name of the Server" wrappingWidth="222.0" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresa el nombre del servidor el cuál aparecerá en tu lista de servidores" wrappingWidth="228.0">
-                            <font>
-                                <Font size="10.0" />
-                            </font>
-                        </Text>
+                        <Text styleClass="my-serves-subtitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of the Server" wrappingWidth="222.0" />
+                        <Text styleClass="my-serves-lore" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingresa el nombre del servidor el cuál aparecerá en tu lista de servidores" wrappingWidth="228.0"/>
                         <TextField fx:id="namefield" promptText="name of the server" prefHeight="25.0" prefWidth="228.0" />
+
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Directory where create server" wrappingWidth="222.0" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ingres the path to the directory the IDE will use to save files of your server and configuration files" wrappingWidth="228.0">
                             <font>

@@ -7,8 +7,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
+import javafx.geometry.Rectangle2D;
+import javafx.stage.Screen;
 import java.io.IOException;
 
 public class IndexController {
@@ -60,17 +62,41 @@ public class IndexController {
         stage.setIconified(true);
     }
 
+    /*--------------------------------------
+         Este metodo contiene atributos para su funcionamiento tanto de JavaFX como
+         privados booleanos
+     ------------------------------------*/
     @FXML
     private Button btnMaximize;
     @FXML
+    private VBox root;
+    private boolean maximized = true;
+    @FXML
     protected void onMaximizeClick() {
         Stage stage = (Stage) btnMaximize.getScene().getWindow();
-        stage.setMaximized(!stage.isMaximized());
+
+        if (maximized) {
+            Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+
+            stage.setX(bounds.getMinX());
+            stage.setY(bounds.getMinY());
+            stage.setWidth(bounds.getWidth());
+            stage.setHeight(bounds.getHeight());
+
+            root.getStyleClass().add("maximized");
+            maximized = false;
+        } else {
+            stage.setWidth(1300);
+            stage.setHeight(700);
+            stage.centerOnScreen();
+            root.getStyleClass().remove("maximized");
+            maximized = true;
+        }
     }
 
-    @FXML
-    private BorderPane root;
 
+    @FXML
+    private BorderPane brPanel;
     @FXML
     protected void onServersClick() {
 
@@ -81,7 +107,7 @@ public class IndexController {
 
             Parent view = loader.load();
 
-            root.setCenter(view);
+            brPanel.setCenter(view);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -97,7 +123,7 @@ public class IndexController {
 
             Parent view = loader.load();
 
-            root.setCenter(view);
+            brPanel.setCenter(view);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -112,7 +138,7 @@ public class IndexController {
 
             Parent view = loader.load();
 
-            root.setCenter(view);
+            brPanel.setCenter(view);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -128,7 +154,7 @@ public class IndexController {
 
             Parent view = loader.load();
 
-            root.setCenter(view);
+            brPanel.setCenter(view);
 
         } catch (IOException e) {
             e.printStackTrace();

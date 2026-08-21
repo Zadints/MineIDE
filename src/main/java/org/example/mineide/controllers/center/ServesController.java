@@ -17,14 +17,16 @@ import java.io.File;
 
 public class ServesController {
     @FXML
-    private ToggleGroup updateoption;
+    private ToggleGroup updateOption;
     @FXML
     void initialize(){
-        updateoption.selectedToggleProperty().addListener((obs, anterior, actual) -> {
-            RadioButton selected = (RadioButton) actual;
-            if
-        });
+        updateOption.selectedToggleProperty().addListener(
+                (obs, anterior, actual) -> {
+                    RadioButton selected = (RadioButton) actual;
+                }
+        );
     }
+
     Path path;
     @FXML private TextField pathfield;
     @FXML private TextField namefield;

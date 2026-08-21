@@ -35,7 +35,6 @@ public class App extends Application {
                 getClass().getResource("/styles/index.css").toExternalForm(),
                 getClass().getResource("/styles/center-styles.css").toExternalForm()
         );
-        stage.initStyle(StageStyle.UNDECORATED);
         stage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(Color.TRANSPARENT);
         stage.setWidth(1300);
