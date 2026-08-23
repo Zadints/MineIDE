@@ -62,14 +62,15 @@
     -fx-padding: 10px;
     -fx-background-radius: 15px;
     -fx-background-color: #4F5866;
+    -fx-margin: 20px;
 }
 
 .my-serves-subtitle{
     -fx-font-size: 12px;
     -fx-font-family: "Poppins Bold";
-    -fx-text-fill: White;
+    -fx-fill: White;
 }
 
 .my-serves-lore{
-
+    -fx-fill: #999EA6;
 }

@@ -25,7 +25,7 @@
 
 .tab-bar{
     -fx-background-color: transparent;
-    -fx-padding: 0 0 0 32px
+    -fx-padding: 0 0 0 32px;
 
 }
 .tab-mac-1,
@@ -48,22 +48,66 @@
     -fx-fill: #28c840;
     -fx-stroke: #1ea832;
 }
-.tab-buttons{
+.tab-buttons {
     -fx-background-color: transparent;
     -fx-font-size: 13px;
     -fx-text-fill: #B0B0B0;
+
+    /* 1. Forzamos un tamaño cuadrado para botones tipo pestaña/icono */
+    -fx-pref-width: 45px;
+    -fx-pref-height: 45px;
+
+    /* 2. Reseteamos el padding a 0 en todos los lados para que no empuje el contenido */
+    -fx-padding: 0 0 0 0;
+
+    /* 3. Centrado absoluto */
+    -fx-alignment: center;
+    -fx-content-display: center;
 }
+
 .tab-buttons:hover{
-    -fx-text-fill: White;
+    -fx-background-color: #fbfbfb28;
 }
-.button-close:hover{
-    -fx-text-fill: #E33C2F;
+.button-close {
+    -fx-background-radius: 0 20 0 0;
 }
 .app-title-text{
     -fx-text-fill: White;
     -fx-padding: 0 0 0 20px;
     -fx-font-size: 20px;
     -fx-font-family: "Poppins Black";
+}
+.tab-setting-app{
+    -fx-background-color: transparent;
+    -fx-font-size: 13px;
+    -fx-text-fill: #B0B0B0;
+
+    /* 1. Forzamos un tamaño cuadrado para botones tipo pestaña/icono */
+    -fx-pref-width: 25px;
+    -fx-pref-height: 25px;
+
+    /* 2. Reseteamos el padding a 0 en todos los lados para que no empuje el contenido */
+    -fx-padding: 0 0 0 0;
+
+    /* 3. Centrado absoluto */
+    -fx-alignment: center;
+    -fx-content-display: center;
+}
+.tab-setting-app:hover{
+    -fx-background-color: #fbfbfb28;
+}
+.tab-licence-type{
+    -fx-background-color: #00dffd2a;
+    -fx-font-size: 13px;
+    -fx-text-fill: #00e0fd67;
+    -fx-border-color: #00e0fd67;
+    -fx-pref-width: 50px;
+    -fx-pref-height: 25px;
+    -fx-padding: 0;
+    -fx-background-radius: 20 20 20 20px;
+    -fx-border-radius: 20 20 20 20px;
+    -fx-alignment: center;
+    -fx-content-display: center;
 }
 .logo-svg {
     -fx-fill: #22A5F1;
@@ -84,7 +128,7 @@
 
 .content-style{
     -fx-background-color: #1E293B;
-    -fx-background-radius: 20 20 20 0;
+    -fx-background-radius: 20 0 20 0;
 }
 
 .content-title{
@@ -102,4 +146,9 @@
 .root.maximized {
     -fx-background-radius: 0;
     -fx-border-radius: 0;
+}
+
+
+.modal{
+    -fx-background-color: #fafafa36;
 }

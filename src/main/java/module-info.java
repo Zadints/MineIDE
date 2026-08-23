@@ -10,6 +10,7 @@ module org.example.mineide {
     requires net.synedra.validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
+    requires org.kordamp.ikonli.fontawesome5;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 

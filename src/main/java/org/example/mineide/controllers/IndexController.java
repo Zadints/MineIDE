@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.geometry.Rectangle2D;
@@ -99,57 +100,27 @@ public class IndexController {
     private BorderPane brPanel;
     @FXML
     protected void onServersClick() {
-
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/org/example/mineide/center/servers.fxml")
-            );
-
-            Parent view = loader.load();
-
-            brPanel.setCenter(view);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        LoadContent("servers.fxml");
     }
 
     @FXML
     protected  void onFilesClick(){
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/org/example/mineide/center/files.fxml")
-            );
-
-            Parent view = loader.load();
-
-            brPanel.setCenter(view);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        LoadContent("files.fxml");
     }
     @FXML
     protected void onConsoleClick () {
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/org/example/mineide/center/console.fxml")
-            );
-
-            Parent view = loader.load();
-
-            brPanel.setCenter(view);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        LoadContent("console.fxml");
     }
 
     @FXML
     protected void onBackupsClick() {
+        LoadContent("backups.fxml");
+    }
+
+    private void LoadContent(String fileName){
         try {
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/org/example/mineide/center/backups.fxml")
+                    getClass().getResource("/org/example/mineide/center/" + fileName)
             );
 
             Parent view = loader.load();
@@ -160,4 +131,32 @@ public class IndexController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    private StackPane modalOverlay;
+
+    @FXML
+    private void onSettingAppClick() {
+        openCreateServerModal();
+    }
+
+    private void openCreateServerModal() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("/org/example/mineide/embed.fxml")
+            );
+
+            Parent modal = loader.load();
+
+            modalOverlay.getChildren().clear();
+            modalOverlay.getChildren().add(modal);
+
+            modalOverlay.setVisible(true);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

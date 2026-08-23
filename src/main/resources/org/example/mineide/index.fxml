@@ -23,8 +23,8 @@
             <top>
                 <HBox fx:id="titleBar"
                       alignment="CENTER_LEFT"
-                      prefHeight="37"
-                      spacing="10"
+                      prefHeight="45"
+                      spacing="15.0"
                       styleClass="tab-bar">
 
                     <Circle radius="6" styleClass="tab-mac-1"/>
@@ -33,15 +33,41 @@
 
                     <Pane HBox.hgrow="ALWAYS"/>
 
+                    <Button fx:id="btnSettingApp" onAction="#onSettingAppClick" styleClass="tab-setting-app">
+                        <graphic>
+                            <FontIcon iconLiteral="fas-cog" iconSize="16" iconColor="WHITE"/>
+                        </graphic>
+                    </Button>
 
-                    <Button fx:id="btnMinimize" onAction="#onMinimizeClick" text="—" styleClass="tab-buttons "/>
-                    <Button fx:id="btnMaximize" onAction="#onMaximizeClick" text="□" styleClass="tab-buttons"/>
-                    <Button fx:id="btnClose" onAction="#onCloseClick" text="✕" styleClass="tab-buttons button-close">
+                    <Button fx:id="btnLicenceType" text="Free" styleClass="tab-licence-type"/>
+
+                <HBox fx:id="buttonsAction"
+                      alignment="CENTER_LEFT"
+                      prefHeight="45"
+                      styleClass="tab-bar">
+                    <Button fx:id="btnMinimize" onAction="#onMinimizeClick" styleClass="tab-buttons ">
+                        <graphic>
+                            <FontIcon iconLiteral="fas-window-minimize" iconSize="16" iconColor="WHITE"/>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="btnMaximize" onAction="#onMaximizeClick" styleClass="tab-buttons">
+                        <graphic>
+                            <FontIcon iconLiteral="fas-window-maximize" iconSize="13" iconColor="WHITE"/>
+                        </graphic>
+                    </Button>
+                    <Button fx:id="btnClose" onAction="#onCloseClick">
                         <styleClass>
                             <String fx:value="tab-buttons"/>
                             <String fx:value="button-close"/>
                         </styleClass>
+                        <graphic>
+                            <FontIcon iconLiteral="fas-times" iconSize="16" iconColor="WHITE"/>
+                        </graphic>
                     </Button>
+                </HBox>
+
+
+
 
                 </HBox>
             </top>
@@ -116,11 +142,6 @@
     <StackPane fx:id="modalOverlay"
                visible="false"
                styleClass="modal-overlay">
-
-        <VBox styleClass="modal">
-            <Label text="Crear servidor"/>
-            <Button text="Cerrar" /> <!--onAction="#closeModal"-->
-        </VBox>
 
     </StackPane>
 </StackPane>

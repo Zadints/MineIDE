@@ -13,22 +13,30 @@
             fx:controller="org.example.mineide.controllers.center.ServesController"
             styleClass="content-style">
     <children>
-        <GridPane layoutX="14.0" layoutY="27.0" prefHeight="616.0" prefWidth="1025.0">
+        <GridPane hgap="20.0" vgap="10.0" layoutX="14.0" layoutY="27.0" prefHeight="616.0" prefWidth="1025.0">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="40.0" /> <!-- Columna 0 (Ej: FlowPane amplio) -->
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" /> <!-- Columna 1 (Formulario) -->
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="30.0" /> <!-- Columna 2 (Otros elementos) -->
             </columnConstraints>
+
             <rowConstraints>
-                <RowConstraints maxHeight="547.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="546.0" minHeight="10.0" prefHeight="155.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="546.0" minHeight="10.0" prefHeight="173.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="546.0" minHeight="10.0" prefHeight="117.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="546.0" minHeight="10.0" prefHeight="104.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" percentHeight="10.0" vgrow="SOMETIMES" /> <!-- Fila 0 (Título) -->
+                <RowConstraints minHeight="10.0" percentHeight="60.0" vgrow="SOMETIMES" /> <!-- Fila 1 (Cuerpo principal / FlowPane) -->
+                <RowConstraints minHeight="10.0" percentHeight="10.0" vgrow="SOMETIMES" /> <!-- Fila 2 -->
+                <RowConstraints minHeight="10.0" percentHeight="10.0" vgrow="SOMETIMES" /> <!-- Fila 3 -->
+                <RowConstraints minHeight="10.0" percentHeight="10.0" vgrow="SOMETIMES" /> <!-- Fila 4 -->
             </rowConstraints>
             <children>
                 <Label prefHeight="17.0" prefWidth="250.0" text="Mis Servidores" styleClass="content-title"/>
-                <FlowPane prefHeight="515.0" prefWidth="301.0" GridPane.rowIndex="1" styleClass="my-serves-list"/>
+                <FlowPane GridPane.columnIndex="0"
+                          GridPane.rowIndex="1"
+                          GridPane.rowSpan="4"
+
+                          GridPane.vgrow="ALWAYS"
+                          GridPane.hgrow="ALWAYS"
+                          styleClass="my-serves-list" />
+
                 <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <children>
                         <Text styleClass="my-serves-subtitle" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of the Server" wrappingWidth="222.0" />
