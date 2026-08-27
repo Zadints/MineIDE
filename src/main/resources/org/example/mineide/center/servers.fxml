@@ -5,13 +5,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.image.Image?>
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.mineide.controllers.center.ServesController"
+            stylesheets="/styles/servers.css"
             styleClass="content-style">
+
     <children>
         <GridPane hgap="20.0" vgap="10.0" layoutX="14.0" layoutY="27.0" prefHeight="616.0" prefWidth="1025.0">
             <columnConstraints>
@@ -35,7 +38,15 @@
 
                           GridPane.vgrow="ALWAYS"
                           GridPane.hgrow="ALWAYS"
-                          styleClass="my-serves-list" />
+                          styleClass="my-serves-list" >
+                    <HBox>
+                        <VBox>
+                            <Label alignment="CENTER" text=""/>
+
+                        </VBox>
+                    </HBox>
+                </FlowPane>
+
 
                 <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <children>
@@ -104,8 +115,8 @@
                             <fx:define>
                                 <ToggleGroup fx:id="updateOption"/>
                             </fx:define>
-                            <RadioButton fx:id="rbOpcion1" text="Opción 1" toggleGroup="$updateOption" selected="true"/>
-                            <RadioButton fx:id="rbOpcion2" text="Opción 2" toggleGroup="$updateOption"/>
+                            <RadioButton fx:id="rbOpcion1" text="Enable" toggleGroup="$updateOption" selected="true"/>
+                            <RadioButton fx:id="rbOpcion2" text="Diabled" toggleGroup="$updateOption"/>
                         </VBox>
                     </children>
                 </VBox>
@@ -180,6 +191,12 @@
                                         <Font size="10.0" />
                                     </font>
                                 </Text>
+                                <Button styleClass="imagebutton" onAction="#selectImage">
+                                    <graphic>
+                                        <ImageView fx:id="imageServer" fitWidth="200" fitHeight="200">
+                                        </ImageView>
+                                    </graphic>
+                                </Button>
                             </children>
                         </VBox>
                         <ImageView fitHeight="82.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true" />

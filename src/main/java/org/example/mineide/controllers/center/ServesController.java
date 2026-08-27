@@ -6,8 +6,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import java.net.http.*;
@@ -20,12 +23,17 @@ public class ServesController {
     @FXML
     private ToggleGroup updateOption;
     @FXML
+    private ImageView imageServer;
+    @FXML
     void initialize(){
         updateOption.selectedToggleProperty().addListener(
                 (obs, anterior, actual) -> {
                     RadioButton selected = (RadioButton) actual;
                 }
         );
+        System.out.println(getClass().getResource("/multimedia/images/folder.png"));
+        Image imagedefault = new Image(getClass().getResourceAsStream("/multimedia/images/folder.png"));
+        imageServer.setImage(imagedefault);
     }
 
     Path path;
@@ -48,6 +56,25 @@ public class ServesController {
             pathfield.setText(System.getProperty("user.home") + File.separator + "Desktop");
         }
     }
+
+
+    @FXML
+    void selectImage(ActionEvent event){
+        FileChooser image = new FileChooser();
+        image.setTitle("select image for your server");
+
+        image.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("imagenes", "*.png", "*.jpg", "*.gif"));
+
+        File imageactual = image.showOpenDialog( imageServer.getScene().getWindow());
+
+        Image newimage = new Image(imageactual.toURI().toString());
+        imageServer.setImage(newimage);
+    }
+
+    /*
+        Software Download System with api in internal server
+    */
+
     @FXML private ComboBox softwarebox;
     @FXML private ComboBox versionbox;
     @FXML private ComboBox buildbox;
@@ -78,6 +105,10 @@ public class ServesController {
                 Files.write(name.resolve("software.jar") , response.body());
             }
         }
+
+    }
+    void registre() {
+        HttpClient client = HttpClient.newHttpClient();
 
     }
 
