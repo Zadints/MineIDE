@@ -12,7 +12,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.mineide.controllers.center.ServesController"
-            stylesheets="/styles/servers.css"
+            fx:id="anchorservers"
             styleClass="content-style">
 
     <children>
@@ -41,7 +41,7 @@
                           styleClass="my-serves-list" >
                     <HBox>
                         <VBox>
-                            <Label alignment="CENTER" text=""/>
+                            <Label alignment="CENTER" text="helo"/>
 
                         </VBox>
                     </HBox>

@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
@@ -19,7 +20,8 @@ import java.nio.file.*;
 import java.io.File;
 
 public class ServesController {
-
+    @FXML
+    private AnchorPane anchorservers;
     @FXML
     private ToggleGroup updateOption;
     @FXML
@@ -34,6 +36,9 @@ public class ServesController {
         System.out.println(getClass().getResource("/multimedia/images/folder.png"));
         Image imagedefault = new Image(getClass().getResourceAsStream("/multimedia/images/folder.png"));
         imageServer.setImage(imagedefault);
+        anchorservers.getStylesheets().add(
+                getClass().getResource("/styles/servers.css").toExternalForm()
+        );
     }
 
     Path path;

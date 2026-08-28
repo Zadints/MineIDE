@@ -1,7 +1,9 @@
 .label{
     -fx-text-fill: white;
 }
-.imagebutton{
-    --fxbackground-color: #00000;
-
+.imagebutton {
+    -fx-background-color: transparent;
+}
+* {
+    -fx-fill: white !important;
 }
