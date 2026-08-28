@@ -85,6 +85,7 @@ public class ServesController {
     @FXML private ComboBox buildbox;
     @FXML
     void serverCreate(ActionEvent event) throws Exception {
+
         HttpClient client = HttpClient.newHttpClient();
 
         String software = softwarebox.getValue().toString();
@@ -114,6 +115,9 @@ public class ServesController {
     }
     void registre() {
         HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder().
+                header(  )
+
 
     }
 
