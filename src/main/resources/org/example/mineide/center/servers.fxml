@@ -129,7 +129,7 @@
                                         <Font size="10.0" />
                                     </font>
                                 </Text>
-                                <ComboBox fx:id="softwarebox" prefHeight="33.0" prefWidth="113.0">
+                                <ComboBox styleClass="selector" fx:id="softwarebox" prefHeight="33.0" prefWidth="113.0">
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
                                             <String fx:value="papermc"/>
@@ -148,7 +148,7 @@
                                         <Font size="10.0" />
                                     </font>
                                 </Text>
-                                <ComboBox fx:id="buildbox" prefHeight="33.0" prefWidth="154.0">
+                                <ComboBox styleClass="selector" fx:id="buildbox" prefHeight="33.0" prefWidth="154.0">
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
                                             <String fx:value="112"/>
@@ -167,7 +167,7 @@
                                         <Font size="10.0" />
                                     </font>
                                 </Text>
-                                <ComboBox fx:id="versionbox" prefHeight="33.0" prefWidth="113.0">
+                                <ComboBox styleClass="selector" fx:id="versionbox" prefHeight="33.0" prefWidth="113.0">
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
                                             <String fx:value="26.2"/>
