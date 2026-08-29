@@ -14,9 +14,6 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.Node;
-import org.example.mineide.core.entities.Server;
-import org.example.mineide.utils.IdGenerate;
-
 import java.net.http.*;
 import java.net.URI;
 import java.nio.file.*;
@@ -31,7 +28,6 @@ public class ServesController {
     private ImageView imageServer;
     @FXML
     void initialize(){
-
         updateOption.selectedToggleProperty().addListener(
                 (obs, anterior, actual) -> {
                     RadioButton selected = (RadioButton) actual;
@@ -45,7 +41,7 @@ public class ServesController {
         );
     }
 
-    Path path = Path.of(System.getProperty("user.home") + File.separator + "Desktop");
+    Path path;
     @FXML private TextField pathfield;
     @FXML private TextField namefield;
     @FXML
@@ -63,7 +59,6 @@ public class ServesController {
         } catch (Exception e) {
             System.out.println("Ninguna carpeta selecionada se usara el path predeterminado: " + System.getProperty("user.home") + File.separator + "desktop");
             pathfield.setText(System.getProperty("user.home") + File.separator + "Desktop");
-
         }
     }
 
@@ -90,9 +85,6 @@ public class ServesController {
     @FXML private ComboBox buildbox;
     @FXML
     void serverCreate(ActionEvent event) throws Exception {
-
-//        Server buildserver = new Server(IdGenerate.getNewId(), namefield.getText(), path, );
-
         HttpClient client = HttpClient.newHttpClient();
 
         String software = softwarebox.getValue().toString();
@@ -120,14 +112,9 @@ public class ServesController {
         }
 
     }
+    void registre() {
+        HttpClient client = HttpClient.newHttpClient();
 
-//    void registre() {
-//        HttpClient client = HttpClient.newHttpClient();
-//        HttpRequest request = HttpRequest.newBuilder().
-//                uri(URI.create("")).
-//                header(" ", "juan").
-//                POST(Htt).
-//                build();
-//    }
+    }
 
 }
