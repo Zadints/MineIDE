@@ -2,10 +2,7 @@ package org.example.mineide.controllers.center;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -14,6 +11,8 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.Node;
+import org.example.mineide.utils.IdGenerate;
+
 import java.net.http.*;
 import java.net.URI;
 import java.nio.file.*;
@@ -83,9 +82,16 @@ public class ServesController {
     @FXML private ComboBox softwarebox;
     @FXML private ComboBox versionbox;
     @FXML private ComboBox buildbox;
+    @FXML private Slider ramslider;
+    @FXML private Slider ssdslider;
+    @FXML private Slider cpuslider;
+    @FXML private TextField portfield;
     @FXML
+    // gigabytes * 13421772
     void serverCreate(ActionEvent event) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
+
+        Server actualserver = new Server(IdGenerate.getNewId( IdGenerate.getNewId(), namefield.getText(), ramslider.getValue(), ssdslider.getValue(), cpuslider.getValue(), Short.parseShort(portfield.getText()), );
 
         String software = softwarebox.getValue().toString();
         String build = buildbox.getValue().toString();
@@ -110,7 +116,6 @@ public class ServesController {
                 Files.write(name.resolve("software.jar") , response.body());
             }
         }
-
     }
     void registre() {
         HttpClient client = HttpClient.newHttpClient();

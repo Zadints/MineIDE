@@ -9,17 +9,17 @@ public class Server {
     private String id;
     private String serverName;
     private Path directory;
-    private long ram;
-    private long disco;
-    private long cpu;
+    private double ram;
+    private double disco;
+    private double cpu;
     private short puerto;
     private Path imageServer;
     private boolean updateLastVersion;
     private ServerSoftware software;
     private ServerVersion version;
 
-    public Server(String id, String serverName, Path directory, long ram, long disco,
-                  long cpu, short puerto, Path imageServer, boolean updateLastVersion,
+    public Server(String id, String serverName, Path directory, double ram, double disco,
+                  double cpu, short puerto, Path imageServer, boolean updateLastVersion,
                   ServerSoftware software, ServerVersion version) {
         this.id = id;
         this.serverName = serverName;
@@ -60,7 +60,7 @@ public class Server {
         this.directory = directory;
     }
 
-    public long getRam() {
+    public double getRam() {
         return ram;
     }
 
@@ -68,7 +68,7 @@ public class Server {
         this.ram = ram;
     }
 
-    public long getDisco() {
+    public double getDisco() {
         return disco;
     }
 
@@ -76,7 +76,7 @@ public class Server {
         this.disco = disco;
     }
 
-    public long getCpu() {
+    public double getCpu() {
         return cpu;
     }
 

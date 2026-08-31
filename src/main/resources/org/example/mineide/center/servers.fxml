@@ -69,21 +69,26 @@
                 <VBox prefHeight="160.0" prefWidth="504.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ram asignado a tu servidor" wrappingWidth="154.0" />
-                        <Slider prefHeight="14.0" prefWidth="228.0" />
+                        <Slider fx:id="ramslider" prefHeight="14.0" prefWidth="228.0" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Disponible: 8GB" wrappingWidth="113.201171875">
                             <font>
                                 <Font size="10.0" />
                             </font>
                         </Text>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Disco Asignado a tu servidor" wrappingWidth="154.0" />
-                        <Slider prefHeight="14.0" prefWidth="228.0" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Disponible: 8GB" wrappingWidth="113.201171875">
-                            <font>
-                                <Font size="10.0" />
-                            </font>
-                        </Text>
+                        <Slider fx:id="ssdslider" prefHeight="14.0" prefWidth="228.0" min="10" />
+                        <HBox>
+                            <Text fx:id="ssdfree" strokeType="OUTSIDE" strokeWidth="0.0" text="Disponible: 8GB" wrappingWidth="113.201171875">
+                                <font>
+                                    <Font size="10.0" />
+                                </font>
+                            </Text>
+                            <Text fx:id="ssdused"  strokeType="OUTSIDE" strokeWidth="0.0" text="" wrappingWidth="113.201171875">
+
+                            </Text>
+                        </HBox>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cpu Asignado" wrappingWidth="154.0" />
-                        <Slider prefHeight="14.0" prefWidth="222.0" />
+                        <Slider fx:id="cpuslider" prefHeight="14.0" prefWidth="222.0" min="20" max="100"/>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="200cpu" wrappingWidth="113.201171875">
                             <font>
                                 <Font size="10.0" />
@@ -99,7 +104,7 @@
                                 <Font size="10.0" />
                             </font>
                         </Text>
-                        <TextField prefHeight="25.0" prefWidth="82.0" />
+                        <TextField fx:id="portfield" promptText="Select port" prefHeight="25.0" prefWidth="82.0" />
                     </children>
                 </VBox>
                 <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
