@@ -137,10 +137,13 @@
                                 <ComboBox styleClass="selector" fx:id="softwarebox" prefHeight="33.0" prefWidth="113.0">
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
-                                            <String fx:value="papermc"/>
-                                            <String fx:value="pupur"/>
-                                            <String fx:value="neoforge"/>
-                                            <String fx:value="fabric"/>
+                                            <String fx:value="VANILLA"/>
+                                            <String fx:value="PAPER"/>
+                                            <String fx:value="PUPUR"/>
+                                            <String fx:value="FORGE"/>
+                                            <String fx:value="NEOFORGE"/>
+                                            <String fx:value="FABRIC"/>
+                                            <String fx:value="SPIGOT"/>
                                         </FXCollections>
                                     </items>
                                 </ComboBox>
@@ -176,7 +179,7 @@
                                     <items>
                                         <FXCollections fx:factory="observableArrayList">
                                             <String fx:value="26.2"/>
-                                            <String fx:value="26.12"/>
+                                            <String fx:value="26.1.2"/>
                                             <String fx:value="26.1"/>
                                             <String fx:value="26"/>
                                         </FXCollections>

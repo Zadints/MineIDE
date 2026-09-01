@@ -12,6 +12,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import org.example.mineide.utils.IdGenerate;
+import org.example.mineide.core.enums.ServerSoftware;
+import org.example.mineide.core.enums.ServerVersion;
 
 import java.net.http.*;
 import java.net.URI;
@@ -91,7 +93,7 @@ public class ServesController {
     void serverCreate(ActionEvent event) throws Exception {
         HttpClient client = HttpClient.newHttpClient();
 
-        Server actualserver = new Server(IdGenerate.getNewId( IdGenerate.getNewId(), namefield.getText(), ramslider.getValue(), ssdslider.getValue(), cpuslider.getValue(), Short.parseShort(portfield.getText()), );
+        Server actualserver = new Server(IdGenerate.getNewId( IdGenerate.getNewId(), namefield.getText(), ramslider.getValue(), ssdslider.getValue(), cpuslider.getValue(), Short.parseShort(portfield.getText()), ServerSoftware.valueOf(softwarebox.getValue().toString()), ServerVersion.valueOf() );
 
         String software = softwarebox.getValue().toString();
         String build = buildbox.getValue().toString();
