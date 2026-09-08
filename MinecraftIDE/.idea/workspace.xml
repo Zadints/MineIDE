@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd4f2cc0-16b3-4c9f-86d3-e5eae2e25318" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/core/enums/VersionReference.java" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mineAPI/src/main/java/org/mineapi/mineapi/core/application/out/ServerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mineAPI/src/main/java/org/mineapi/mineapi/core/application/usecase/ObtenerVersionServidorUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mineAPI/src/main/java/org/mineapi/mineapi/infraestructure/controller/mcDownload.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mineAPI/src/main/java/org/mineapi/mineapi/infraestructure/dto/VersionDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../mineAPI/src/main/java/org/mineapi/mineapi/infraestructure/persistence/ServerRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mineAPI/src/main/java/org/mineapi/mineapi/MineApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mineAPI/src/main/java/org/mineapi/mineapi/MineApiApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mineAPI/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../mineAPI/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,41 +19,41 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "AugustoDevZ"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;AugustoDevZ&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/Zadints/MinecraftIDE.git",
+    "url": "https://github.com/Zadints/MineIDE.git",
     "accountId": "4fc51eef-1c02-4151-bb2b-e8b04a7c64b8"
   }
 }]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5,
-  "fromUser": false
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3J3ZnLkPguBNx1BKgmjotpKfSQC" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/proyectos/Java/MineIDE/MinecraftIDE",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/proyectos/Java/MineIDE/MinecraftIDE&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
