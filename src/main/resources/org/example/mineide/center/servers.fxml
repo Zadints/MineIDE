@@ -120,8 +120,8 @@
                             <fx:define>
                                 <ToggleGroup fx:id="updateOption"/>
                             </fx:define>
-                            <RadioButton fx:id="rbOpcion1" text="Enable" toggleGroup="$updateOption" selected="true"/>
-                            <RadioButton fx:id="rbOpcion2" text="Diabled" toggleGroup="$updateOption"/>
+                            <RadioButton fx:id="enable" text="Enable" toggleGroup="$updateOption" selected="true"/>
+                            <RadioButton fx:id="disable" text="Disabled" toggleGroup="$updateOption"/>
                         </VBox>
                     </children>
                 </VBox>

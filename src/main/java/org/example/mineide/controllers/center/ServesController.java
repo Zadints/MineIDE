@@ -6,14 +6,13 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import org.example.mineide.utils.IdGenerate;
 import org.example.mineide.core.enums.ServerSoftware;
-import org.example.mineide.core.enums.ServerVersion;
+import org.example.mineide.core.entities.Server;
 
 import java.net.http.*;
 import java.net.URI;
@@ -21,12 +20,11 @@ import java.nio.file.*;
 import java.io.File;
 
 public class ServesController {
-    @FXML
-    private AnchorPane anchorservers;
-    @FXML
-    private ToggleGroup updateOption;
-    @FXML
-    private ImageView imageServer;
+    @FXML private AnchorPane anchorservers;
+    @FXML private ToggleGroup updateOption;
+    @FXML private ImageView imageServer;
+    @FXML private RadioButton enable;
+    @FXML private RadioButton disable;
     @FXML
     void initialize(){
         updateOption.selectedToggleProperty().addListener(
@@ -63,7 +61,7 @@ public class ServesController {
         }
     }
 
-
+    Path imagepath = null;
     @FXML
     void selectImage(ActionEvent event){
         FileChooser image = new FileChooser();
@@ -72,6 +70,8 @@ public class ServesController {
         image.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("imagenes", "*.png", "*.jpg", "*.gif"));
 
         File imageactual = image.showOpenDialog( imageServer.getScene().getWindow());
+
+        imagepath = imageactual.toPath();
 
         Image newimage = new Image(imageactual.toURI().toString());
         imageServer.setImage(newimage);
@@ -89,11 +89,25 @@ public class ServesController {
     @FXML private Slider cpuslider;
     @FXML private TextField portfield;
     @FXML
-    // gigabytes * 13421772
-    void serverCreate(ActionEvent event) throws Exception {
+    // gigabytes * 13421772 formula chunks
+    void serverCreate(){
+
+    }
+
+    void sofwarerequest() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
 
-        Server actualserver = new Server(IdGenerate.getNewId( IdGenerate.getNewId(), namefield.getText(), ramslider.getValue(), ssdslider.getValue(), cpuslider.getValue(), Short.parseShort(portfield.getText()), ServerSoftware.valueOf(softwarebox.getValue().toString()), ServerVersion.valueOf() );
+        Toggle selector = updateOption.getSelectedToggle();
+
+        boolean updatable = false;
+
+        if (selector == enable){
+            updatable = true;
+        } else if (selector == disable){
+            updatable = false;
+        }
+
+        Server actualserver = new Server(IdGenerate.getNewId(),namefield.getText() ,path , ramslider.getValue(), ssdslider.getValue(), cpuslider.getValue(), Short.parseShort(portfield.getText()), imagepath ,updatable, ServerSoftware.valueOf(softwarebox.getValue().toString()), Short.valueOf(versionbox.getValue().toString()));
 
         String software = softwarebox.getValue().toString();
         String build = buildbox.getValue().toString();
@@ -119,9 +133,23 @@ public class ServesController {
             }
         }
     }
-    void registre() {
+    void versionupdate(){
+        softwarebox.itemsProperty().addListener(((obs, oldValue, newValue) -> {
+
+        }));
+    }
+    void registre(Server server) {
         HttpClient client = HttpClient.newHttpClient();
 
-    }
+        server.getSofware();
 
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(""))
+                .build();
+
+    }
+    /*void List<String> lastversion(String software){
+
+    }
+*/
 }

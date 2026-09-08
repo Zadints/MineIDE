@@ -1,7 +1,6 @@
 package org.example.mineide.core.entities;
 
 import org.example.mineide.core.enums.ServerSoftware;
-import org.example.mineide.core.enums.ServerVersion;
 
 import java.nio.file.Path;
 
@@ -16,11 +15,11 @@ public class Server {
     private Path imageServer;
     private boolean updateLastVersion;
     private ServerSoftware software;
-    private ServerVersion version;
+    private Short version;
 
     public Server(String id, String serverName, Path directory, double ram, double disco,
                   double cpu, short puerto, Path imageServer, boolean updateLastVersion,
-                  ServerSoftware software, ServerVersion version) {
+                  ServerSoftware software, Short version) {
         this.id = id;
         this.serverName = serverName;
         this.directory = directory;
@@ -116,11 +115,11 @@ public class Server {
         this.software = sofware;
     }
 
-    public ServerVersion getVersion() {
+    public Short getVersion() {
         return version;
     }
 
-    public void setVersion(ServerVersion version) {
+    public void setVersion(Short version) {
         this.version = version;
     }
 }

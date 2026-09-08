@@ -22,9 +22,10 @@ public enum ServerVersion {
     VANILLA_1_21_6("Vanilla 1.21.6"),
     VANILLA_1_21_4("Vanilla 1.20.4"),
     VANILLA_1_21_9("Vanilla 1.21.9"),
+
     VANILLA_1_21_11("Vanilla 1.21.11"),
     VANILLA_26_1("Vanilla 26.1"),
-    VANILLA_26_1_2("Vanilla 26.1.2"),;
+    VERSION26_1_2("26.1.2");
 
     //agregar más versiones de los otros sofwares
 
