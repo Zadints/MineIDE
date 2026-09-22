@@ -14,6 +14,7 @@ import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import org.example.mineide.core.application.usecase.ActualProjectUseCase;
 import org.example.mineide.presentation.controllers.utils.MouseMove;
 
 import java.io.IOException;
@@ -80,6 +81,11 @@ public class MainPageController {
             stage.setTitle("Create New Project");
             stage.setScene(scene);
             stage.showAndWait();
+
+            if (!ActualProjectUseCase.isOpenProject()) return;
+
+            stage.hide();
+            
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -18,8 +18,8 @@
         <option value="AnnotationType" />
         <option value="Interface" />
         <option value="Exception" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
