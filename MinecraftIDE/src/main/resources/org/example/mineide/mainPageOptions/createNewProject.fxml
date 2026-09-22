@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.mineide.presentation.controllers.mainPageOptions.CreateNewProject"
+            styleClass="main-page">
+
+    <VBox fx:id="header"
+            spacing="0"
+          styleClass="root"
+          AnchorPane.topAnchor="0"
+          AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0"
+          AnchorPane.rightAnchor="0">
+
+        <!-- HEADER -->
+
+        <HBox alignment="CENTER_LEFT"
+              spacing="15"
+              styleClass="create-project-header">
+
+            <VBox spacing="3">
+
+                <Label text="Create New Project"
+                       styleClass="page-title"/>
+
+                <Label text="Configure your Minecraft project"
+                       styleClass="page-subtitle"/>
+
+            </VBox>
+
+        </HBox>
+
+        <Separator/>
+
+        <!-- CONTENT -->
+
+        <ScrollPane fitToWidth="true"
+                    hbarPolicy="NEVER"
+                    VBox.vgrow="ALWAYS"
+                    styleClass="create-project-scroll">
+
+            <VBox spacing="30"
+                  maxWidth="1000">
+
+                <padding>
+                    <Insets top="30"
+                            right="40"
+                            bottom="40"
+                            left="40"/>
+                </padding>
+
+                <!-- PROJECT -->
+
+                <VBox spacing="15"
+                      styleClass="settings-section">
+
+                    <VBox spacing="3">
+
+                        <Label text="Project"
+                               styleClass="section-title"/>
+
+                        <Label text="Basic information about your project"
+                               styleClass="section-description"/>
+
+                    </VBox>
+
+                    <GridPane hgap="20"
+                              vgap="15">
+
+                        <columnConstraints>
+
+                            <ColumnConstraints percentWidth="50"
+                                               hgrow="ALWAYS"/>
+
+                            <ColumnConstraints percentWidth="50"
+                                               hgrow="ALWAYS"/>
+
+                        </columnConstraints>
+
+                        <rowConstraints>
+
+                            <RowConstraints prefHeight="70"/>
+
+
+                        </rowConstraints>
+
+                        <!-- PROJECT NAME -->
+
+                        <!-- LOCATION -->
+
+                        <VBox spacing="7"
+                              GridPane.columnIndex="1"
+                              GridPane.rowIndex="0">
+
+                            <Label text="Project Location"
+                                   styleClass="input-label"/>
+
+                            <HBox spacing="8">
+
+                                <TextField fx:id="txtProjectLocation"
+                                           promptText="C:\Minecraft\Projects"
+                                           HBox.hgrow="ALWAYS"
+                                           styleClass="secondary-input"/>
+
+                                <Button text="Browse"
+                                        fx:id="btnBrowseLocation"
+                                        onAction="#onBrowseLocation"
+                                        styleClass="secondary-button"/>
+
+                            </HBox>
+
+                        </VBox>
+
+                        <!-- SERVER NAME -->
+
+                        <VBox spacing="7"
+                              GridPane.columnIndex="0"
+                              GridPane.rowIndex="0">
+
+                            <Label text="Server Name"
+                                   styleClass="input-label"/>
+
+                            <TextField fx:id="txtServerName"
+                                       promptText="My Minecraft Server"
+                                       styleClass="secondary-input"/>
+
+                        </VBox>
+
+                    </GridPane>
+
+                </VBox>
+
+
+                <!-- MINECRAFT -->
+
+                <VBox spacing="15"
+                      styleClass="settings-section">
+
+                    <VBox spacing="3">
+
+                        <Label text="Minecraft"
+                               styleClass="section-title"/>
+
+                        <Label text="Select the Minecraft version and server software"
+                               styleClass="section-description"/>
+
+                    </VBox>
+
+                    <GridPane hgap="20"
+                              vgap="15">
+
+                        <columnConstraints>
+
+                            <ColumnConstraints percentWidth="50"
+                                               hgrow="ALWAYS"/>
+
+                            <ColumnConstraints percentWidth="50"
+                                               hgrow="ALWAYS"/>
+
+                        </columnConstraints>
+
+                        <rowConstraints>
+
+                            <RowConstraints prefHeight="70"/>
+
+                            <RowConstraints prefHeight="70"/>
+
+                        </rowConstraints>
+
+                        <!-- MINECRAFT VERSION -->
+
+                        <VBox spacing="7"
+                              GridPane.columnIndex="0"
+                              GridPane.rowIndex="0">
+
+                            <Label text="Minecraft Version"
+                                   styleClass="input-label"/>
+
+                            <ComboBox fx:id="cbxMinecraftVersion"
+                                      promptText="Select version"
+                                      maxWidth="Infinity"
+                                      styleClass="secondary-input"/>
+
+                        </VBox>
+
+                        <!-- SOFTWARE -->
+
+                        <VBox spacing="7"
+                              GridPane.columnIndex="1"
+                              GridPane.rowIndex="0">
+
+                            <Label text="Server Software"
+                                   styleClass="input-label"/>
+
+                            <ComboBox fx:id="cbxServerSoftware"
+                                      promptText="Select software"
+                                      maxWidth="Infinity"
+                                      styleClass="secondary-input"/>
+
+                        </VBox>
+
+                        <VBox spacing="7"
+                              GridPane.columnIndex="0"
+                              GridPane.rowIndex="1">
+
+                            <Label text="I HAVE THE JAR"
+                                   styleClass="input-label"/>
+
+                            <Label text="Select the .jar file if you have already downloaded it, or fill in the details above to download it during creation."
+                                   wrapText="true"
+                                   styleClass="value-description"/>
+
+                        </VBox>
+
+                        <VBox spacing="7"
+                              GridPane.columnIndex="1"
+                              GridPane.rowIndex="1">
+
+                            <Label text="Server Sofware (*optional)"
+                                   styleClass="input-label"/>
+
+                            <HBox spacing="8">
+
+                                <TextField fx:id="txtJavaSofware"
+                                           promptText="I don't have it on my PC."
+                                           HBox.hgrow="ALWAYS"
+                                           styleClass="secondary-input"/>
+
+                                <Button text="Browse"
+                                        fx:id="btnBrowseSoftwareJava"
+                                        onAction="#onBrowseJava"
+                                        styleClass="secondary-button"/>
+
+                            </HBox>
+
+                        </VBox>
+
+                    </GridPane>
+
+                </VBox>
+
+
+                <!-- JAVA -->
+
+                <VBox spacing="15"
+                      styleClass="settings-section">
+
+                    <VBox spacing="3">
+
+                        <Label text="Java Runtime "
+                               styleClass="section-title"/>
+
+                        <Label text="Choose the JDK used by your Minecraft server"
+                               styleClass="section-description"/>
+
+                    </VBox>
+
+                    <GridPane hgap="20"
+                              vgap="15">
+
+                        <columnConstraints>
+
+                            <ColumnConstraints percentWidth="50"
+                                               hgrow="ALWAYS"/>
+
+                            <ColumnConstraints percentWidth="50"
+                                               hgrow="ALWAYS"/>
+
+                        </columnConstraints>
+
+                        <rowConstraints>
+
+                            <RowConstraints prefHeight="70"/>
+
+                        </rowConstraints>
+
+                        <!-- JDK -->
+
+                        <VBox spacing="7"
+                              GridPane.columnIndex="0"
+                              GridPane.rowIndex="0">
+
+                            <Label text="JDK Version"
+                                   styleClass="input-label"/>
+
+                            <ComboBox fx:id="cbxJdkVersion"
+                                      promptText="Select JDK"
+                                      maxWidth="Infinity"
+                                      styleClass="secondary-input"/>
+
+                        </VBox>
+
+                        <!-- JAVA PATH -->
+
+                        <VBox spacing="7"
+                              GridPane.columnIndex="1"
+                              GridPane.rowIndex="0">
+
+                            <Label text="Java Runtime (*optional)"
+                                   styleClass="input-label"/>
+
+                            <HBox spacing="8">
+
+                                <TextField fx:id="txtJavaPath"
+                                           promptText="Auto-detect"
+                                           HBox.hgrow="ALWAYS"
+                                           styleClass="secondary-input"/>
+
+                                <Button text="Browse"
+                                        fx:id="btnBrowseJava"
+                                        onAction="#onBrowseJava"
+                                        styleClass="secondary-button"/>
+
+                            </HBox>
+
+                        </VBox>
+
+                    </GridPane>
+
+                </VBox>
+
+
+
+
+                <!-- OPTIONS -->
+
+                <VBox spacing="15"
+                      styleClass="settings-section">
+
+                    <VBox spacing="3">
+
+                        <Label text="Project Options"
+                               styleClass="section-title"/>
+
+                        <Label text="Additional files and version control"
+                               styleClass="section-description"/>
+
+                    </VBox>
+
+                    <VBox spacing="12">
+
+                        <CheckBox fx:id="chkGit"
+                                  text="Initialize Git repository"
+                                  styleClass="secondary-checkbox"/>
+
+                        <CheckBox fx:id="chkReadme"
+                                  text="Create README.md"
+                                  selected="true"
+                                  styleClass="secondary-checkbox"/>
+
+                        <CheckBox fx:id="chkGitIgnore"
+                                  text="Generate .gitignore"
+                                  selected="true"
+                                  styleClass="secondary-checkbox"/>
+
+                        <CheckBox fx:id="chkDownloadDependencies"
+                                  text="Download required dependencies"
+                                  selected="true"
+                                  styleClass="secondary-checkbox"/>
+
+                    </VBox>
+
+                </VBox>
+
+            </VBox>
+
+        </ScrollPane>
+
+
+        <!-- FOOTER -->
+
+        <HBox spacing="12"
+              alignment="CENTER_RIGHT"
+              styleClass="create-project-footer">
+
+            <Button text="Cancel"
+                    fx:id="btnCancel"
+                    onAction="#onCancel"
+                    styleClass="secondary-button"/>
+
+            <Button text="Create Project"
+                    fx:id="btnCreate"
+                    onAction="#onCreateProject"
+                    styleClass="primary-button"/>
+
+        </HBox>
+
+    </VBox>
+
+</AnchorPane>

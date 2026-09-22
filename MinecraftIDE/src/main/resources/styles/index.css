@@ -1,3 +1,10 @@
+
+
+.root {
+    -fx-background-color: #111629;
+    -fx-background-radius: 20;
+}
+
 .sidebar-buttons{
     -fx-background-color: transparent;
     -fx-text-fill: White;
@@ -25,7 +32,7 @@
 
 .tab-bar{
     -fx-background-color: transparent;
-    -fx-padding: 0 0 0 32px;
+    -fx-padding: 0 0 0 15px;
 
 }
 .tab-mac-1,
@@ -77,23 +84,23 @@
     -fx-font-size: 20px;
     -fx-font-family: "Poppins Black";
 }
-.tab-setting-app{
+.tab-options-app{
     -fx-background-color: transparent;
     -fx-font-size: 13px;
     -fx-text-fill: #B0B0B0;
 
     /* 1. Forzamos un tamaño cuadrado para botones tipo pestaña/icono */
-    -fx-pref-width: 25px;
+
     -fx-pref-height: 25px;
 
     /* 2. Reseteamos el padding a 0 en todos los lados para que no empuje el contenido */
-    -fx-padding: 0 0 0 0;
+    -fx-padding: 3 2 3 2;
 
     /* 3. Centrado absoluto */
     -fx-alignment: center;
     -fx-content-display: center;
 }
-.tab-setting-app:hover{
+.tab-options-app:hover{
     -fx-background-color: #fbfbfb28;
 }
 .tab-licence-type{
@@ -138,10 +145,6 @@
     -fx-font-family: "Poppins Black";
 }
 
-.root {
-    -fx-background-color: #111629;
-    -fx-background-radius: 20;
-}
 
 .root.maximized {
     -fx-background-radius: 0;

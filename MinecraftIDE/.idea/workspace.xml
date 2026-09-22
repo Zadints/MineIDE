@@ -4,19 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd4f2cc0-16b3-4c9f-86d3-e5eae2e25318" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../mineAPI/src/main/java/org/mineapi/mineapi/core/application/out/ServerRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mineAPI/src/main/java/org/mineapi/mineapi/core/application/usecase/ObtenerVersionServidorUseCase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mineAPI/src/main/java/org/mineapi/mineapi/infraestructure/controller/mcDownload.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mineAPI/src/main/java/org/mineapi/mineapi/infraestructure/dto/VersionDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mineAPI/src/main/java/org/mineapi/mineapi/infraestructure/persistence/ServerRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mineAPI/src/main/java/org/mineapi/mineapi/MineApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../mineAPI/src/main/java/org/mineapi/mineapi/MineApiApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mineAPI/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../mineAPI/src/main/resources/application.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="fd4f2cc0-16b3-4c9f-86d3-e5eae2e25318" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="CSS File" />
+        <option value="Enum" />
+        <option value="AnnotationType" />
+        <option value="Interface" />
+        <option value="Exception" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -27,12 +32,12 @@
     &quot;assignee&quot;: &quot;AugustoDevZ&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Zadints/MineIDE.git",
-    "accountId": "4fc51eef-1c02-4151-bb2b-e8b04a7c64b8"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Zadints/MineIDE.git&quot;,
+    &quot;accountId&quot;: &quot;4fc51eef-1c02-4151-bb2b-e8b04a7c64b8&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5,
   &quot;fromUser&quot;: false
@@ -42,18 +47,48 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/proyectos/Java/MineIDE/MinecraftIDE&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.App.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/proyectos/Java/MineIDE/MinecraftIDE",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.jshint": "true",
+    "node.js.selected.package.jshint": "",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.example.mineide" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.mineide.App" />
+      <module name="MineIDE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.mineide.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.App" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -74,5 +109,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

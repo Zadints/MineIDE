@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="660" prefWidth="1067" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mineide.controllers.center.FilesController">
+<AnchorPane prefHeight="660" prefWidth="1067" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mineide.presentation.controllers.center.FilesController">
     <children>
         <GridPane layoutX="14.0" layoutY="27.0" prefHeight="616.0" prefWidth="1033.0">
             <columnConstraints>

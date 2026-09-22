@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="660" prefWidth="1067" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mineide.controllers.center.ConsoleController">
+<AnchorPane prefHeight="660" prefWidth="1067" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mineide.presentation.controllers.center.ConsoleController">
    <children>
       <VBox layoutX="29.0" layoutY="27.0" prefHeight="612.0" prefWidth="1010.0">
          <children>

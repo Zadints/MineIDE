@@ -11,7 +11,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.mineide.controllers.center.ServesController"
+            fx:controller="org.example.mineide.presentation.controllers.center.ServesController"
             fx:id="anchorservers"
             styleClass="content-style">
 
