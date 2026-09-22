@@ -21,7 +21,7 @@
             styleClass="main-page">
 
     <VBox fx:id="header"
-            spacing="0"
+
           styleClass="root"
           AnchorPane.topAnchor="0"
           AnchorPane.bottomAnchor="0"

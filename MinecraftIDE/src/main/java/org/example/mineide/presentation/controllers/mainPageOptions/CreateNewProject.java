@@ -21,6 +21,8 @@ public class CreateNewProject {
     @FXML private TextField txtProjectLocation;
     @FXML private ComboBox<String> cbxServerSoftware;
     @FXML private ComboBox<String> cbxMinecraftVersion;
+    @FXML TextField txtServerName;
+
     public void initialize() {
         MouseMove mouseMove = new MouseMove(header);
         mouseMove.start();
@@ -32,11 +34,22 @@ public class CreateNewProject {
     }
 
     @FXML protected void onCancel(){
+        close();
+    }
+
+    private void close(){
         Stage stage = (Stage) btnCancel.getScene().getWindow();
         stage.close();
     }
-    @FXML private void onCreateProject(){
 
+
+
+    @FXML private void onCreateProject(){
+        String serverName = txtServerName.getText();
+
+        //String version = cbxMinecraftVersion;
+
+        close();
     }
     @FXML private void onBrowseJava(){
 
