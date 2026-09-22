@@ -7,7 +7,6 @@ import java.nio.file.Path;
 
 public class NewProjectDto {
 
-    private Path projectLocation;
     private String serverName;
 
     private MinecraftVersionDTO versionAndSoftware;

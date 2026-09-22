@@ -102,30 +102,7 @@
 
                         <!-- PROJECT NAME -->
 
-                        <!-- LOCATION -->
 
-                        <VBox spacing="7"
-                              GridPane.columnIndex="1"
-                              GridPane.rowIndex="0">
-
-                            <Label text="Project Location"
-                                   styleClass="input-label"/>
-
-                            <HBox spacing="8">
-
-                                <TextField fx:id="txtProjectLocation"
-                                           promptText="C:\Minecraft\Projects"
-                                           HBox.hgrow="ALWAYS"
-                                           styleClass="secondary-input"/>
-
-                                <Button text="Browse"
-                                        fx:id="btnBrowseLocation"
-                                        onAction="#onBrowseLocation"
-                                        styleClass="secondary-button"/>
-
-                            </HBox>
-
-                        </VBox>
 
                         <!-- SERVER NAME -->
 

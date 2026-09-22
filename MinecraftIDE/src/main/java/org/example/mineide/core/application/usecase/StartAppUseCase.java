@@ -10,6 +10,7 @@ import java.util.List;
 public class StartAppUseCase {
     private static List<MinecraftVersionDTO> minecraftVersionList = new ArrayList<>();
 
+
     public static void loadDataReuired(){
         loadMinecraftVersion();
     }
@@ -19,4 +20,11 @@ public class StartAppUseCase {
         minecraftVersionList = minecraftVersions.load();
     }
     //otros loads aqui lore van al momento de iniciar app
+
+
+    public static List<MinecraftVersionDTO> getMinecraftVersionList() {
+        return minecraftVersionList;
+    }
+
+
 }

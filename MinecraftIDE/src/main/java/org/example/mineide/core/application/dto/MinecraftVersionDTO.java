@@ -31,9 +31,11 @@ public class MinecraftVersionDTO {
     public void setType(String type) {
         this.type = type;
     }
+    public String toSoftware() {
+        return id;
+    }
 
-    @Override
-    public String toString() {
+    public String toVersion() {
         return id;
     }
 }

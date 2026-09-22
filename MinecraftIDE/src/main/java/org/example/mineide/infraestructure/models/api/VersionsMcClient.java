@@ -28,7 +28,7 @@ public class VersionsMcClient implements VersionsMc {
 
         try {
 
-            String url = "http://lrweb.dpdns.org/mcDowload";
+            String url = "http://lrweb.dpdns.org/mcVersions";
         /*
         [
           {
