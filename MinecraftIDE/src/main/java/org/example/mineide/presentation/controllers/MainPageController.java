@@ -85,12 +85,66 @@ public class MainPageController {
             if (!ActualProjectUseCase.isOpenProject()) return;
 
             stage.hide();
-            
+
+            renderize();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    private void renderize() throws IOException{
+
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource(
+                        "/org/example/mineide/index.fxml"
+                )
+        );
+        Parent root = loader.load();
+        Stage parentStage = (Stage) btnClose.getScene().getWindow();
+        Stage stage = new Stage();
+
+        stage.initOwner(parentStage);
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initStyle(StageStyle.TRANSPARENT);
+
+
+        Scene scene = new Scene(root);
+        scene.setFill(Color.TRANSPARENT);
+
+        scene.getStylesheets().addAll(
+                getClass().getResource("/styles/index.css").toExternalForm(),
+                getClass().getResource("/styles/center-styles.css").toExternalForm(),
+                getClass().getResource("/styles/mainPage.css").toExternalForm()
+
+        );
+        stage.initStyle(StageStyle.TRANSPARENT);
+        Rectangle2D screen = Screen.getPrimary().getVisualBounds();
+
+        double width = screen.getWidth() * 0.80;
+        double height = screen.getHeight() * 0.90;
+
+        stage.setWidth(width);
+        stage.setHeight(height);
+
+        stage.setX(
+                screen.getMinX() +
+                        (screen.getWidth() - width) / 2
+        );
+
+        stage.setY(
+                screen.getMinY() +
+                        (screen.getHeight() - height) / 2
+        );
+        stage.setMinWidth(1300);
+        stage.setMinHeight(700);
+        stage.setMaximized(false);
+        stage.centerOnScreen();
+        stage.setTitle("Create New Project");
+        stage.setScene(scene);
+        stage.showAndWait();
+    }
+
     @FXML protected void onSettings(){
 
     }

@@ -134,8 +134,10 @@
 }
 
 .content-style{
-    -fx-background-color: #1E293B;
-    -fx-background-radius: 20 0 20 0;
+    -fx-background-color: #181F33;
+    -fx-background-radius: 20px;
+    -fx-border-color: #252E46;
+    -fx-border-radius: 20px;
 }
 
 .content-title{

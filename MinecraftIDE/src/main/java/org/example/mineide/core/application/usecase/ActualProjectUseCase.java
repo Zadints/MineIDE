@@ -7,7 +7,9 @@ public class ActualProjectUseCase {
 
     public static boolean isOpenProject(){
 
+        /*
         if (project == null) return false;
+        return true; */
         return true;
     }
 }
