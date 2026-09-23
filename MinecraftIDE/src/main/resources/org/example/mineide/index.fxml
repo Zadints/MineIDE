@@ -11,9 +11,10 @@
 <StackPane
         xmlns="http://javafx.com/javafx/17.0.12"
         xmlns:fx="http://javafx.com/fxml/1"
-        fx:controller="org.example.mineide.presentation.controllers.IndexController">
+        fx:controller="org.example.mineide.presentation.controllers.IndexController"
+        styleClass="main-page">
 
-    <VBox fx:id="root" alignment="TOP_CENTER" minHeight="700" minWidth="1300.0" prefHeight="700.0" prefWidth="1300.0" styleClass="root" >
+    <VBox fx:id="root" alignment="TOP_CENTER" minHeight="700" minWidth="1300.0" prefHeight="700.0" prefWidth="1300.0"  >
         <BorderPane fx:id="brPanel"  minHeight="700" minWidth="1300" VBox.vgrow="ALWAYS">
             <center>
                 <Pane styleClass="content-style"

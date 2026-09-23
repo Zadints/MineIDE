@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="660" prefWidth="1067" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mineide.presentation.controllers.center.FilesController">
+<AnchorPane styleClass="content-style" prefHeight="660" prefWidth="1067" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mineide.presentation.controllers.center.FilesController">
     <children>
         <GridPane layoutX="14.0" layoutY="27.0" prefHeight="616.0" prefWidth="1033.0">
             <columnConstraints>
@@ -30,10 +30,10 @@
                <children>
                       <HBox alignment="TOP_RIGHT" prefHeight="45.0" prefWidth="433.0" styleClass="vbox-buttons">
                           <children>
-                              <Button mnemonicParsing="false" styleClass="buton-create-files" text="Create Folder" />
-                              <Button mnemonicParsing="false" styleClass="buton-files" text="Upload" />
-                              <Button mnemonicParsing="false" styleClass="buton-files" text="Folder" />
-                              <Button mnemonicParsing="false" styleClass="buton-files" text="New files" />
+                              <Button mnemonicParsing="false" styleClass="tertiary-button" text="Create Folder" />
+                              <Button mnemonicParsing="false" styleClass="primary-button" text="Upload" />
+                              <Button mnemonicParsing="false" styleClass="secondary-button" text="Folder" />
+                              <Button mnemonicParsing="false" styleClass="secondary-button" text="New files" />
                           </children>
                       </HBox>
                </children></VBox>
