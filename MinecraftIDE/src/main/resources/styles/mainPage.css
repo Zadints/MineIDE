@@ -332,3 +332,52 @@
 .scroll-bar .decrement-arrow {
     -fx-background-color: transparent;
 }
+
+
+.error-page {
+    -fx-background-color: transparent;
+}
+
+.error-card {
+    -fx-background-color: #181F33;
+    -fx-background-radius: 14px;
+    -fx-border-color: #303951;
+    -fx-border-width: 1px;
+    -fx-border-radius: 14px;
+    -fx-padding: 35px 45px;
+    -fx-max-width: 520px;
+    -fx-max-height: 300px;
+}
+
+.error-icon {
+    -fx-fill: #F59E0B;
+}
+
+.error-title {
+    -fx-text-fill: white;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 19px;
+    -fx-font-weight: bold;
+}
+
+.error-message {
+    -fx-text-fill: #8993AA;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 12px;
+    -fx-text-alignment: center;
+}
+
+.tertiary-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #8993AA;
+    -fx-background-radius: 8px;
+    -fx-padding: 9px 16px;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 12px;
+    -fx-cursor: hand;
+}
+
+.tertiary-button:hover {
+    -fx-background-color: #1D263D;
+    -fx-text-fill: #D9DFEC;
+}

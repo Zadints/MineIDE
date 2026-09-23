@@ -117,13 +117,18 @@
                                        promptText="My Minecraft Server"
                                        styleClass="secondary-input"/>
 
-                            <Label text="Server Sofware (*optional)"
-                                   styleClass="input-label"/>
+                        </VBox>
 
-                            <HBox spacing="8">
+                        <VBox
+                            spacing="7"
+                            GridPane.columnIndex="1"
+                            GridPane.rowIndex="0">
+                            <Label text="Location for creating the project (*Required)"
+                                   styleClass="input-label"/>
+                            <HBox spacing="8" >
 
                                 <TextField fx:id="txtServerDirectory"
-                                           promptText="I don't have it on my PC."
+                                           promptText="no defined"
                                            HBox.hgrow="ALWAYS"
                                            styleClass="secondary-input"/>
 
@@ -133,7 +138,6 @@
                                         styleClass="secondary-button"/>
 
                             </HBox>
-
                         </VBox>
 
                     </GridPane>
@@ -232,7 +236,7 @@
                             <HBox spacing="8">
 
                                 <TextField fx:id="txtJavaSofware"
-                                           promptText="I don't have it on my PC."
+                                           promptText="JAR path, if you have it downloaded."
                                            HBox.hgrow="ALWAYS"
                                            styleClass="secondary-input"/>
 
@@ -290,11 +294,11 @@
                               GridPane.columnIndex="0"
                               GridPane.rowIndex="0">
 
-                            <Label text="JDK Version"
+                            <Label text="JDK Version "
                                    styleClass="input-label"/>
 
                             <ComboBox fx:id="cbxJdkVersion"
-                                      promptText="Select JDK"
+                                      promptText="Select JDK dowloand"
                                       maxWidth="Infinity"
                                       styleClass="secondary-input"/>
 
@@ -311,14 +315,14 @@
 
                             <HBox spacing="8">
 
-                                <TextField fx:id="txtJavaPath"
+                                <TextField fx:id="txtJavaJDK"
                                            promptText="Auto-detect"
                                            HBox.hgrow="ALWAYS"
                                            styleClass="secondary-input"/>
 
                                 <Button text="Browse"
-                                        fx:id="btnBrowseJava"
-                                        onAction="#onBrowseJava"
+                                        fx:id="btnBrowseJDK"
+                                        onAction="#onBrowseJDK"
                                         styleClass="secondary-button"/>
 
                             </HBox>
@@ -355,12 +359,10 @@
 
                         <CheckBox fx:id="chkReadme"
                                   text="Create README.md"
-                                  selected="true"
                                   styleClass="secondary-checkbox"/>
 
                         <CheckBox fx:id="chkGitIgnore"
                                   text="Generate .gitignore"
-                                  selected="true"
                                   styleClass="secondary-checkbox"/>
 
                         <CheckBox fx:id="chkDownloadDependencies"

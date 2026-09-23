@@ -6,7 +6,6 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -14,7 +13,7 @@ import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.example.mineide.core.application.usecase.ActualProjectUseCase;
+import org.example.mineide.core.application.usecase.ProjectManagerUseCase;
 import org.example.mineide.presentation.controllers.utils.MouseMove;
 
 import java.io.IOException;
@@ -82,7 +81,7 @@ public class MainPageController {
             stage.setScene(scene);
             stage.showAndWait();
 
-            if (!ActualProjectUseCase.isOpenProject()) return;
+            if (!ProjectManagerUseCase.isOpenProject()) return;
 
             stage.hide();
 

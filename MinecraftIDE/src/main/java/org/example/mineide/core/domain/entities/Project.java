@@ -10,80 +10,24 @@ public class Project {
     private String serverName;
     private Path projectLocation;
     private MinecraftVersionDTO versionAndSoftware;
-    private JdkEnum jdkSoftware;
+    private JdkEnum jdkVersion;
     private Path jdkPath;
-    private Path imageServer;
-    private boolean updateLastVersion;
+    private boolean initializeRepository ;
+    private boolean createReadme ;
+    private boolean generateGitIgnore ;
+    private boolean downloadDependencies ;
 
-
-    public Project(String serverName, String id, Path projectLocation, MinecraftVersionDTO versionAndSoftware, JdkEnum jdkSoftware, Path jdkPath, boolean updateLastVersion) {
-        this.serverName = serverName;
+    public Project(String id, String serverName, Path projectLocation, MinecraftVersionDTO versionAndSoftware, JdkEnum jdkVersion, Path jdkPath, boolean initializeRepository, boolean createReadme, boolean generateGitIgnore, boolean downloadDependencies) {
         this.id = id;
-        this.projectLocation = projectLocation;
-        this.versionAndSoftware = versionAndSoftware;
-        this.jdkSoftware = jdkSoftware;
-        this.jdkPath = jdkPath;
-        this.updateLastVersion = updateLastVersion;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public String getServerName() {
-        return serverName;
-    }
-
-    public void setServerName(String serverName) {
         this.serverName = serverName;
-    }
-
-    public Path getProjectLocation() {
-        return projectLocation;
-    }
-
-    public void setProjectLocation(Path projectLocation) {
         this.projectLocation = projectLocation;
-    }
-
-    public MinecraftVersionDTO getVersionAndSoftware() {
-        return versionAndSoftware;
-    }
-
-    public void setVersionAndSoftware(MinecraftVersionDTO versionAndSoftware) {
         this.versionAndSoftware = versionAndSoftware;
-    }
-
-    public JdkEnum getJdkSoftware() {
-        return jdkSoftware;
-    }
-
-    public void setJdkSoftware(JdkEnum jdkSoftware) {
-        this.jdkSoftware = jdkSoftware;
-    }
-
-    public Path getJdkPath() {
-        return jdkPath;
-    }
-
-    public void setJdkPath(Path jdkPath) {
+        this.jdkVersion = jdkVersion;
         this.jdkPath = jdkPath;
-    }
-
-    public Path getImageServer() {
-        return imageServer;
-    }
-
-    public void setImageServer(Path imageServer) {
-        this.imageServer = imageServer;
-    }
-
-    public boolean isUpdateLastVersion() {
-        return updateLastVersion;
-    }
-
-    public void setUpdateLastVersion(boolean updateLastVersion) {
-        this.updateLastVersion = updateLastVersion;
+        this.initializeRepository = initializeRepository;
+        this.createReadme = createReadme;
+        this.generateGitIgnore = generateGitIgnore;
+        this.downloadDependencies = downloadDependencies;
     }
 
     public String getVersion() {
