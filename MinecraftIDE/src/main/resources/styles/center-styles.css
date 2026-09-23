@@ -76,3 +76,209 @@
 .my-serves-lore{
     -fx-fill: #999EA6;
 }
+
+
+/* CONSOLE */
+
+.console-page {
+    -fx-background-color: transparent;
+}
+
+.console-scroll {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-border-color: transparent;
+}
+
+.console-scroll > .viewport {
+    -fx-background-color: transparent;
+}
+
+.console-container {
+    -fx-padding: 22px 24px;
+}
+
+.console-section-title {
+    -fx-text-fill: white;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.console-section-description {
+    -fx-text-fill: #727B92;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 11px;
+}
+
+/* MOTD */
+
+.server-motd-card {
+    -fx-background-color: #181F33;
+    -fx-background-radius: 14px;
+    -fx-border-color: #252E46;
+    -fx-border-radius: 14px;
+    -fx-padding: 22px;
+}
+
+.server-motd-title {
+    -fx-text-fill: white;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.server-motd-description {
+    -fx-text-fill: #8993AA;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 12px;
+}
+
+.server-motd-tag {
+    -fx-background-color: #252E46;
+    -fx-background-radius: 6px;
+    -fx-text-fill: #B8BECD;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 10px;
+    -fx-padding: 5px 9px;
+}
+
+/* SERVER STATUS */
+
+.server-status-card {
+    -fx-background-color: #181F33;
+    -fx-background-radius: 12px;
+    -fx-border-color: #252E46;
+    -fx-border-radius: 12px;
+    -fx-padding: 14px 18px;
+}
+
+.server-status-online {
+    -fx-text-fill: #22C55E;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.server-status-offline {
+    -fx-text-fill: #EF4444;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.server-status-description {
+    -fx-text-fill: #727B92;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 11px;
+}
+
+/* STATS */
+
+.console-stat-card {
+    -fx-background-color: #181F33;
+    -fx-background-radius: 12px;
+    -fx-border-color: #252E46;
+    -fx-border-radius: 12px;
+    -fx-padding: 18px;
+}
+
+.console-stat-title {
+    -fx-text-fill: #858DA3;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 11px;
+}
+
+.console-stat-value {
+    -fx-text-fill: white;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.console-stat-description {
+    -fx-text-fill: #68738C;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 10px;
+}
+
+/* CHARTS */
+
+.console-chart-card {
+    -fx-background-color: #181F33;
+    -fx-background-radius: 14px;
+    -fx-border-color: #252E46;
+    -fx-border-radius: 14px;
+    -fx-padding: 18px;
+}
+
+.console-chart-title {
+    -fx-text-fill: white;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+.chart {
+    -fx-background-color: transparent;
+}
+
+.chart-plot-background {
+    -fx-background-color: #111629;
+}
+
+.axis {
+    -fx-tick-label-fill: #68738C;
+    -fx-tick-label-font-family: "Poppins";
+    -fx-tick-label-font-size: 9px;
+}
+
+.axis-label {
+    -fx-text-fill: #858DA3;
+}
+
+.chart-vertical-grid-lines,
+.chart-horizontal-grid-lines {
+    -fx-stroke: #252E46;
+}
+
+/* CONSOLE OUTPUT */
+
+.console-output-card {
+    -fx-background-color: #181F33;
+    -fx-background-radius: 14px;
+    -fx-border-color: #252E46;
+    -fx-border-radius: 14px;
+    -fx-padding: 15px;
+}
+
+.console-output {
+    -fx-background-color: #111629;
+    -fx-control-inner-background: #111629;
+    -fx-background-radius: 9px;
+    -fx-border-color: #252E46;
+    -fx-border-radius: 9px;
+    -fx-text-fill: #B8BECD;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 11px;
+}
+
+/* SCROLLBAR */
+
+.console-scroll .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.console-scroll .scroll-bar:vertical .track {
+    -fx-background-color: transparent;
+}
+
+.console-scroll .scroll-bar:vertical .thumb {
+    -fx-background-color: #303951;
+    -fx-background-radius: 8px;
+}
+
+.console-scroll .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #46516B;
+}

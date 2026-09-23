@@ -1,27 +1,32 @@
 
+.rootBorder{
 
+}
 .root {
     -fx-background-color: #111629;
-    -fx-background-radius: 20;
+    -fx-background-radius:  14px;
+    -fx-border-color: #303950;
+    -fx-border-width: 1px;
+    -fx-border-radius: 14px;
 }
 
 .sidebar-buttons{
     -fx-background-color: transparent;
-    -fx-text-fill: White;
+    -fx-text-fill: #D9DFEC;
     -fx-border-width: 0px;
-    -fx-padding: 15 15 15 32px;
-    -fx-font-size: 14px;
-    -fx-font-family: "Poppins Regular";
+    -fx-padding: 10 10 10 32px;
+    -fx-font-family: "Poppins";
+    -fx-font-size: 12px;
     -fx-graphic-text-gap: 10px;
 }
 .sidebar-buttons:hover{
-    -fx-background-color: #4C4C4C;
+    -fx-background-color: #303B57;
 }
 .sidebar-icons{
     -fx-icon-color: White;
 }
 .sidebar-style{
-   -fx-padding: 15 0 0 0px;
+   -fx-padding: 15 8 0 8px;
 }
 .category-text{
     -fx-text-fill: #B0B0B0;
@@ -130,14 +135,16 @@
 
 .server-image{
 }
-.app-image{
+.content-padre{
+    -fx-background-color: #181F33;
 }
 
 .content-style{
     -fx-background-color: #181F33;
-    -fx-background-radius: 20px;
+    -fx-background-radius: 20 0 14 0;
     -fx-border-color: #252E46;
-    -fx-border-radius: 20px;
+    -fx-border-radius: 20 0 14 0;
+    -fx-padding: 0 1 1 0px;
 }
 
 .content-title{
@@ -150,6 +157,7 @@
 
 .root.maximized {
     -fx-background-radius: 0;
+
     -fx-border-radius: 0;
 }
 

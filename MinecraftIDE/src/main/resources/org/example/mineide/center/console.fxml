@@ -1,50 +1,331 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="660" prefWidth="1067" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mineide.presentation.controllers.center.ConsoleController">
-   <children>
-      <VBox layoutX="29.0" layoutY="27.0" prefHeight="612.0" prefWidth="1010.0">
-         <children>
-            <ListView prefHeight="376.0" prefWidth="1010.0" />
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button mnemonicParsing="false" text="Button" />
-                  <Button mnemonicParsing="false" text="Button" />
-                  <Button mnemonicParsing="false" text="Button" />
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <AreaChart prefHeight="150.0" prefWidth="375.0">
-                    <xAxis>
-                      <CategoryAxis side="BOTTOM" />
-                    </xAxis>
-                    <yAxis>
-                      <NumberAxis side="LEFT" />
-                    </yAxis>
-                  </AreaChart>
-                  <AreaChart prefHeight="150.0" prefWidth="340.0">
-                    <xAxis>
-                      <CategoryAxis side="BOTTOM" />
-                    </xAxis>
-                    <yAxis>
-                      <NumberAxis side="LEFT" />
-                    </yAxis>
-                  </AreaChart>
-                  <AreaChart prefHeight="150.0" prefWidth="311.0">
-                    <xAxis>
-                      <CategoryAxis side="BOTTOM" />
-                    </xAxis>
-                    <yAxis>
-                      <NumberAxis side="LEFT" />
-                    </yAxis>
-                  </AreaChart>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </children>
+<AnchorPane
+        xmlns="http://javafx.com/javafx/17.0.12"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="org.example.mineide.presentation.controllers.center.ConsoleController"
+        styleClass="content-style">
+
+
+    <ScrollPane
+            fx:id="consoleScroll"
+            fitToWidth="true"
+            hbarPolicy="NEVER"
+            vbarPolicy="AS_NEEDED"
+            styleClass="console-scroll"
+            AnchorPane.topAnchor="0"
+            AnchorPane.bottomAnchor="0"
+            AnchorPane.leftAnchor="0"
+            AnchorPane.rightAnchor="0">
+
+
+        <VBox
+                spacing="18"
+                styleClass="console-container">
+
+            <VBox spacing="4">
+                <Label text="Console" styleClass="section-title"/>
+                <Label
+                        text="Manage and monitor your Minecraft server."
+                        styleClass="section-description"/>
+            </VBox>
+
+            <Separator/>
+
+            <VBox spacing="10">
+
+                <HBox alignment="CENTER_LEFT">
+                    <VBox spacing="3" HBox.hgrow="ALWAYS">
+                        <Label text="Server" styleClass="section-title"/>
+                        <Label
+                                text="Minecraft server information"
+                                styleClass="section-description"/>
+                    </VBox>
+
+                    <Button
+                            fx:id="btnEditMotd"
+                            text="Edit"
+                            onAction="#onEditMotd"
+                            styleClass="secondary-button"/>
+                </HBox>
+
+                <StackPane
+                        prefHeight="150"
+                        styleClass="server-motd-card">
+
+                    <VBox
+                            spacing="8"
+                            alignment="CENTER_LEFT"
+                            styleClass="server-motd-content">
+
+                        <Label
+                                fx:id="lblMotd"
+                                text="A Minecraft Server"
+                                styleClass="server-motd-title"/>
+
+                        <Label
+                                fx:id="lblMotdDescription"
+                                text="Welcome to the server"
+                                styleClass="server-motd-description"/>
+
+                        <HBox spacing="8">
+
+                            <Label
+                                    fx:id="lblMinecraftVersion"
+                                    text="1.21.8"
+                                    styleClass="server-motd-tag"/>
+
+                            <Label
+                                    fx:id="lblServerSoftware"
+                                    text="Paper"
+                                    styleClass="server-motd-tag"/>
+
+                        </HBox>
+
+                    </VBox>
+
+                </StackPane>
+
+            </VBox>
+
+            <GridPane hgap="12" vgap="12">
+
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="33.33" hgrow="ALWAYS"/>
+                    <ColumnConstraints percentWidth="33.33" hgrow="ALWAYS"/>
+                    <ColumnConstraints percentWidth="33.34" hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <VBox
+                        GridPane.columnIndex="0"
+                        styleClass="console-stat-card">
+
+                    <Label text="RAM" styleClass="console-stat-title"/>
+
+                    <Label
+                            fx:id="lblRamUsage"
+                            text="0 MB"
+                            styleClass="console-stat-value"/>
+
+                    <Label
+                            fx:id="lblRamTotal"
+                            text="of 4096 MB"
+                            styleClass="console-stat-description"/>
+
+                </VBox>
+
+                <VBox
+                        GridPane.columnIndex="1"
+                        styleClass="console-stat-card">
+
+                    <Label text="Disk" styleClass="console-stat-title"/>
+
+                    <Label
+                            fx:id="lblDiskUsage"
+                            text="0 GB"
+                            styleClass="console-stat-value"/>
+
+                    <Label
+                            fx:id="lblDiskTotal"
+                            text="of 50 GB"
+                            styleClass="console-stat-description"/>
+
+                </VBox>
+
+                <VBox
+                        GridPane.columnIndex="2"
+                        styleClass="console-stat-card">
+
+                    <Label text="Players" styleClass="console-stat-title"/>
+
+                    <Label
+                            fx:id="lblPlayers"
+                            text="0"
+                            styleClass="console-stat-value"/>
+
+                    <Label
+                            fx:id="lblPlayersMax"
+                            text="of 20 players"
+                            styleClass="console-stat-description"/>
+
+                </VBox>
+
+            </GridPane>
+
+            <VBox spacing="10">
+
+                <HBox alignment="CENTER_LEFT">
+
+                    <VBox spacing="3" HBox.hgrow="ALWAYS">
+
+                        <Label
+                                text="Server controls"
+                                styleClass="section-title"/>
+
+                        <Label
+                                fx:id="lblServerStatusDescription"
+                                text="Server is currently offline."
+                                styleClass="section-description"/>
+
+                    </VBox>
+
+                    <Label
+                            fx:id="lblServerStatus"
+                            text="● Offline"
+                            styleClass="server-status-offline"/>
+
+                </HBox>
+
+                <HBox spacing="10">
+
+                    <Button
+                            fx:id="btnStart"
+                            text="Start"
+                            onAction="#onStartServer"
+                            styleClass="primary-button"/>
+
+                    <Button
+                            fx:id="btnRestart"
+                            text="Restart"
+                            onAction="#onRestartServer"
+                            styleClass="secondary-button"/>
+
+                    <Button
+                            fx:id="btnStop"
+                            text="Stop"
+                            onAction="#onStopServer"
+                            styleClass="tertiary-button"/>
+
+                </HBox>
+
+            </VBox>
+
+            <VBox spacing="10">
+
+                <HBox alignment="CENTER_LEFT">
+
+                    <VBox spacing="3" HBox.hgrow="ALWAYS">
+
+                        <Label
+                                text="Server console"
+                                styleClass="section-title"/>
+
+                        <Label
+                                text="Live output from the Minecraft server."
+                                styleClass="section-description"/>
+
+                    </VBox>
+
+                    <Button
+                            fx:id="btnClearConsole"
+                            text="Clear"
+                            onAction="#onClearConsole"
+                            styleClass="text-button"/>
+
+                </HBox>
+
+                <ListView
+                        fx:id="consoleOutput"
+                        prefHeight="280"
+                        styleClass="console-output"/>
+
+            </VBox>
+
+            <VBox spacing="10">
+
+                <Label
+                        text="Server statistics"
+                        styleClass="section-title"/>
+
+                <GridPane hgap="12" vgap="12">
+
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="50" hgrow="ALWAYS"/>
+                        <ColumnConstraints percentWidth="50" hgrow="ALWAYS"/>
+                    </columnConstraints>
+
+                    <VBox
+                            GridPane.columnIndex="0"
+                            styleClass="console-chart-card">
+
+                        <Label
+                                text="RAM Usage"
+                                styleClass="console-chart-title"/>
+
+                        <AreaChart
+                                fx:id="ramChart"
+                                animated="false"
+                                legendVisible="false"
+                                createSymbols="false"
+                                prefHeight="250">
+
+                            <xAxis>
+                                <CategoryAxis/>
+                            </xAxis>
+
+                            <yAxis>
+                                <NumberAxis
+                                        forceZeroInRange="false"/>
+                            </yAxis>
+
+                        </AreaChart>
+
+                    </VBox>
+
+                    <VBox
+                            GridPane.columnIndex="1"
+                            styleClass="console-chart-card">
+
+                        <Label
+                                text="Disk Usage"
+                                styleClass="console-chart-title"/>
+
+                        <AreaChart
+                                fx:id="diskChart"
+                                animated="false"
+                                legendVisible="false"
+                                createSymbols="false"
+                                prefHeight="250">
+
+                            <xAxis>
+                                <CategoryAxis/>
+                            </xAxis>
+
+                            <yAxis>
+                                <NumberAxis
+                                        forceZeroInRange="false"/>
+                            </yAxis>
+
+                        </AreaChart>
+
+                    </VBox>
+
+                </GridPane>
+
+            </VBox>
+
+            <Pane prefHeight="5"/>
+
+        </VBox>
+
+    </ScrollPane>
+
 </AnchorPane>

@@ -31,4 +31,9 @@ public class MouseMove {
             }
         });
     }
+
+    public void stop() {
+        node.setOnMousePressed(null);
+        node.setOnMouseDragged(null);
+    }
 }

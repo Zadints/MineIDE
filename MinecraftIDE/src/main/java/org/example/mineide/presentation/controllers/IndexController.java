@@ -8,7 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
@@ -23,7 +23,7 @@ public class IndexController {
     @FXML private Button btnFile;
     @FXML private Button btnCode;
     @FXML private Button btnGit;
-
+    private MouseMove mouseMove;
     @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
@@ -31,7 +31,7 @@ public class IndexController {
 
     @FXML private HBox titleBar;
     public void initialize() {
-        MouseMove mouseMove = new MouseMove(titleBar);
+        this.mouseMove = new MouseMove(titleBar);
         mouseMove.start();
     }
 
@@ -55,15 +55,15 @@ public class IndexController {
          Este metodo contiene atributos para su funcionamiento tanto de JavaFX como
          privados booleanos
      ------------------------------------*/
+
     @FXML
     private Button btnMaximize;
     @FXML
-    private VBox root;
+    private StackPane root;
     private boolean maximized = true;
-    @FXML
-    protected void onMaximizeClick() {
+    @FXML protected void onMaximizeClick() {
         Stage stage = (Stage) btnMaximize.getScene().getWindow();
-
+        System.out.println("🔥 input de entrada" + maximized);
         if (maximized) {
             Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
 
@@ -74,6 +74,7 @@ public class IndexController {
 
             root.getStyleClass().add("maximized");
             maximized = false;
+
         } else {
             stage.setWidth(1300);
             stage.setHeight(700);
@@ -81,8 +82,22 @@ public class IndexController {
             root.getStyleClass().remove("maximized");
             maximized = true;
         }
+        System.out.println("🔥 input de salida" + maximized);
     }
-
+    @FXML
+    protected void onTitleBarPressed(MouseEvent event) {
+        System.out.println("CLICK");
+        if (maximized){
+            onMaximizeClick();
+        }
+    }
+    @FXML
+    protected void onTitleBarDragged(MouseEvent event) {
+        System.out.println("DRAG");
+        if (maximized){
+            onMaximizeClick();
+        }
+    }
 
     @FXML
     private BorderPane brPanel;

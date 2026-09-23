@@ -7,14 +7,15 @@
 <?import javafx.scene.text.*?>
 <?import org.kordamp.ikonli.javafx.*?>
 <?import java.lang.String?>
-
+<?import javafx.geometry.Insets?>
 <StackPane
         xmlns="http://javafx.com/javafx/17.0.12"
         xmlns:fx="http://javafx.com/fxml/1"
         fx:controller="org.example.mineide.presentation.controllers.IndexController"
-        styleClass="main-page">
+        fx:id="root"
+        styleClass="root">
 
-    <VBox fx:id="root" alignment="TOP_CENTER" minHeight="700" minWidth="1300.0" prefHeight="700.0" prefWidth="1300.0"  >
+    <VBox  alignment="TOP_CENTER" minHeight="700" minWidth="1300.0" prefHeight="700.0" prefWidth="1300.0"  >
         <BorderPane fx:id="brPanel"  minHeight="700" minWidth="1300" VBox.vgrow="ALWAYS">
             <center>
                 <Pane styleClass="content-style"
@@ -22,11 +23,19 @@
                       minWidth="0"
                       minHeight="0"
                       maxWidth="Infinity"
-                      maxHeight="Infinity"/>
+                      maxHeight="Infinity">
+
+                    <BorderPane.margin>
+                        <Insets right="2" bottom="2"/>
+                    </BorderPane.margin>
+
+                </Pane>
             </center>
             <top>
                 <HBox fx:id="titleBar"
                       alignment="CENTER_LEFT"
+                      onMousePressed="#onTitleBarPressed"
+                      onMouseDragged="#onTitleBarDragged"
                       minHeight="40"
                       spacing="15.0"
                       styleClass="tab-bar">
@@ -97,40 +106,91 @@
                             </graphic>
                         </Button>
                         -->
-                        <Label layoutX="13.0" layoutY="217.0" prefHeight="27.0" prefWidth="200.0" styleClass="category-text" text="Minecraft Server">                            </Label>
-                        <Button onAction="#onConsoleClick" alignment="BASELINE_LEFT" layoutY="342.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Console">
+
+                        <Button onAction="#onConsoleClick"
+                                alignment="BASELINE_LEFT"
+                                prefHeight="46.0"
+                                prefWidth="238.0"
+                                styleClass="sidebar-buttons"
+                                text="Console">
                             <graphic>
-                                <FontIcon iconLiteral="fas-gamepad" iconSize="14" styleClass="sidebar-icons" />
+                                <FontIcon iconLiteral="far-comment"
+                                          iconSize="14"
+                                          styleClass="sidebar-icons"/>
                             </graphic>
                         </Button>
-                        <Button onAction="#onFilesClick" alignment="BASELINE_LEFT" layoutY="388.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Files">
+
+                        <Button onAction="#onFilesClick"
+                                alignment="BASELINE_LEFT"
+                                prefHeight="46.0"
+                                prefWidth="238.0"
+                                styleClass="sidebar-buttons"
+                                text="Files">
                             <graphic>
-                                <FontIcon iconLiteral="fas-folder-open" iconSize="14" styleClass="sidebar-icons" />
+                                <FontIcon iconLiteral="far-folder"
+                                          iconSize="14"
+                                          styleClass="sidebar-icons"/>
                             </graphic>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" layoutY="499.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Setting">
+
+                        <Button alignment="BASELINE_LEFT"
+                                prefHeight="46.0"
+                                prefWidth="238.0"
+                                styleClass="sidebar-buttons"
+                                text="Setting">
                             <graphic>
-                                <FontIcon iconLiteral="fas-cog" iconSize="14" styleClass="sidebar-icons" />
+                                <FontIcon iconLiteral="far-compass"
+                                          iconSize="14"
+                                          styleClass="sidebar-icons"/>
                             </graphic>
                         </Button>
-                        <Button onAction="#onBackupsClick" alignment="BASELINE_LEFT" layoutY="545.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Backups">
+
+                        <Button onAction="#onBackupsClick"
+                                alignment="BASELINE_LEFT"
+                                prefHeight="46.0"
+                                prefWidth="238.0"
+                                styleClass="sidebar-buttons"
+                                text="Backups">
                             <graphic>
-                                <FontIcon iconLiteral="fas-archive" iconSize="14" styleClass="sidebar-icons" />
+                                <FontIcon iconLiteral="far-clock"
+                                          iconSize="14"
+                                          styleClass="sidebar-icons"/>
                             </graphic>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" layoutY="591.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Databases">
+
+                        <Button alignment="BASELINE_LEFT"
+                                prefHeight="46.0"
+                                prefWidth="238.0"
+                                styleClass="sidebar-buttons"
+                                text="Databases">
                             <graphic>
-                                <FontIcon iconLiteral="fas-database" iconSize="14" styleClass="sidebar-icons" />
+                                <FontIcon iconLiteral="far-hdd"
+                                          iconSize="14"
+                                          styleClass="sidebar-icons"/>
                             </graphic>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" layoutY="637.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Users">
+
+                        <Button alignment="BASELINE_LEFT"
+                                prefHeight="46.0"
+                                prefWidth="238.0"
+                                styleClass="sidebar-buttons"
+                                text="Users">
                             <graphic>
-                                <FontIcon iconLiteral="fas-users" iconSize="14" styleClass="sidebar-icons" />
+                                <FontIcon iconLiteral="far-user"
+                                          iconSize="14"
+                                          styleClass="sidebar-icons"/>
                             </graphic>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" layoutY="637.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="238.0" styleClass="sidebar-buttons" text="Startup">
+
+                        <Button alignment="BASELINE_LEFT"
+                                prefHeight="46.0"
+                                prefWidth="238.0"
+                                styleClass="sidebar-buttons"
+                                text="Startup">
                             <graphic>
-                                <FontIcon iconLiteral="fas-rocket" iconSize="14" styleClass="sidebar-icons" />
+                                <FontIcon iconLiteral="far-play-circle"
+                                          iconSize="14"
+                                          styleClass="sidebar-icons"/>
                             </graphic>
                         </Button>
                     </children>
