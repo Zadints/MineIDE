@@ -26,12 +26,6 @@ public class ServesController {
     @FXML private RadioButton disable;
     @FXML
     void initialize(){
-        updateOption.selectedToggleProperty().addListener(
-                (obs, anterior, actual) -> {
-                    RadioButton selected = (RadioButton) actual;
-                }
-        );
-        System.out.println(getClass().getResource("/multimedia/images/folder.png"));
         Image imagedefault = new Image(getClass().getResourceAsStream("/multimedia/images/folder.png"));
         imageServer.setImage(imagedefault);
         anchorservers.getStylesheets().add(
@@ -147,7 +141,7 @@ public class ServesController {
                 .build();
 
     }
-    /*void List<String> lastversion(String software){
+   void List<String> lastversion(String software){
 
     }
 */

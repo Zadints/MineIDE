@@ -117,6 +117,23 @@
                                        promptText="My Minecraft Server"
                                        styleClass="secondary-input"/>
 
+                            <Label text="Server Sofware (*optional)"
+                                   styleClass="input-label"/>
+
+                            <HBox spacing="8">
+
+                                <TextField fx:id="txtServerDirectory"
+                                           promptText="I don't have it on my PC."
+                                           HBox.hgrow="ALWAYS"
+                                           styleClass="secondary-input"/>
+
+                                <Button text="Browse"
+                                        fx:id="btnBrowseDirectory"
+                                        onAction="#onBrowseLocation"
+                                        styleClass="secondary-button"/>
+
+                            </HBox>
+
                         </VBox>
 
                     </GridPane>
