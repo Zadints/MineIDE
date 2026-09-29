@@ -1,9 +1,0 @@
-spring:
-  application:
-    name: mineAPI
-  datasource:
-    url: "jdbc:mysql://localhost:3307/mineapi"
-    username: "newuser"
-    password: "MiPassword123"
-server:
-  port: 8081
