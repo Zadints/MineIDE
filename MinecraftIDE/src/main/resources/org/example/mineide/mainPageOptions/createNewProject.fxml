@@ -14,6 +14,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
@@ -193,7 +195,83 @@
                             <ComboBox fx:id="cbxMinecraftVersion"
                                       promptText="Select version"
                                       maxWidth="Infinity"
-                                      styleClass="secondary-input"/>
+                                      styleClass="secondary-input">
+                                <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <String fx:value="1.8"/>
+                                        <String fx:value="1.8.1"/>
+                                        <String fx:value="1.8.2"/>
+                                        <String fx:value="1.8.3"/>
+                                        <String fx:value="1.8.4"/>
+                                        <String fx:value="1.8.5"/>
+                                        <String fx:value="1.8.6"/>
+                                        <String fx:value="1.8.7"/>
+                                        <String fx:value="1.8.8"/>
+                                        <String fx:value="1.8.9"/>
+                                        <String fx:value="1.9"/>
+                                        <String fx:value="1.9.1"/>
+                                        <String fx:value="1.9.2"/>
+                                        <String fx:value="1.9.3"/>
+                                        <String fx:value="1.9.4"/>
+                                        <String fx:value="1.10"/>
+                                        <String fx:value="1.10.1"/>
+                                        <String fx:value="1.10.2"/>
+                                        <String fx:value="1.11"/>
+                                        <String fx:value="1.11.1"/>
+                                        <String fx:value="1.11.2"/>
+                                        <String fx:value="1.12"/>
+                                        <String fx:value="1.12.1"/>
+                                        <String fx:value="1.12.2"/>
+                                        <String fx:value="1.13"/>
+                                        <String fx:value="1.13.1"/>
+                                        <String fx:value="1.13.2"/>
+                                        <String fx:value="1.14"/>
+                                        <String fx:value="1.14.1"/>
+                                        <String fx:value="1.14.2"/>
+                                        <String fx:value="1.14.3"/>
+                                        <String fx:value="1.14.4"/>
+                                        <String fx:value="1.15"/>
+                                        <String fx:value="1.15.1"/>
+                                        <String fx:value="1.15.2"/>
+                                        <String fx:value="1.16.1"/>
+                                        <String fx:value="1.16.2"/>
+                                        <String fx:value="1.16.3"/>
+                                        <String fx:value="1.16.4"/>
+                                        <String fx:value="1.16.5"/>
+                                        <String fx:value="1.17"/>
+                                        <String fx:value="1.17.1"/>
+                                        <String fx:value="1.17.2"/>
+                                        <String fx:value="1.18"/>
+                                        <String fx:value="1.18.1"/>
+                                        <String fx:value="1.18.2"/>
+                                        <String fx:value="1.19"/>
+                                        <String fx:value="1.19.1"/>
+                                        <String fx:value="1.19.2"/>
+                                        <String fx:value="1.19.3"/>
+                                        <String fx:value="1.19.4"/>
+                                        <String fx:value="1.20"/>
+                                        <String fx:value="1.20.1"/>
+                                        <String fx:value="1.20.2"/>
+                                        <String fx:value="1.20.1"/>
+                                        <String fx:value="1.20.2"/>
+                                        <String fx:value="1.20.3"/>
+                                        <String fx:value="1.20.4"/>
+                                        <String fx:value="1.20.5"/>
+                                        <String fx:value="1.20.6"/>
+                                        <String fx:value="1.21"/>
+                                        <String fx:value="1.21.1"/>
+                                        <String fx:value="1.21.2"/>
+                                        <String fx:value="1.21.3"/>
+                                        <String fx:value="1.21.4"/>
+                                        <String fx:value="1.20.5"/>
+                                        <String fx:value="26.1"/>
+                                        <String fx:value="26.1.1"/>
+                                        <String fx:value="26.1.2"/>
+                                        <String fx:value="26.2"/>
+                                        <String fx:value="26.3"/>
+                                    </FXCollections>
+                                </items>
+                            </ComboBox>
 
                         </VBox>
 

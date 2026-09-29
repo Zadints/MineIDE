@@ -21,6 +21,7 @@ import org.example.mineide.core.application.usecase.StartAppUseCase;
 import org.example.mineide.core.domain.enums.JdkEnum;
 import org.example.mineide.presentation.controllers.ErrorPageController;
 import org.example.mineide.presentation.controllers.utils.MouseMove;
+import org.example.mineide.core.application.usecase.EvalueVersionUseCase;
 
 import java.io.File;
 import java.io.IOException;
@@ -61,8 +62,6 @@ public class CreateNewProject {
     @FXML protected void onCancel(){
         close();
     }
-
-
     @FXML private void onCreateProject(){
         String serverName = txtServerName.getText();
         String locationNewProject = txtServerDirectory.getText();
@@ -70,6 +69,7 @@ public class CreateNewProject {
         String serverSoftwarePath = txtJavaSofware.getText();
         String version = null;
         String software = null;
+
         if (serverSoftwarePath == null || serverSoftwarePath.isBlank()){
             version = cbxMinecraftVersion.getValue();
             software = cbxServerSoftware.getValue();
@@ -80,6 +80,8 @@ public class CreateNewProject {
         if (jdkPath == null || jdkPath.isBlank()){
             jdkVersion = cbxJdkVersion.getValue();
         }
+
+        // comprobacion de version
 
         boolean initializeGit = chkGit.isSelected();
         boolean createReadme = chkReadme.isSelected();
@@ -162,11 +164,14 @@ public class CreateNewProject {
         if (file == null) return null;
         return file.toPath();
     }
+    private void getVersions(){
+
+
+    }
 
     private void launchErrorWindows(String errorMessage, String errorTitle, Scene sceneActual){
         try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource(
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
                             "/org/example/mineide/errorPage.fxml"
                     )
             );

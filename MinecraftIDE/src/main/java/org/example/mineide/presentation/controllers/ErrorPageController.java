@@ -28,7 +28,7 @@ public class ErrorPageController {
         stage.close();
     }
 
-    @FXML protected void onDetails(){
+    @FXML protected void onDetails(String errorCode){
 
     }
 }
