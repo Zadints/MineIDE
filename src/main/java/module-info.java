@@ -15,6 +15,7 @@ module org.example.mineide {
     requires org.kordamp.ikonli.fontawesome5;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.desktop;
 
     opens org.example.mineide to javafx.fxml;
     opens org.example.mineide.presentation.controllers to javafx.fxml;
