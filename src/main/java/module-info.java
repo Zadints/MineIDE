@@ -16,6 +16,7 @@ module org.example.mineide {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.desktop;
+    requires javafx.graphics;
 
     opens org.example.mineide to javafx.fxml;
     opens org.example.mineide.presentation.controllers to javafx.fxml;

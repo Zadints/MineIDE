@@ -4,6 +4,7 @@ import org.example.mineide.core.application.dto.MinecraftVersionDTO;
 import org.example.mineide.core.application.dto.NewProjectDto;
 import org.example.mineide.core.domain.entities.Project;
 import org.example.mineide.core.domain.enums.JdkEnum;
+import org.example.mineide.core.application.usecase.EvalueVersionUseCase;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -97,7 +98,19 @@ public class ProjectManagerUseCase {
             return "la ruta para usar el jdk es inválida déjala en automática";
         }
 
-        JdkEnum jdkVersion = newProjectDto.getJdkVersion();
+
+//-------------------------------------------------------------------------------------------
+         // Evaluar compatibilidad del jdk con la version actual
+        JdkEnum jdkVersion;
+        try {
+            jdkVersion = newProjectDto.getJdkVersion();
+        } catch (Exception e){
+            jdkVersion = null;
+        }
+        if (jdkVersion != null && version != null)
+        EvalueVersionUseCase.evalueJDK(jdkVersion, version);
+
+        
 //-------------------------------------------------------------------------------------------
 
         boolean initializeRepository = newProjectDto.isInitializeRepository();

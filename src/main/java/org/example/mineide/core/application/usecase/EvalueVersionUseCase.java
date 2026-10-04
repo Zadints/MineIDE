@@ -7,20 +7,24 @@ import java.util.regex.Pattern;
 
 public class EvalueVersionUseCase {
 
-    public VersionDTO evalueJDKversion(JdkEnum jdk,String version){
+    public static VersionDTO evalueJDK(JdkEnum jdk,String version){
         String jdkVersion = jdk.name();
         String maxVersion = jdk.getmax();
         String separator = Pattern.quote(".");
 
         String[] versionParts = version.split(separator);
-        String[] jdkParts = maxVersion.split(separator);
+        String[] MaxJdkParts = maxVersion.split(separator);
 
-        if (versionParts[0] == "26"){
-            VersionDTO Data = VersionDTO(null, null);
-            Data.setStatus(true);
+        VersionDTO Data = new VersionDTO(maxVersion, "Please select another version supported for the selected jdk \\n Recommend Minecraft Version:\" + maxVersion");
+
+        if (Integer.parseInt(versionParts[0]) > Integer.parseInt(MaxJdkParts[0])){
             return Data;}
-        else if (versionParts[1] > jdkParts[1])
-
-        return ;
+        else if (versionParts[0] == "1" && Integer.parseInt(versionParts[1]) > Integer.parseInt(MaxJdkParts[1])){
+            return Data;
+        }else {
+            Data.setStatus(true);
+            Data.setMessage("ok");
+            return Data;
+        }
     }
 }

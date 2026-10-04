@@ -81,8 +81,6 @@ public class CreateNewProject {
             jdkVersion = cbxJdkVersion.getValue();
         }
 
-        // comprobacion de version
-
         boolean initializeGit = chkGit.isSelected();
         boolean createReadme = chkReadme.isSelected();
         boolean generateGitIgnore = chkGitIgnore.isSelected();
