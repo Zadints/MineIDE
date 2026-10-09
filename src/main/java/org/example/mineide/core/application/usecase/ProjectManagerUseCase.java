@@ -2,8 +2,10 @@ package org.example.mineide.core.application.usecase;
 
 import org.example.mineide.core.application.dto.MinecraftVersionDTO;
 import org.example.mineide.core.application.dto.NewProjectDto;
+import org.example.mineide.core.application.dto.ResponseDTO;
 import org.example.mineide.core.domain.entities.Project;
 import org.example.mineide.core.domain.enums.JdkEnum;
+import org.example.mineide.infraestructure.models.api.ApiLinksClient;
 import org.example.mineide.core.application.usecase.EvalueVersionUseCase;
 
 import java.io.File;
@@ -81,7 +83,6 @@ public class ProjectManagerUseCase {
             }
 
         } else {
-
             MinecraftVersionDTO versionAndSoftware =
                     newProjectDto.getVersionAndSoftware();
 
@@ -90,6 +91,14 @@ public class ProjectManagerUseCase {
 
             if (!evalueData(version) || !evalueData(software)) {
                 return "Debes seleccionar una versión y software";
+            }else {
+                ResponseDTO Response = new ResponseDTO();
+                try {
+                    ApiLinksClient.getLink(Response);
+
+                } catch (Exception e) {
+
+                }
             }
         }
 
@@ -144,13 +153,12 @@ public class ProjectManagerUseCase {
         if (!CacheDierctory.exists()){
             CacheDierctory.mkdir();
         }
+
         try {
             Connection con = DriverManager.getConnection("jdbc:sqlite" + CacheDierctory.getPath());
         } catch (SQLException e){
             return "Error with sql conecction";
         }
-
-
 
         //agregar guardar en db ruta con proyecto
         return "";

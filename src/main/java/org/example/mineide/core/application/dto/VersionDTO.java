@@ -1,8 +1,5 @@
 package org.example.mineide.core.application.dto;
 
-
-
-
 public class VersionDTO {
     boolean Status = false;
     String Recomend;

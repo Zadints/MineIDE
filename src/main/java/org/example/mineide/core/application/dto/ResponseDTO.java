@@ -8,7 +8,7 @@ import java.net.http.HttpResponse;
 import java.util.List;
 
 public class ResponseDTO {
-    private boolean Status;
+    private boolean Status = false;
     private String Ip;
     private String IpPublic;
     private String Link;
@@ -16,8 +16,7 @@ public class ResponseDTO {
     private String Software;
 
     public ResponseDTO(){}
-
-    public ResponseDTO(String Ip, String IpPublic, String Link, String Version, String Software){
+    public ResponseDTO(String Ip, String IpPublic, String Version, String Software){
         this.Ip = Ip;
         this.IpPublic = IpPublic;
         this.Link = Link;
@@ -49,7 +48,7 @@ public class ResponseDTO {
     }
 
     public Boolean Status(){return Status;}
-    public void getStatus(Boolean Status){}
+    public void setStatus(Boolean Status){this.Status = Status;}
 
 
 

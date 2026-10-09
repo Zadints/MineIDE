@@ -9,11 +9,10 @@ import java.net.http.HttpRequest;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ApiLinksClient {
-    ResponseDTO Response;
-    public ResponseDTO getLink(ResponseDTO peticion){
+    public static ResponseDTO getLink(ResponseDTO peticion){
         ObjectMapper mapper = new ObjectMapper();
 
-        this.Response = peticion;
+        ResponseDTO Response = peticion;
 
         HttpClient client = HttpClient.newHttpClient();
 
@@ -24,16 +23,14 @@ public class ApiLinksClient {
                 .GET()
                 .build();
         try {
-            HttpResponse response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            ResponseDTO finalresponse = new ResponseDTO();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             mapper.readValue(response.body(), ResponseDTO.class);
 
-            Response.setLink("");
-
         } catch (Exception e){
-
+            Response.setStatus(false);
+            return Response;
         }
-        return this.Response;
+        return Response;
 
     }
 }
