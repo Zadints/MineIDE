@@ -6,8 +6,8 @@ public enum JdkEnum {
     JDK_17("1.20.4"),
     JDK_21("1.21.4"),
 
-    JDK_25("ola"),
-    JDK_26("ola");
+    JDK_25("26.9"),
+    JDK_26("26.9");
 
 
     private final String value;

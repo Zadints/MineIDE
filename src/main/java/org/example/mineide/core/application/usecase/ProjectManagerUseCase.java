@@ -6,6 +6,7 @@ import org.example.mineide.core.domain.entities.Project;
 import org.example.mineide.core.domain.enums.JdkEnum;
 import org.example.mineide.core.application.usecase.EvalueVersionUseCase;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
@@ -13,6 +14,9 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class ProjectManagerUseCase {
     private static Project actualProject = null;
@@ -100,17 +104,19 @@ public class ProjectManagerUseCase {
 
 
 //-------------------------------------------------------------------------------------------
-         // Evaluar compatibilidad del jdk con la version actual
+
+        // Evaluar compatibilidad del jdk con la version actual
         JdkEnum jdkVersion;
         try {
             jdkVersion = newProjectDto.getJdkVersion();
         } catch (Exception e){
             jdkVersion = null;
         }
-        if (jdkVersion != null && version != null)
-        EvalueVersionUseCase.evalueJDK(jdkVersion, version);
+        if (jdkVersion != null && version != null){
+            EvalueVersionUseCase.evalueJDK(jdkVersion, version);
+        }
 
-        
+
 //-------------------------------------------------------------------------------------------
 
         boolean initializeRepository = newProjectDto.isInitializeRepository();
@@ -134,11 +140,24 @@ public class ProjectManagerUseCase {
                 );
         projectsCreatedList.add(actualProject);
         deployProject();
+        File CacheDierctory = new File(System.getenv("LOCALAPPDATA") + "MineIDE" + "Cache" + "DB");
+        if (!CacheDierctory.exists()){
+            CacheDierctory.mkdir();
+        }
+        try {
+            Connection con = DriverManager.getConnection("jdbc:sqlite" + CacheDierctory.getPath());
+        } catch (SQLException e){
+            return "Error with sql conecction";
+        }
+
+
+
         //agregar guardar en db ruta con proyecto
         return "";
     }
 
     private static String deployProject(){
+
         /*
         //------------------ descargamso todo y creamos carpeta del proyecto mijin:
         try {

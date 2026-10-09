@@ -29,22 +29,7 @@ public class VersionsMcClient implements VersionsMc {
         try {
 
             String url = "http://lrweb.dpdns.org/mcVersions";
-        /*
-        [
-          {
-            "id": "1.21.8",
-            "type": "purpur"
-          },
-          {
-            "id": "1.21.8",
-            "type": "purpur"
-          },
-          {
-            "id": "1.21.8",
-            "type": "purpur"
-          }
-        ]
-        */
+
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
                     .GET()

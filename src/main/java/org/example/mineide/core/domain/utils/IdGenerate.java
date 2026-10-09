@@ -1,4 +1,4 @@
-package org.example.mineide.utils;
+package org.example.mineide.core.domain.utils;
 
 import java.util.UUID;
 

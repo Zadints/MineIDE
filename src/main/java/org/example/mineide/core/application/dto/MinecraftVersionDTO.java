@@ -4,13 +4,6 @@ public class MinecraftVersionDTO {
     private String id;
     private String type;
 
-    /*
-    * {
-      "id": "1.21.8",
-      "type": "purpur or paper",
-    }
-    * */
-
     public MinecraftVersionDTO(String id, String type) {
         this.id = id;
         this.type = type;
