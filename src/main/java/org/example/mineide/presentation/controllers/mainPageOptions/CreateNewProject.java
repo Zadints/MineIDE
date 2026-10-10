@@ -58,10 +58,10 @@ public class CreateNewProject {
         cbxJdkVersion.getItems().addAll(JdkEnum.values());
     }
 
-
     @FXML protected void onCancel(){
         close();
     }
+
     @FXML private void onCreateProject(){
         String serverName = txtServerName.getText();
         String locationNewProject = txtServerDirectory.getText();

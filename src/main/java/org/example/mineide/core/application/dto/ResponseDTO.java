@@ -16,6 +16,7 @@ public class ResponseDTO {
     private String Software;
 
     public ResponseDTO(){}
+
     public ResponseDTO(String Ip, String IpPublic, String Version, String Software){
         this.Ip = Ip;
         this.IpPublic = IpPublic;
@@ -24,16 +25,12 @@ public class ResponseDTO {
         this.Software = Software;
     }
 
+    //-------------------------------------/ S&G /-----------------------------------------------------------
 
-
-    public String Ip(){
-        return Ip;
-    }
+    public String Ip(){return Ip;}
     public void setIp(String Ip){this.Ip = Ip;}
 
-    public String IpPublic(){
-        return IpPublic;
-    }
+    public String IpPublic(){return IpPublic;}
     public void setIpPublic(String IpPublic){this.IpPublic = IpPublic;}
 
     public String Link(){return Link;}
@@ -43,9 +40,7 @@ public class ResponseDTO {
     public void setVers(String Version) {this.Version = Version;}
 
     public String Software(){return Software;}
-    public void setSoft(String Software){
-        this.Software = Software;
-    }
+    public void setSoft(String Software){this.Software = Software;}
 
     public Boolean Status(){return Status;}
     public void setStatus(Boolean Status){this.Status = Status;}

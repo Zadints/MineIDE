@@ -8,6 +8,8 @@ public class VersionDTO {
         this.Recomend = recomend;
         this.Message = Message;
     }
+
+    //---------------------------------/ S&G /--------------------------------------------------------------------
     public void setStatus(boolean status) {this.Status = status;}
     public boolean getStatus(){return Status;}
 

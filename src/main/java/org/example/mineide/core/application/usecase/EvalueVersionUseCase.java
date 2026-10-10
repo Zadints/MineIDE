@@ -15,7 +15,7 @@ public class EvalueVersionUseCase {
         String[] versionParts = version.split(separator);
         String[] MaxJdkParts = maxVersion.split(separator);
 
-        VersionDTO Data = new VersionDTO(maxVersion, "Please select another version supported for the selected jdk \\n Recommend Minecraft Version:\" + maxVersion");
+        VersionDTO Data = new VersionDTO(maxVersion, "Please select another version supported for the current jdk \n Recommend Minecraft Version:" + maxVersion);
 
         if (Integer.parseInt(versionParts[0]) > Integer.parseInt(MaxJdkParts[0])){
             return Data;}

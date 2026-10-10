@@ -10,7 +10,6 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.Node;
-import org.example.mineide.utils.IdGenerate;
 //import org.example.mineide.core.entities.Server;
 
 import java.net.http.*;

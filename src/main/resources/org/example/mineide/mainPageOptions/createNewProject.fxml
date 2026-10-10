@@ -287,7 +287,16 @@
                             <ComboBox fx:id="cbxServerSoftware"
                                       promptText="Select software"
                                       maxWidth="Infinity"
-                                      styleClass="secondary-input"/>
+                                      styleClass="secondary-input">
+                                <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                        <String fx:value="paper"/>
+                                        <String fx:value="tu puta madre"/>
+                                        <String fx:value="folia"/>
+                                        <String fx:value="forge"/>
+                                    </FXCollections>
+                                </items>
+                            </ComboBox>
 
                         </VBox>
 

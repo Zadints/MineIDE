@@ -3,24 +3,29 @@ package org.example.mineide.core.application.usecase;
 import org.example.mineide.core.application.dto.MinecraftVersionDTO;
 import org.example.mineide.core.application.dto.NewProjectDto;
 import org.example.mineide.core.application.dto.ResponseDTO;
+import org.example.mineide.core.application.dto.VersionDTO;
 import org.example.mineide.core.domain.entities.Project;
 import org.example.mineide.core.domain.enums.JdkEnum;
 import org.example.mineide.infraestructure.models.api.ApiLinksClient;
 import org.example.mineide.core.application.usecase.EvalueVersionUseCase;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.sql.Statement;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.SQLException;
+
+import static org.example.mineide.core.application.usecase.EvalueVersionUseCase.evalueJDK;
 
 public class ProjectManagerUseCase {
+    ObjectMapper mapper = new ObjectMapper();
     private static Project actualProject = null;
     private static List<Project> projectsCreatedList = new ArrayList<>();
 
@@ -48,6 +53,18 @@ public class ProjectManagerUseCase {
         }
 
         return path;
+    }
+    public static boolean evalueTable(Connection con, String Table){
+        try{
+            PreparedStatement stm = con.prepareStatement("SELECT * FROM " + Table + "LIMIT = 1;");
+            ResultSet rs = stm.executeQuery();
+            return rs.next();
+        } catch (SQLException e){
+            e.printStackTrace();
+            return false;
+        }
+
+
     }
 
     public static String createProject(NewProjectDto newProjectDto) {
@@ -122,10 +139,12 @@ public class ProjectManagerUseCase {
             jdkVersion = null;
         }
         if (jdkVersion != null && version != null){
-            EvalueVersionUseCase.evalueJDK(jdkVersion, version);
+            VersionDTO evalueResult = evalueJDK(jdkVersion, version);
+            if (evalueResult.getStatus()){}
+            else {
+                return evalueResult.getMessage();
+            }
         }
-
-
 //-------------------------------------------------------------------------------------------
 
         boolean initializeRepository = newProjectDto.isInitializeRepository();
@@ -148,27 +167,51 @@ public class ProjectManagerUseCase {
                 downloadDependencies
                 );
         projectsCreatedList.add(actualProject);
-        deployProject();
-        File CacheDierctory = new File(System.getenv("LOCALAPPDATA") + "MineIDE" + "Cache" + "DB");
-        if (!CacheDierctory.exists()){
-            CacheDierctory.mkdir();
-        }
 
-        try {
-            Connection con = DriverManager.getConnection("jdbc:sqlite" + CacheDierctory.getPath());
+        File CacheDierctory = new File(System.getenv("LOCALAPPDATA") + File.separator +"MineIDE" + File.separator + "Cache" + File.separator + "DB");
+        if (!CacheDierctory.exists()){
+            CacheDierctory.mkdirs();
+        }
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:" + CacheDierctory.getPath() + File.separator + "CacheDB");) {
+            if (evalueTable(con,"Cache")){
+                PreparedStatement stm = con.prepareStatement("INSERT PROJECTS (ID, NAME, PATH, VERSION) VALUES (?, ?, ?, ?)");
+                stm.setString(0,uuid);
+                stm.setString(1,serverName);
+                stm.setString(2,pathNewProject.toString());
+                stm.setString(3,newProjectDto.getVersionAndSoftware().getType());
+                stm.executeUpdate();
+
+                while (rs.next){
+                    System.out.println();
+                }
+            } else {
+                Statement stm = con.createStatement();
+                stm.execute("CREATE TABLE PROJECTS(" +
+                        "ID INTEGER UNIQUE , " +
+                        "NAME TEXT NOTNULL, " +
+                        "PATH TEXT NOTNULL, " +
+                        "VERSION TEXT NOTNULL" +
+                        ")"
+                );
+                return "DataBase created, try now";
+            }
         } catch (SQLException e){
+            e.printStackTrace();
             return "Error with sql conecction";
         }
+        deployProject();
 
-        //agregar guardar en db ruta con proyecto
+        while (rs.next){
+            System.out.println();
+        }
+
         return "";
     }
 
     private static String deployProject(){
 
-        /*
         //------------------ descargamso todo y creamos carpeta del proyecto mijin:
-        try {
+        /* try {
             createWorkspace(pathNewProject);
             //evaluar y descargar aqui el sofware con el jdk lo mismo bro
         }catch (IOException e){
