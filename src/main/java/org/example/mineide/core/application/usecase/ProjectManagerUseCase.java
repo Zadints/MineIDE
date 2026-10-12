@@ -10,10 +10,11 @@ import org.example.mineide.infraestructure.models.api.ApiLinksClient;
 import org.example.mineide.core.application.usecase.EvalueVersionUseCase;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.net.*;
 import java.sql.Statement;
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
@@ -56,9 +57,9 @@ public class ProjectManagerUseCase {
     }
     public static boolean evalueTable(Connection con, String Table){
         try{
-            PreparedStatement stm = con.prepareStatement("SELECT * FROM " + Table + "LIMIT = 1;");
+            PreparedStatement stm = con.prepareStatement("SELECT * FROM " + Table + " LIMIT 1;");
             ResultSet rs = stm.executeQuery();
-            return rs.next();
+            return true;
         } catch (SQLException e){
             e.printStackTrace();
             return false;
@@ -71,9 +72,15 @@ public class ProjectManagerUseCase {
 
         String serverName = newProjectDto.getServerName();
         if (!evalueData(serverName)) return "No ingresaste el nombre del servidor";
+
         Path pathNewProject;
+
         try {
             pathNewProject = evaluePath(newProjectDto.getLocationNewProject());
+
+            if (pathNewProject == null){
+                return "El campo de la ruta no cincide con ninguna carpeta o no es una ruta";
+            }
         } catch (InvalidPathException e) {
             return "La ruta del directorio a crear no existe o está mal escrita";
         }
@@ -108,14 +115,6 @@ public class ProjectManagerUseCase {
 
             if (!evalueData(version) || !evalueData(software)) {
                 return "Debes seleccionar una versión y software";
-            }else {
-                ResponseDTO Response = new ResponseDTO();
-                try {
-                    ApiLinksClient.getLink(Response);
-
-                } catch (Exception e) {
-
-                }
             }
         }
 
@@ -173,52 +172,69 @@ public class ProjectManagerUseCase {
             CacheDierctory.mkdirs();
         }
         try (Connection con = DriverManager.getConnection("jdbc:sqlite:" + CacheDierctory.getPath() + File.separator + "CacheDB");) {
-            if (evalueTable(con,"Cache")){
-                PreparedStatement stm = con.prepareStatement("INSERT PROJECTS (ID, NAME, PATH, VERSION) VALUES (?, ?, ?, ?)");
-                stm.setString(0,uuid);
-                stm.setString(1,serverName);
-                stm.setString(2,pathNewProject.toString());
-                stm.setString(3,newProjectDto.getVersionAndSoftware().getType());
+            if (evalueTable(con,"PROJECTS")){
+                PreparedStatement stm = con.prepareStatement("INSERT INTO PROJECTS (ID, NAME, PATH, VERSION) VALUES (?, ?, ?, ?)");
+                stm.setString(1,uuid);
+                stm.setString(2,serverName);
+                stm.setString(3,pathNewProject.toString());
+                stm.setString(4,actualProject.getVersion());
                 stm.executeUpdate();
+                stm.close();
 
-                while (rs.next){
-                    System.out.println();
+                PreparedStatement stmt = con.prepareStatement("SELECT * FROM PROJECTS");
+                ResultSet rs = stmt.executeQuery();
+                while (rs.next()){
+                    System.out.println(rs.getString("NAME"));
                 }
             } else {
                 Statement stm = con.createStatement();
                 stm.execute("CREATE TABLE PROJECTS(" +
                         "ID INTEGER UNIQUE , " +
-                        "NAME TEXT NOTNULL, " +
-                        "PATH TEXT NOTNULL, " +
-                        "VERSION TEXT NOTNULL" +
-                        ")"
+                        "NAME TEXT NOT NULL, " +
+                        "PATH TEXT NOT NULL, " +
+                        "VERSION TEXT NOT NULL" +
+                        ");"
                 );
                 return "DataBase created, try now";
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
             return "Error with sql conecction";
         }
-        deployProject();
-
-        while (rs.next){
-            System.out.println();
-        }
-
+        MinecraftVersionDTO requeriments = newProjectDto.getVersionAndSoftware();
+        deployProject(pathNewProject, requeriments);
         return "";
     }
 
-    private static String deployProject(){
+    private static String deployProject(Path path, MinecraftVersionDTO requeriments){
 
         //------------------ descargamso todo y creamos carpeta del proyecto mijin:
-        /* try {
-            createWorkspace(pathNewProject);
-            //evaluar y descargar aqui el sofware con el jdk lo mismo bro
-        }catch (IOException e){
+        ResponseDTO request = new ResponseDTO();
+        try (DatagramSocket connection = new DatagramSocket()){
+            connection.connect(InetAddress.getByName("8.8.8.8"),10002);
+            request.setIp(connection.getLocalAddress().getHostAddress());
+        }catch (Exception e){
+            return "The internal checks failed. \n" +
+                    "connect internet and try again";
+        }
+        if (request.Ip() != null){
+            request.setSoft(requeriments.getType());
+            request.setVers(requeriments.getId());
+            try {
+                createWorkspace(path);
+                ResponseDTO response = ApiLinksClient.getLink(request);
+                if (response.Status()){
 
+                }else{
+                    return "request result in a failure \n try again in some seconds";
+                }
+            }catch (IOException e){
+                return "Deployment error whit API request or internal managment";
+            }
+        }else{
+            return "Error in registre requeriments";
         }
 
-*/
         return "";
     }
 

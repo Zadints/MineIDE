@@ -26,7 +26,7 @@ public class MinecraftVersionDTO {
     }
 
     public String toSoftware() {
-        return id;
+        return type;
     }
 
     public String toVersion() {

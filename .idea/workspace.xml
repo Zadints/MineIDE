@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fd4f2cc0-16b3-4c9f-86d3-e5eae2e25318" name="Changes" comment="i dont know wath i do">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/core/application/linkDrivers/Resolver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/core/application/linkDrivers/managers/fastAccesLinkManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/core/domain/interfaces/softwareStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/core/application/dto/MinecraftVersionDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/core/application/dto/MinecraftVersionDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/core/application/dto/ResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/core/application/dto/ResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/core/application/dto/VersionDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/core/application/dto/VersionDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/core/application/usecase/EvalueVersionUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/core/application/usecase/EvalueVersionUseCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/core/application/usecase/ProjectManagerUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/core/application/usecase/ProjectManagerUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/ErrorPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/ErrorPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/center/ServesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/center/ServesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/mainPageOptions/CreateNewProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/mainPageOptions/CreateNewProject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mineide/mainPageOptions/createNewProject.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mineide/mainPageOptions/createNewProject.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,10 +23,10 @@
       <list>
         <option value="CSS File" />
         <option value="AnnotationType" />
-        <option value="Interface" />
         <option value="Exception" />
         <option value="Enum" />
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -124,8 +121,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10968.63" />
-        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10968.63" />
+        <option value="bundled-jdk-30f59d01ecdd-63390994e64e-intellij.indexing.shared.core-IU-262.8665.337" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.8665.337" />
       </set>
     </attachedChunks>
   </component>
@@ -152,6 +149,10 @@
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.IllegalArgumentException" package="java.lang" />
           <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.reflect.InvocationTargetException" package="java.lang.reflect" />
+          <option name="timeStamp" value="2" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
