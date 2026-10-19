@@ -2,9 +2,9 @@ package org.example.mineide.infraestructure.models.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.example.mineide.core.application.dto.MinecraftVersionDTO;
-import org.example.mineide.core.domain.exceptions.ApiException;
-import org.example.mineide.core.domain.repositories.VersionsMc;
+import org.example.mineide.application.dto.MinecraftVersionDTO;
+import org.example.mineide.domain.exceptions.ApiException;
+import org.example.mineide.domain.repository.VersionsMc;
 
 import java.io.IOException;
 import java.net.URI;

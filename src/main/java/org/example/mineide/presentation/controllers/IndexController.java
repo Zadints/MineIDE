@@ -2,159 +2,104 @@ package org.example.mineide.presentation.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Screen;
-import org.example.mineide.presentation.controllers.utils.MouseMove;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import org.example.mineide.application.usecase.GetTranslationUseCase;
+import org.example.mineide.application.usecase.ProjectManagerUseCase;
+import org.example.mineide.domain.annotations.Navigate;
+import org.example.mineide.domain.annotations.ResourceRequiredSystem;
+import org.example.mineide.presentation.utils.MouseMove;
+import org.example.mineide.presentation.navigation.Navigator;
 
 import java.io.IOException;
 
 public class IndexController {
 
+    @ResourceRequiredSystem private final GetTranslationUseCase getTranslation;
+    @Navigate private final Navigator navigator;
 
-    @FXML private Label welcomeText;
-    @FXML private Button btnFile;
-    @FXML private Button btnCode;
-    @FXML private Button btnGit;
-    private MouseMove mouseMove;
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    @FXML private Button btnClose;
+    @FXML private VBox header;
+    @FXML private StackPane content;
+
+    public IndexController(GetTranslationUseCase getTranslation, Navigator navigator){
+        this.getTranslation = getTranslation;
+        this.navigator = navigator;
     }
 
-    @FXML private HBox titleBar;
     public void initialize() {
-        this.mouseMove = new MouseMove(titleBar);
+        MouseMove mouseMove = new MouseMove(header);
         mouseMove.start();
     }
 
 
-    @FXML
-    private Button btnClose;
-    @FXML
-    protected void onCloseClick() {
-        ((Stage) btnClose.getScene().getWindow()).close();
+    @FXML protected void onPlugins(){
+
     }
+    @FXML protected void onCreateProject(){
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "/org/example/mineide/mainPageOptions/createNewProject.fxml"
+                    )
+            );
 
-    @FXML
-    private Button btnMinimize;
-    @FXML
-    protected void onMinimizeClick() {
-        Stage stage = (Stage) btnMinimize.getScene().getWindow();
-        stage.setIconified(true);
-    }
+            Parent root = loader.load();
+            Stage parentStage = (Stage) btnClose.getScene().getWindow();
+            Stage stage = new Stage();
 
-    /*--------------------------------------
-         Este metodo contiene atributos para su funcionamiento tanto de JavaFX como
-         privados booleanos
-     ------------------------------------*/
+            stage.initOwner(parentStage);
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.initStyle(StageStyle.TRANSPARENT);
 
-    @FXML
-    private Button btnMaximize;
-    @FXML
-    private StackPane root;
-    private boolean maximized = true;
-    @FXML protected void onMaximizeClick() {
-        Stage stage = (Stage) btnMaximize.getScene().getWindow();
-        System.out.println("🔥 input de entrada" + maximized);
-        if (maximized) {
-            Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
 
-            stage.setX(bounds.getMinX());
-            stage.setY(bounds.getMinY());
-            stage.setWidth(bounds.getWidth());
-            stage.setHeight(bounds.getHeight());
+            Scene scene = new Scene(root);
+            scene.setFill(Color.TRANSPARENT);
 
-            root.getStyleClass().add("maximized");
-            maximized = false;
+            scene.getStylesheets().addAll(
+                    getClass().getResource("/styles/mainPage.css").toExternalForm(),
+                    getClass().getResource("/styles/index.css").toExternalForm()
+            );
+            stage.initStyle(StageStyle.TRANSPARENT);
+            Rectangle2D screen = Screen.getPrimary().getVisualBounds();
 
-        } else {
-            stage.setWidth(1300);
-            stage.setHeight(700);
+            double width = screen.getWidth() * 0.60;
+            double height = screen.getHeight() * 0.85;
+
+            stage.setWidth(width);
+            stage.setHeight(height);
+
+            stage.setX(
+                    screen.getMinX() +
+                            (screen.getWidth() - width) / 2
+            );
+
+            stage.setY(
+                    screen.getMinY() +
+                            (screen.getHeight() - height) / 2
+            );
+            stage.setMinWidth(900);
+            stage.setMinHeight(600);
+            stage.setMaximized(false);
             stage.centerOnScreen();
-            root.getStyleClass().remove("maximized");
-            maximized = true;
-        }
-        System.out.println("🔥 input de salida" + maximized);
-    }
-    @FXML
-    protected void onTitleBarPressed(MouseEvent event) {
-        System.out.println("CLICK");
-        if (maximized){
-            onMaximizeClick();
-        }
-    }
-    @FXML
-    protected void onTitleBarDragged(MouseEvent event) {
-        System.out.println("DRAG");
-        if (maximized){
-            onMaximizeClick();
-        }
-    }
+            stage.setTitle("Create New Project");
+            stage.setScene(scene);
+            stage.showAndWait();
 
-    @FXML
-    private BorderPane brPanel;
-    @FXML
-    protected void onServersClick() {
-        LoadContent("servers.fxml");
-    }
+            if (!ProjectManagerUseCase.isOpenProject()) return;
 
-    @FXML
-    protected  void onFilesClick(){
-        LoadContent("files.fxml");
-    }
-    @FXML
-    protected void onConsoleClick () {
-        LoadContent("console.fxml");
-    }
+            stage.hide();
 
-    @FXML
-    protected void onBackupsClick() {
-        LoadContent("backups.fxml");
-    }
-
-    private void LoadContent(String fileName){
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/org/example/mineide/center/" + fileName)
-            );
-
-            Parent view = loader.load();
-
-            brPanel.setCenter(view);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    private StackPane modalOverlay;
-
-    @FXML
-    private void onSettingAppClick() {
-        openCreateServerModal();
-    }
-
-    private void openCreateServerModal() {
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/org/example/mineide/embed.fxml")
-            );
-
-            Parent modal = loader.load();
-
-            modalOverlay.getChildren().clear();
-            modalOverlay.getChildren().add(modal);
-
-            modalOverlay.setVisible(true);
+            navigator.navigate("mainPage.fxml", 0.98, 0.98);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -163,16 +108,21 @@ public class IndexController {
 
 
 
-    @FXML
-    protected void onFileClick() {
-       //desplegar menu
+    @FXML protected void onSettings(){
+
     }
-    @FXML
-    protected void onCodeClick() {
-        //desplegar menu
+    @FXML protected void onClearRecent(){
+
     }
-    @FXML
-    protected void onGitClick() {
-        //desplegar menu
+    @FXML protected void onConnectSftp(){
+
+    }
+    @FXML protected void onOpenFolder(){
+
+    }
+    @FXML protected void onClose(){
+        Stage stage = (Stage) btnClose.getScene().getWindow();
+        stage.close();
+
     }
 }

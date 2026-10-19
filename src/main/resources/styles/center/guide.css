@@ -1,0 +1,50 @@
+
+.guide-container {
+    -fx-background-color: transparent;
+}
+
+.guide-header {
+    -fx-padding: 0 0 4 0;
+}
+
+.guide-eyebrow {
+    -fx-text-fill: #83bdff;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.guide-title {
+    -fx-text-fill: #F5F5FF;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
+.guide-welcome-card {
+    -fx-background-color: linear-gradient(
+            to right, #1a75af, #202947
+    );
+    -fx-background-radius: 16px;
+    -fx-padding: 24px;
+}
+
+.guide-welcome-content {
+    -fx-padding: 4px;
+}
+
+.guide-welcome-title {
+    -fx-text-fill: white;
+    -fx-font-size: 21px;
+    -fx-font-weight: bold;
+}
+
+.guide-welcome-description,
+.guide-card-description,
+.guide-tutorial-description {
+    -fx-text-fill: #A9AEC5;
+    -fx-font-size: 12px;
+}
+
+
+
+
+

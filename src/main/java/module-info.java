@@ -2,9 +2,8 @@ module org.example.mineide {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
-
+    requires org.yaml.snakeyaml;
     requires java.net.http;
-
     requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
     requires org.controlsfx.controls;
@@ -24,6 +23,8 @@ module org.example.mineide {
     opens org.example.mineide.presentation.controllers.center to javafx.fxml;
     opens org.example.mineide.presentation.controllers.mainPageOptions to javafx.fxml;
 
+    exports org.example.mineide.application.usecase;
+    exports org.example.mineide.domain.repository;
     exports org.example.mineide;
     exports org.example.mineide.presentation.controllers;
 }

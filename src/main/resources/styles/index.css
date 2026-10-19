@@ -12,21 +12,23 @@
 
 .sidebar-buttons{
     -fx-background-color: transparent;
+    -fx-background-radius: 15;
     -fx-text-fill: #D9DFEC;
     -fx-border-width: 0px;
-    -fx-padding: 10 10 10 32px;
+    -fx-padding: 15 15 14 15px;
     -fx-font-family: "Poppins";
-    -fx-font-size: 12px;
-    -fx-graphic-text-gap: 10px;
+    -fx-font-size: 13px;
+    -fx-graphic-text-gap: 15px;
 }
 .sidebar-buttons:hover{
-    -fx-background-color: #303B57;
+    -fx-background-color: #3B82F6;
 }
+/*-fx-background-color: #303B57;*/
 .sidebar-icons{
     -fx-icon-color: White;
 }
 .sidebar-style{
-   -fx-padding: 15 8 0 8px;
+   -fx-padding: 15 10 0 10px;
 }
 .category-text{
     -fx-text-fill: #B0B0B0;

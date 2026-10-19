@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane
+        xmlns="http://javafx.com/javafx/21"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="org.example.mineide.presentation.controllers.center.GuideController"
+        styleClass="content-style">
+
+    <ScrollPane
+            fx:id="guideScroll"
+            fitToWidth="true"
+            hbarPolicy="NEVER"
+            vbarPolicy="AS_NEEDED"
+            styleClass="console-scroll"
+            AnchorPane.topAnchor="0"
+            AnchorPane.bottomAnchor="0"
+            AnchorPane.leftAnchor="0"
+            AnchorPane.rightAnchor="0">
+
+        <VBox
+                fx:id="guideContainer"
+                spacing="24"
+                styleClass="guide-container">
+
+            <padding>
+                <Insets top="32" right="32" bottom="32" left="32"/>
+            </padding>
+
+            <!-- Encabezado -->
+            <VBox spacing="8" styleClass="guide-header">
+
+                <Label
+                        text="GETTING STARTED"
+                        styleClass="guide-eyebrow"/>
+
+                <Label
+                        text="¿No sabes cómo empezar?"
+                        styleClass="guide-title"
+                        wrapText="true"/>
+
+                <Label
+                        text="Configura tu servidor, administra sus funciones y aprende paso a paso."
+                        styleClass="section-description"
+                        wrapText="true"/>
+
+            </VBox>
+
+            <!-- Tarjeta de bienvenida -->
+            <StackPane
+                    fx:id="welcomeCard"
+                    minHeight="150"
+                    styleClass="guide-welcome-card">
+
+                <VBox
+                        alignment="CENTER_LEFT"
+                        spacing="12"
+                        styleClass="guide-welcome-content">
+
+                    <Label
+                            text="✦  TU SERVIDOR, A TU MANERA"
+                            styleClass="guide-eyebrow"/>
+
+                    <Label
+                            text="Todo listo para comenzar"
+                            styleClass="guide-welcome-title"
+                            wrapText="true"/>
+
+                    <Label
+                            text="Utiliza los accesos rápidos o inicia un tutorial interactivo."
+                            styleClass="guide-welcome-description"
+                            wrapText="true"/>
+
+                </VBox>
+
+            </StackPane>
+
+            <!-- Accesos rápidos -->
+            <VBox spacing="14">
+
+                <VBox spacing="5">
+                    <Label
+                            text="Accesos rápidos"
+                            styleClass="section-title"/>
+
+                    <Label
+                            text="Elige qué quieres hacer."
+                            styleClass="section-description"/>
+                </VBox>
+
+                <GridPane
+                        fx:id="quickActionsGrid"
+                        hgap="16"
+                        vgap="16">
+
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="50" hgrow="ALWAYS"/>
+                        <ColumnConstraints percentWidth="50" hgrow="ALWAYS"/>
+                    </columnConstraints>
+
+                    <!-- Configurar servidor -->
+                    <VBox
+                            fx:id="configureCard"
+                            GridPane.columnIndex="0"
+                            GridPane.rowIndex="0"
+                            spacing="12"
+                            styleClass="action-card">
+
+                        <Label text="⚙" styleClass="action-title"/>
+
+                        <VBox spacing="5">
+                            <Label
+                                    text="Configurar mi servidor"
+                                    styleClass="guide-card-title"
+                                    wrapText="true"/>
+
+                            <Label
+                                    text="Ajusta las opciones principales de tu servidor."
+                                    styleClass="guide-card-description"
+                                    wrapText="true"/>
+                        </VBox>
+
+                        <Region VBox.vgrow="ALWAYS"/>
+
+                        <Button
+                                fx:id="btnConfigureServer"
+                                text="Configurar  →"
+                                onAction="#onConfigureServer"
+                                maxWidth="Infinity"
+                                styleClass="secondary-button"/>
+
+                    </VBox>
+
+                    <!-- Cambiar idioma -->
+                    <VBox
+                            fx:id="languageCard"
+                            GridPane.columnIndex="1"
+                            GridPane.rowIndex="0"
+                            spacing="12"
+                            styleClass="action-card">
+
+                        <Label text="文" styleClass="action-title"/>
+
+                        <VBox spacing="5">
+                            <Label
+                                    text="Cambiar de idioma"
+                                    styleClass="guide-card-title"
+                                    wrapText="true"/>
+
+                            <Label
+                                    text="Utiliza MineIDE en el idioma que prefieras."
+                                    styleClass="guide-card-description"
+                                    wrapText="true"/>
+                        </VBox>
+
+                        <Region VBox.vgrow="ALWAYS"/>
+
+                        <Button
+                                fx:id="btnChangeLanguage"
+                                text="Elegir idioma  →"
+                                onAction="#onChangeLanguage"
+                                maxWidth="Infinity"
+                                styleClass="secondary-button"/>
+
+                    </VBox>
+
+                    <!-- Iniciar servidor -->
+                    <VBox
+                            fx:id="startCard"
+                            GridPane.columnIndex="0"
+                            GridPane.rowIndex="1"
+                            spacing="12"
+                            styleClass="action-card">
+
+                        <Label text="▶" styleClass="action-title"/>
+
+                        <VBox spacing="5">
+                            <Label
+                                    text="Iniciar servidor"
+                                    styleClass="guide-card-title"
+                                    wrapText="true"/>
+
+                            <Label
+                                    text="Pon tu servidor en marcha y prepáralo para jugar."
+                                    styleClass="guide-card-description"
+                                    wrapText="true"/>
+                        </VBox>
+
+                        <Region VBox.vgrow="ALWAYS"/>
+
+                        <Button
+                                fx:id="btnStartServer"
+                                text="Iniciar  →"
+                                onAction="#onStartServer"
+                                maxWidth="Infinity"
+                                styleClass="secondary-button"/>
+
+                    </VBox>
+
+                    <!-- Instalar plugins -->
+                    <VBox
+                            fx:id="pluginsCard"
+                            GridPane.columnIndex="1"
+                            GridPane.rowIndex="1"
+                            spacing="12"
+                            styleClass="action-card">
+
+                        <Label text="✧" styleClass="guide-action-icon"/>
+
+                        <VBox spacing="5">
+                            <Label
+                                    text="Instalar plugins"
+                                    styleClass="action-title"
+                                    wrapText="true"/>
+
+                            <Label
+                                    text="Añade funciones y personaliza la experiencia."
+                                    styleClass="guide-card-description"
+                                    wrapText="true"/>
+                        </VBox>
+
+                        <Region VBox.vgrow="ALWAYS"/>
+
+                        <Button
+                                fx:id="btnInstallPlugins"
+                                text="Ver plugins  →"
+                                onAction="#onInstallPlugins"
+                                maxWidth="Infinity"
+                                styleClass="secondary-button"/>
+
+                    </VBox>
+
+                </GridPane>
+
+            </VBox>
+
+
+
+        </VBox>
+
+    </ScrollPane>
+
+</AnchorPane>

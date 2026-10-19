@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.example.mineide.presentation.controllers.utils.MouseMove;
+import org.example.mineide.presentation.utils.MouseMove;
 
 public class ErrorPageController {
 

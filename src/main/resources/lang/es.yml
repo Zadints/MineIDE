@@ -1,0 +1,2 @@
+exceptions:
+  FileDoesNotExist: "No se encontró el archivo seleccionado"

@@ -10,106 +10,49 @@ import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.example.mineide.core.domain.exceptions.ApiException;
+import org.example.mineide.bootstrap.AppCompositionRoot;
+import org.example.mineide.bootstrap.ControllerFactory;
+import org.example.mineide.infraestructure.lang.InMemoryLangRepository;
+import org.example.mineide.domain.exceptions.ApiException;
+import org.example.mineide.presentation.navigation.Navigator;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Set;
 
-import static org.example.mineide.core.application.usecase.StartAppUseCase.loadDataReuired;
+import static org.example.mineide.application.usecase.StartAppUseCase.loadDataReuired;
 
 public class App extends Application {
+
+    private String[] fonts = {
+            "Poppins-Regular.ttf",
+            "Poppins-Light.ttf",
+            "pins-Bold.ttf",
+            "Poppins-Black.ttf",
+            "PixelifySans-Regular.ttf"
+    };
 
     @Override
     public void start(Stage stage) throws IOException {
 
+        AppCompositionRoot root = new AppCompositionRoot();
 
-        Font.loadFont(
-                getClass().getResourceAsStream("/fonts/Poppins-Regular.ttf"),
-                14
-        );
+        ControllerFactory factory = new ControllerFactory(root);
 
-        Font.loadFont(
-                getClass().getResourceAsStream("/fonts/Poppins-Light.ttf"),
-                14
-        );
+        for (String s: fonts){
+            Font.loadFont(getClass().getResourceAsStream("/fonts/"+s), 14);
+        }
 
-        Font.loadFont(
-                getClass().getResourceAsStream("/fonts/Poppins-Bold.ttf"),
-                14
-        );
+        Navigator navigator = new Navigator(stage, factory);
 
-        Font.loadFont(
-                getClass().getResourceAsStream("/fonts/Poppins-Black.ttf"),
-                14
-        );
+        factory.setNavigator(navigator);
 
-        Font.loadFont(
-                getClass().getResourceAsStream("/fonts/PixelifySans-Regular.ttf"),
-                14
-        );
+        navigator.navigate("index.fxml");
 
-
-
-        FXMLLoader fxmlLoader = new FXMLLoader(
-                App.class.getResource("mainPage.fxml")
-        );
-
-        Parent root = fxmlLoader.load();
-
-
-
-        Scene scene = new Scene(root);
-
-        scene.setFill(Color.TRANSPARENT);
-
-
-
-        scene.getStylesheets().addAll(
-                getClass().getResource("/styles/index.css").toExternalForm(),
-                getClass().getResource("/styles/center-styles.css").toExternalForm(),
-                getClass().getResource("/styles/mainPage.css").toExternalForm()
-        );
-
-
-        stage.initStyle(StageStyle.TRANSPARENT);
-
-        Rectangle2D screen = Screen.getPrimary().getVisualBounds();
-
-        double width = screen.getWidth() * 0.80;
-        double height = screen.getHeight() * 0.90;
-
-        stage.setWidth(width);
-        stage.setHeight(height);
-
-        stage.setX(
-                screen.getMinX() +
-                        (screen.getWidth() - width) / 2
-        );
-
-        stage.setY(
-                screen.getMinY() +
-                        (screen.getHeight() - height) / 2
-        );
-
-
-        stage.setMinWidth(1300);
-        stage.setMinHeight(700);
-
-        stage.setMaximized(false);
-
-        stage.setTitle("MineIDE");
-
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.show();
     }
 
     public static void main(String[] args) {
-        try {
-            loadDataReuired();
-        }catch (ApiException e){
-            //aqui colocaremos una exception personalizada para mostrar en ui
-        }
 
-        launch();
+        launch(args);
     }
 }

@@ -4,29 +4,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.*;
-import org.example.mineide.core.application.dto.MinecraftVersionDTO;
-import org.example.mineide.core.application.dto.NewProjectDto;
-import org.example.mineide.core.application.usecase.ProjectManagerUseCase;
-import org.example.mineide.core.application.usecase.StartAppUseCase;
-import org.example.mineide.core.domain.enums.JdkEnum;
+import org.example.mineide.application.dto.MinecraftVersionDTO;
+import org.example.mineide.application.dto.NewProjectDto;
+import org.example.mineide.application.usecase.ProjectManagerUseCase;
+import org.example.mineide.application.usecase.StartAppUseCase;
+import org.example.mineide.domain.enums.JdkEnum;
 import org.example.mineide.presentation.controllers.ErrorPageController;
-import org.example.mineide.presentation.controllers.utils.MouseMove;
-import org.example.mineide.core.application.usecase.EvalueVersionUseCase;
+import org.example.mineide.presentation.utils.MouseMove;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.List;
 
 public class CreateNewProject {
     @FXML private VBox header;
@@ -99,10 +93,13 @@ public class CreateNewProject {
             downloadDependencies
         );
 
-        String isCreated = ProjectManagerUseCase.createProject(newProject);
+        String reasonCreated = ProjectManagerUseCase.createProject(newProject);
 
-        if (!isCreated.isEmpty()){
-            launchErrorWindows(isCreated, "Error al crear proyecto",btnCreate.getScene());
+        if (!reasonCreated.isEmpty()){
+            launchErrorWindows(
+                    reasonCreated,
+                    "Error al crear proyecto",
+                    btnCreate.getScene());
             return;
         }
 

@@ -1,6 +1,6 @@
 package org.example.mineide.infraestructure.models.api;
 
-import org.example.mineide.core.application.dto.ResponseDTO;
+import org.example.mineide.application.dto.ResponseDTO;
 
 import java.net.URI;
 import java.net.http.HttpResponse;
