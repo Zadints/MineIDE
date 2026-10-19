@@ -1,31 +1,28 @@
 package org.example.mineide.application.dto;
 
 import org.example.mineide.domain.annotations.Optional;
+import org.example.mineide.domain.entities.ServerFiles;
+import org.example.mineide.domain.entities.ServerJar;
 import org.example.mineide.domain.enums.JdkEnum;
 
 public class NewProjectDto {
 
     private String serverName;
     private String locationNewProject;
-
-    private MinecraftVersionDTO versionAndSoftware;
-    @Optional private String serverSoftwarePath;
+    private ServerJar serverJar;
 
     private JdkEnum jdkVersion;
-    @Optional private String jdkPath;
 
     private boolean initializeRepository;
     private boolean createReadme;
     private boolean generateGitIgnore;
     private boolean downloadDependencies;
 
-    public NewProjectDto(String serverName, String locationNewProject, MinecraftVersionDTO versionAndSoftware, JdkEnum jdkVersion, String serverSoftwarePath, String jdkPath, boolean initializeRepository, boolean createReadme, boolean generateGitIgnore, boolean downloadDependencies) {
+    public NewProjectDto(String serverName, String locationNewProject, ServerJar serverJar, JdkEnum jdkVersion, boolean initializeRepository, boolean createReadme, boolean generateGitIgnore, boolean downloadDependencies) {
         this.serverName = serverName;
         this.locationNewProject = locationNewProject;
-        this.versionAndSoftware = versionAndSoftware;
+        this.serverJar = serverJar;
         this.jdkVersion = jdkVersion;
-        this.serverSoftwarePath = serverSoftwarePath;
-        this.jdkPath = jdkPath;
         this.initializeRepository = initializeRepository;
         this.createReadme = createReadme;
         this.generateGitIgnore = generateGitIgnore;
@@ -40,16 +37,12 @@ public class NewProjectDto {
         return locationNewProject;
     }
 
-    public String getServerSoftwarePath() {
-        return serverSoftwarePath;
+    public ServerJar getServerJar() {
+        return serverJar;
     }
 
     public JdkEnum getJdkVersion() {
         return jdkVersion;
-    }
-
-    public String getJdkPath() {
-        return jdkPath;
     }
 
     public boolean isInitializeRepository() {
@@ -66,9 +59,5 @@ public class NewProjectDto {
 
     public boolean isDownloadDependencies() {
         return downloadDependencies;
-    }
-
-    public MinecraftVersionDTO getVersionAndSoftware() {
-        return versionAndSoftware;
     }
 }

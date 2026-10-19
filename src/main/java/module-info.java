@@ -23,8 +23,11 @@ module org.example.mineide {
     opens org.example.mineide.presentation.controllers.center to javafx.fxml;
     opens org.example.mineide.presentation.controllers.mainPageOptions to javafx.fxml;
 
+    exports org.example.mineide.domain.entities;
     exports org.example.mineide.application.usecase;
     exports org.example.mineide.domain.repository;
     exports org.example.mineide;
     exports org.example.mineide.presentation.controllers;
+    exports org.example.mineide.application.usecase.Serverjar;
+    exports org.example.mineide.application.services;
 }

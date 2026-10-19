@@ -5,6 +5,7 @@ import org.example.mineide.application.dto.NewProjectDto;
 import org.example.mineide.application.dto.ResponseDTO;
 import org.example.mineide.application.dto.VersionDTO;
 import org.example.mineide.domain.entities.Project;
+import org.example.mineide.domain.entities.ServerJar;
 import org.example.mineide.domain.enums.JdkEnum;
 import org.example.mineide.infraestructure.models.api.ApiLinksClient;
 
@@ -84,65 +85,15 @@ public class ProjectManagerUseCase {
             return "La ruta del directorio a crear no existe o está mal escrita";
         }
 //-------------------------------------------------------------------------------------------
+        //por default vienen con valores default xd
 
-        Path pathSoftware = null;
+        JdkEnum jdkVersion = newProjectDto.getJdkVersion();
 
-        String version = null;
-        String software = null;
+        if (jdkVersion == null) throw new IllegalArgumentException("jdkVersion is null");
 
-        String softwarePath = newProjectDto.getServerSoftwarePath();
+        ServerJar serverJar = newProjectDto.getServerJar();
+        serverJar.setJdkVersion(jdkVersion);
 
-        if (evalueData(softwarePath)) {
-
-            try {
-                pathSoftware = Path.of(softwarePath);
-
-                if (!Files.isRegularFile(pathSoftware)) {
-                    return "La ruta del server.jar no existe";
-                }
-
-            } catch (InvalidPathException e) {
-                return "La ruta del server.jar está mal escrita";
-            }
-
-        } else {
-            MinecraftVersionDTO versionAndSoftware =
-                    newProjectDto.getVersionAndSoftware();
-
-            version = versionAndSoftware.getId();
-            software = versionAndSoftware.getType();
-
-            if (!evalueData(version) || !evalueData(software)) {
-                return "Debes seleccionar una versión y software";
-            }
-        }
-
-//-------------------------------------------------------------------------------------------
-        String jdkPath = newProjectDto.getJdkPath();
-        Path jdkPathConverter = null;
-        try {
-            jdkPathConverter = evaluePath(jdkPath);
-        } catch (InvalidPathException e){
-            return "la ruta para usar el jdk es inválida déjala en automática";
-        }
-
-
-//-------------------------------------------------------------------------------------------
-
-        // Evaluar compatibilidad del jdk con la version actual
-        JdkEnum jdkVersion;
-        try {
-            jdkVersion = newProjectDto.getJdkVersion();
-        } catch (Exception e){
-            jdkVersion = null;
-        }
-        if (jdkVersion != null && version != null){
-            VersionDTO evalueResult = evalueJDK(jdkVersion, version);
-            if (evalueResult.getStatus()){}
-            else {
-                return evalueResult.getMessage();
-            }
-        }
 //-------------------------------------------------------------------------------------------
 
         boolean initializeRepository = newProjectDto.isInitializeRepository();
@@ -156,15 +107,17 @@ public class ProjectManagerUseCase {
                 uuid,
                 serverName,
                 pathNewProject,
-                newProjectDto.getVersionAndSoftware(),
-                jdkVersion,
-                jdkPathConverter,
+                serverJar,
                 initializeRepository,
                 createReadme,
                 generateGitIgnore,
                 downloadDependencies
                 );
         projectsCreatedList.add(actualProject);
+
+        /*Lore guardame aqui en el cache que pusiste
+        toda la entidad Project pero hacelo por procedimientos almacenados ocn metodos separados
+         */
 
         File CacheDierctory = new File(System.getenv("LOCALAPPDATA") + File.separator +"MineIDE" + File.separator + "Cache" + File.separator + "DB");
         if (!CacheDierctory.exists()){
@@ -200,14 +153,14 @@ public class ProjectManagerUseCase {
             e.printStackTrace();
             return "Error with sql conecction";
         }
-        MinecraftVersionDTO requeriments = newProjectDto.getVersionAndSoftware();
-        deployProject(pathNewProject, requeriments);
+
+        deployProject(pathNewProject, newProjectDto.getServerJar());
         return "";
     }
 
     private static String deployProject(Path path, MinecraftVersionDTO requeriments){
 
-        //------------------ descargamso todo y creamos carpeta del proyecto mijin:
+
         ResponseDTO request = new ResponseDTO();
         try (DatagramSocket connection = new DatagramSocket()){
             connection.connect(InetAddress.getByName("8.8.8.8"),10002);
@@ -217,8 +170,8 @@ public class ProjectManagerUseCase {
                     "connect internet and try again";
         }
         if (request.Ip() != null){
-            request.setSoft(requeriments.getType());
-            request.setVers(requeriments.getId());
+            request.setSoft(requeriments.getSoftware());
+            request.setVers(requeriments.getVersion());
             try {
                 createWorkspace(path);
                 ResponseDTO response = ApiLinksClient.getLink(request);

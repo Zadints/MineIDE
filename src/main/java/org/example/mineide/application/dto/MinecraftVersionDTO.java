@@ -1,35 +1,35 @@
 package org.example.mineide.application.dto;
 
 public class MinecraftVersionDTO {
-    private String id;
-    private String type;
+    private String version;
+    private String software;
 
     public MinecraftVersionDTO(String id, String type) {
-        this.id = id;
-        this.type = type;
+        this.version = id;
+        this.software = type;
     }
 
-    public String getId() {
-        return id;
+    public String getVersion() {
+        return version;
     }
 
-    public String getType() {
-        return type;
+    public String getSoftware() {
+        return software;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setVersion(String version) {
+        this.version = version;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setSoftware(String software) {
+        this.software = software;
     }
 
     public String toSoftware() {
-        return type;
+        return software;
     }
 
     public String toVersion() {
-        return id;
+        return version;
     }
 }

@@ -12,8 +12,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.*;
 import org.example.mineide.application.dto.MinecraftVersionDTO;
 import org.example.mineide.application.dto.NewProjectDto;
+import org.example.mineide.application.services.ServerJarServices;
 import org.example.mineide.application.usecase.ProjectManagerUseCase;
 import org.example.mineide.application.usecase.StartAppUseCase;
+import org.example.mineide.domain.entities.ServerJar;
 import org.example.mineide.domain.enums.JdkEnum;
 import org.example.mineide.presentation.controllers.ErrorPageController;
 import org.example.mineide.presentation.utils.MouseMove;
@@ -32,14 +34,15 @@ public class CreateNewProject {
     @FXML private Button btnBrowseDirectory;
     @FXML private TextField txtServerDirectory;
     @FXML private ComboBox<JdkEnum> cbxJdkVersion;
-    @FXML private Button btnBrowseJDK;
-    @FXML private TextField txtJavaJDK;
     @FXML private Button btnBrowseSoftwareJava;
     @FXML private TextField txtJavaSofware;
     @FXML private CheckBox chkGit;
     @FXML private CheckBox chkReadme;
     @FXML private CheckBox chkGitIgnore;
     @FXML private CheckBox chkDownloadDependencies;
+
+    private ServerJar serverjar;
+
 
     public void initialize() {
         MouseMove mouseMove = new MouseMove(header);
@@ -60,19 +63,10 @@ public class CreateNewProject {
         String serverName = txtServerName.getText();
         String locationNewProject = txtServerDirectory.getText();
 
-        String serverSoftwarePath = txtJavaSofware.getText();
-        String version = null;
-        String software = null;
+        JdkEnum jdkVersion = (JdkEnum) cbxJdkVersion.getValue();
 
-        if (serverSoftwarePath == null || serverSoftwarePath.isBlank()){
-            version = cbxMinecraftVersion.getValue();
-            software = cbxServerSoftware.getValue();
-        }
-
-        String jdkPath = txtJavaJDK.getText();
-        JdkEnum jdkVersion = null;
-        if (jdkPath == null || jdkPath.isBlank()){
-            jdkVersion = cbxJdkVersion.getValue();
+        if (jdkVersion == null){
+            jdkVersion = JdkEnum.JDK_26;
         }
 
         boolean initializeGit = chkGit.isSelected();
@@ -83,10 +77,9 @@ public class CreateNewProject {
         NewProjectDto newProject = new NewProjectDto(
             serverName,
             locationNewProject,
-            new MinecraftVersionDTO(version, software),
+            serverjar,
             jdkVersion,
-            serverSoftwarePath,
-            jdkPath,
+
             initializeGit,
             createReadme,
             generateGitIgnore,
@@ -108,21 +101,30 @@ public class CreateNewProject {
     @FXML private void onBrowseJava(){
         Path path = selectArchive("server.jar", btnBrowseSoftwareJava.getScene());
         if (path == null) return;
+        try {
+            serverjar = ServerJarServices.getType(path);
+            serverjar.setPath(path);
+            serverjar.setJarName(path.getFileName().toString());
+
+        } catch (IOException e){
+            launchErrorWindows(e.getMessage(), "Error", btnBrowseSoftwareJava.getScene());
+        }
+
 
         txtJavaSofware.setText(path.toString());
+        txtJavaSofware.setEditable(false);
         cbxMinecraftVersion.setDisable(true);
         cbxServerSoftware.setDisable(true);
-        cbxMinecraftVersion.setPromptText("Already selected");
-        cbxServerSoftware.setPromptText("Already selected");
-    }
-    @FXML private void onBrowseJDK(){
-        Path path = selectArchive("server.jar", btnBrowseJDK.getScene());
-        if (path == null) return;
 
-        txtJavaJDK.setText(path.toString());
-        cbxJdkVersion.setDisable(true);
-        cbxJdkVersion.setPromptText("Already selected");
+        if (serverjar != null){
+            cbxMinecraftVersion.setPromptText(serverjar.getVersion());
+            cbxServerSoftware.setPromptText(serverjar.getSoftware());
+            return;
+        }
+        cbxMinecraftVersion.setPromptText("Already Selected");
+        cbxServerSoftware.setPromptText("Already Selected");
     }
+
 
 
 

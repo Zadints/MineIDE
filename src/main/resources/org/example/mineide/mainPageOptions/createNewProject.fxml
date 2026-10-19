@@ -391,30 +391,6 @@
 
                         </VBox>
 
-                        <!-- JAVA PATH -->
-
-                        <VBox spacing="7"
-                              GridPane.columnIndex="1"
-                              GridPane.rowIndex="0">
-
-                            <Label text="Java Runtime (*optional)"
-                                   styleClass="input-label"/>
-
-                            <HBox spacing="8">
-
-                                <TextField fx:id="txtJavaJDK"
-                                           promptText="Auto-detect"
-                                           HBox.hgrow="ALWAYS"
-                                           styleClass="secondary-input"/>
-
-                                <Button text="Browse"
-                                        fx:id="btnBrowseJDK"
-                                        onAction="#onBrowseJDK"
-                                        styleClass="secondary-button"/>
-
-                            </HBox>
-
-                        </VBox>
 
                     </GridPane>
 
