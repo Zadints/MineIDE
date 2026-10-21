@@ -112,45 +112,6 @@ public class ProjectManagerUseCase {
         actualProject = newProject;
         projectsCreatedList.add(newProject);
         deployNewProject(newProject);
-        /*Lore guardame aqui en el cache que pusiste
-        toda la entidad Project pero hacelo por procedimientos almacenados ocn metodos separados
-         */
-
-        File CacheDierctory = new File(System.getenv("LOCALAPPDATA") + File.separator +"MineIDE" + File.separator + "Cache" + File.separator + "DB");
-        if (!CacheDierctory.exists()){
-            CacheDierctory.mkdirs();
-        }
-        try (Connection con = DriverManager.getConnection("jdbc:sqlite:" + CacheDierctory.getPath() + File.separator + "CacheDB");) {
-            if (evalueTable(con,"PROJECTS")){
-                PreparedStatement stm = con.prepareStatement("INSERT INTO PROJECTS (ID, NAME, PATH, VERSION) VALUES (?, ?, ?, ?)");
-                stm.setString(1,uuid);
-                stm.setString(2,serverName);
-                stm.setString(3,pathNewProject.toString());
-                stm.setString(4,actualProject.getServerJarVersion());
-                stm.executeUpdate();
-                stm.close();
-
-                PreparedStatement stmt = con.prepareStatement("SELECT * FROM PROJECTS");
-                ResultSet rs = stmt.executeQuery();
-                while (rs.next()){
-                    System.out.println(rs.getString("NAME"));
-                }
-            } else {
-                Statement stm = con.createStatement();
-                stm.execute("CREATE TABLE PROJECTS(" +
-                        "ID INTEGER UNIQUE , " +
-                        "NAME TEXT NOT NULL, " +
-                        "PATH TEXT NOT NULL, " +
-                        "VERSION TEXT NOT NULL" +
-                        ");"
-                );
-                return "DataBase created, try now";
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return "Error with sql conecction";
-        }
-
 
         return "";
     }
@@ -166,6 +127,10 @@ public class ProjectManagerUseCase {
 
         try {
             createWorkspace(newProject);
+            copyServerJar(
+                    newProject.getServerJarActualLocation(),
+                    newProject.getProjectLocation()
+            );
 
         } catch (IOException e){
             throw new CreateNewProjectException(e.getMessage());
@@ -183,7 +148,7 @@ public class ProjectManagerUseCase {
 
         Path projectDeployPath = project.getProjectLocation();
         Path mideDirectory = projectDeployPath.resolve(".mide");
-        Files.createDirectories(mideDirectory);
+        Files.createDirectory(mideDirectory);
         Path workspaceFile = mideDirectory.resolve("workspace.yml");
 
         String content = """
@@ -229,8 +194,10 @@ public class ProjectManagerUseCase {
         }
 
     }
-    public static Path copyServerJar(Path sourcePath, Path destinationPath)
+    public static void copyServerJar(Path sourcePath, Path destinationPath)
             throws IOException {
+
+        if (sourcePath.equals(destinationPath)) return;
 
         Path parent = destinationPath.getParent();
 
@@ -242,7 +209,6 @@ public class ProjectManagerUseCase {
                 destinationPath
         );
 
-        return destinationPath;
     }
 
     /*
@@ -275,5 +241,50 @@ public class ProjectManagerUseCase {
         }
     *
     *
+    *
+    *
+
     * */
+
+
+    /*Lore guardame aqui en el cache que pusiste
+        toda la entidad Project pero hacelo por procedimientos almacenados ocn metodos separados
+
+
+    File CacheDierctory = new File(System.getenv("LOCALAPPDATA") + File.separator +"MineIDE" + File.separator + "Cache" + File.separator + "DB");
+        if (!CacheDierctory.exists()){
+        CacheDierctory.mkdirs();
+    }
+        try (Connection con = DriverManager.getConnection("jdbc:sqlite:" + CacheDierctory.getPath() + File.separator + "CacheDB");) {
+        if (evalueTable(con,"PROJECTS")){
+            PreparedStatement stm = con.prepareStatement("INSERT INTO PROJECTS (ID, NAME, PATH, VERSION) VALUES (?, ?, ?, ?)");
+            stm.setString(1,uuid);
+            stm.setString(2,serverName);
+            stm.setString(3,pathNewProject.toString());
+            stm.setString(4,actualProject.getServerJarVersion());
+            stm.executeUpdate();
+            stm.close();
+
+            PreparedStatement stmt = con.prepareStatement("SELECT * FROM PROJECTS");
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()){
+                System.out.println(rs.getString("NAME"));
+            }
+        } else {
+            Statement stm = con.createStatement();
+            stm.execute("CREATE TABLE PROJECTS(" +
+                    "ID INTEGER UNIQUE , " +
+                    "NAME TEXT NOT NULL, " +
+                    "PATH TEXT NOT NULL, " +
+                    "VERSION TEXT NOT NULL" +
+                    ");"
+            );
+            return "DataBase created, try now";
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return "Error with sql conecction";
+    }
+
+*/
 }

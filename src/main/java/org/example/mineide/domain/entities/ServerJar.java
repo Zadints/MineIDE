@@ -12,6 +12,9 @@ public class ServerJar {
     private String build; //💡
     private JdkEnum jdkVersion;
     private String description;
+    /**
+     * Este path se actualiza cuando se crea el proeycto y guarda en cache.
+     **/
     private Path actualLocation;
 
     private boolean firshCostructorCall = false;

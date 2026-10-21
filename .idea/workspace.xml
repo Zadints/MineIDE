@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bedc524-2081-4b19-b88c-77072dac0748" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/exceptions/AlreadySetValueEntityException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/exceptions/CreateNewProjectException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/usecase/ProjectManagerUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/usecase/ProjectManagerUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/entities/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/entities/Project.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/entities/ServerFiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/entities/ServerFiles.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/entities/ServerJar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/entities/ServerJar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/mainPageOptions/CreateNewProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/mainPageOptions/CreateNewProject.java" afterDir="false" />
     </list>

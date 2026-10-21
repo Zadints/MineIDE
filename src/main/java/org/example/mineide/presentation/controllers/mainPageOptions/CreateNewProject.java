@@ -19,6 +19,7 @@ import org.example.mineide.domain.entities.ServerJar;
 import org.example.mineide.domain.enums.JdkEnum;
 import org.example.mineide.presentation.controllers.ErrorPageController;
 import org.example.mineide.presentation.utils.MouseMove;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -63,28 +64,7 @@ public class CreateNewProject {
         String serverName = txtServerName.getText();
         String locationNewProject = txtServerDirectory.getText();
 
-        JdkEnum jdkVersion = (JdkEnum) cbxJdkVersion.getValue();
-
-        if (jdkVersion == null){
-            jdkVersion = JdkEnum.JDK_26;
-        }
-
-        boolean initializeGit = chkGit.isSelected();
-        boolean createReadme = chkReadme.isSelected();
-        boolean generateGitIgnore = chkGitIgnore.isSelected();
-        boolean downloadDependencies = chkDownloadDependencies.isSelected();
-
-        NewProjectDto newProject = new NewProjectDto(
-            serverName,
-            locationNewProject,
-            serverjar,
-            jdkVersion,
-
-            initializeGit,
-            createReadme,
-            generateGitIgnore,
-            downloadDependencies
-        );
+        NewProjectDto newProject = getNewProject(serverName, locationNewProject);
 
         String reasonCreated = ProjectManagerUseCase.createProject(newProject);
 
@@ -98,6 +78,34 @@ public class CreateNewProject {
 
         close();
     }
+
+    @NotNull
+    private NewProjectDto getNewProject(String serverName, String locationNewProject) {
+        JdkEnum jdkVersion = cbxJdkVersion.getValue();
+
+        if (jdkVersion == null){
+            jdkVersion = JdkEnum.JDK_26;
+        }
+
+        boolean initializeGit = chkGit.isSelected();
+        boolean createReadme = chkReadme.isSelected();
+        boolean generateGitIgnore = chkGitIgnore.isSelected();
+        boolean downloadDependencies = chkDownloadDependencies.isSelected();
+
+        NewProjectDto newProject = new NewProjectDto(
+                serverName,
+                locationNewProject,
+            serverjar,
+            jdkVersion,
+
+            initializeGit,
+            createReadme,
+            generateGitIgnore,
+            downloadDependencies
+        );
+        return newProject;
+    }
+
     @FXML private void onBrowseJava(){
         Path path = selectArchive("server.jar", btnBrowseSoftwareJava.getScene());
         if (path == null) return;
