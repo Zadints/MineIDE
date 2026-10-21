@@ -1,17 +1,14 @@
 package org.example.mineide.application.usecase;
 
-import org.example.mineide.application.dto.MinecraftVersionDTO;
 import org.example.mineide.application.dto.NewProjectDto;
-import org.example.mineide.application.dto.ResponseDTO;
-import org.example.mineide.application.dto.VersionDTO;
 import org.example.mineide.domain.entities.Project;
 import org.example.mineide.domain.entities.ServerJar;
 import org.example.mineide.domain.enums.JdkEnum;
-import org.example.mineide.infraestructure.models.api.ApiLinksClient;
+import org.example.mineide.domain.exceptions.CreateNewProjectException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.net.*;
+import java.nio.file.StandardCopyOption;
 import java.sql.Statement;
 import java.io.File;
 import java.io.IOException;
@@ -22,8 +19,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-import static org.example.mineide.application.usecase.EvalueVersionUseCase.evalueJDK;
 
 public class ProjectManagerUseCase {
     ObjectMapper mapper = new ObjectMapper();
@@ -103,7 +98,7 @@ public class ProjectManagerUseCase {
 
         String uuid = UUID.randomUUID().toString();
 
-        actualProject = new Project(
+        Project newProject = new Project(
                 uuid,
                 serverName,
                 pathNewProject,
@@ -113,8 +108,10 @@ public class ProjectManagerUseCase {
                 generateGitIgnore,
                 downloadDependencies
                 );
-        projectsCreatedList.add(actualProject);
 
+        actualProject = newProject;
+        projectsCreatedList.add(newProject);
+        deployNewProject(newProject);
         /*Lore guardame aqui en el cache que pusiste
         toda la entidad Project pero hacelo por procedimientos almacenados ocn metodos separados
          */
@@ -129,7 +126,7 @@ public class ProjectManagerUseCase {
                 stm.setString(1,uuid);
                 stm.setString(2,serverName);
                 stm.setString(3,pathNewProject.toString());
-                stm.setString(4,actualProject.getVersion());
+                stm.setString(4,actualProject.getServerJarVersion());
                 stm.executeUpdate();
                 stm.close();
 
@@ -154,13 +151,103 @@ public class ProjectManagerUseCase {
             return "Error with sql conecction";
         }
 
-        deployProject(pathNewProject, newProjectDto.getServerJar());
+
         return "";
     }
 
-    private static String deployProject(Path path, MinecraftVersionDTO requeriments){
+    /**
+     * This method has the sole responsibility of calling other
+     * methods for the purpose of implementing a newly created project
+     * via the IDE itself, using the main menu.
+     * @param  newProject
+     *              The required Project type parameter
+     **/
+    private static String deployNewProject(Project newProject){
 
+        try {
+            createWorkspace(newProject);
 
+        } catch (IOException e){
+            throw new CreateNewProjectException(e.getMessage());
+        }
+
+        return "";
+    }
+
+    /**
+     * This method has the sole responsibility of creating directory .mide
+     * @param  project
+     *              The data deploy project required
+     **/
+    public static void createWorkspace(Project project) throws IOException {
+
+        Path projectDeployPath = project.getProjectLocation();
+        Path mideDirectory = projectDeployPath.resolve(".mide");
+        Files.createDirectories(mideDirectory);
+        Path workspaceFile = mideDirectory.resolve("workspace.yml");
+
+        String content = """
+        id: %s
+        server-name: %s
+        project-path:  %s
+        server-jar:
+            jar-name: "%s"
+            jar-version: "%s"
+            jar-software: "%s"
+            jar-build: "%s"
+            jdk-version: "%s"
+            jar-description: "%s"
+            jar-path: "%s"
+
+        initialize-repository: "%s"
+        create-readme: "%s"
+        generate-git-ignore: "%s"
+        download-dependencies: "%s"
+
+        
+        """.formatted(
+                project.getId(),
+                project.getServerName(),
+                project.getProjectLocation(),
+
+                project.getServerJarName(),
+                project.getJdkVersion(),
+                project.getServerJarSoftware(),
+                project.getServerJarBuild(),
+                project.getServerJarDescription(),
+                project.getServerJarActualLocation(),
+
+                project.isInitializeRepository(),
+                project.isCreateReadme(),
+                project.isGenerateGitIgnore(),
+                project.isDownloadDependencies()
+
+        );
+
+        if (Files.notExists(workspaceFile)) {
+            Files.writeString(workspaceFile, content);
+        }
+
+    }
+    public static Path copyServerJar(Path sourcePath, Path destinationPath)
+            throws IOException {
+
+        Path parent = destinationPath.getParent();
+
+        if (parent != null) {
+            Files.createDirectories(parent);
+        }
+        Files.copy(
+                sourcePath,
+                destinationPath
+        );
+
+        return destinationPath;
+    }
+
+    /*
+    *
+    *
         ResponseDTO request = new ResponseDTO();
         try (DatagramSocket connection = new DatagramSocket()){
             connection.connect(InetAddress.getByName("8.8.8.8"),10002);
@@ -186,21 +273,7 @@ public class ProjectManagerUseCase {
         }else{
             return "Error in registre requeriments";
         }
-
-        return "";
-    }
-
-
-    private static void createWorkspace(Path selectedPath) throws IOException {
-
-        Path mideDirectory = selectedPath.resolve(".mide");
-
-        Files.createDirectories(mideDirectory);
-
-        Path workspaceFile = mideDirectory.resolve("workspace.yml");
-
-        if (!Files.exists(workspaceFile)) {
-            Files.createFile(workspaceFile);
-        }
-    }
+    *
+    *
+    * */
 }

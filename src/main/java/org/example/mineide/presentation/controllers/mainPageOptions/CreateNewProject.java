@@ -103,8 +103,8 @@ public class CreateNewProject {
         if (path == null) return;
         try {
             serverjar = ServerJarServices.getType(path);
-            serverjar.setPath(path);
-            serverjar.setJarName(path.getFileName().toString());
+            serverjar.setActualLocation(path);
+            serverjar.setFileJarName(path.getFileName().toString());
 
         } catch (IOException e){
             launchErrorWindows(e.getMessage(), "Error", btnBrowseSoftwareJava.getScene());
@@ -117,7 +117,7 @@ public class CreateNewProject {
         cbxServerSoftware.setDisable(true);
 
         if (serverjar != null){
-            cbxMinecraftVersion.setPromptText(serverjar.getVersion());
+            cbxMinecraftVersion.setPromptText(serverjar.getJarVersion());
             cbxServerSoftware.setPromptText(serverjar.getSoftware());
             return;
         }

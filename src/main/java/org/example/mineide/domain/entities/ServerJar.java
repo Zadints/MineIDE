@@ -1,88 +1,111 @@
 package org.example.mineide.domain.entities;
 
-import org.example.mineide.domain.annotations.Optional;
 import org.example.mineide.domain.enums.JdkEnum;
+import org.example.mineide.domain.exceptions.AlreadySetValueEntityException;
 
 import java.nio.file.Path;
 
 public class ServerJar {
-    private String jarName;
-    private String version;
-    private String software;
-    private String build;
+    private String jarFileName;
+    private String jarVersion; //💡
+    private String software; //💡
+    private String build; //💡
     private JdkEnum jdkVersion;
     private String description;
-    private Path path;
+    private Path actualLocation;
 
-
-
+    private boolean firshCostructorCall = false;
+    /**
+     *  Este cosntructor solo se llama cuando se selecciona un .jar personalizado pro parte del usuario,
+     *  no se llama cuando se descarga el .jar desde la nube.
+     **/
     public ServerJar(String version, String software, String build) {
-        this.version = version;
+        this.jarVersion = version;
         this.software = software;
         this.build = build;
+        this.firshCostructorCall = true;
+    }
+
+    /**
+     *  Este cosntructor solo se llama cuando se ya se descargo el .jar de la nube y desea crear la entidad apr guardar en
+     *  la entodad project.
+     **/
+    public ServerJar(String jarName, String version, String software, String build, JdkEnum jdkVersion, String description, Path actualLocation) {
+        this.jarFileName = jarName;
+        this.jarVersion = version;
+        this.software = software;
+        this.build = build;
+        this.jdkVersion = jdkVersion;
+        this.description = description;
+        this.actualLocation = actualLocation;
     }
 
 
-    public void setJarName(String jarName) {
-        if (this.jarName != null || !this.jarName.isEmpty()) return;
-        this.jarName = jarName;
+
+    /**
+     *  Métodos a llamar cuando se crea la entidad cuando el usuario selecciona un
+     *  .jar personalizado
+     **/
+
+    public void setFileJarName(String jarName) {
+        if (!firshCostructorCall) throw new AlreadySetValueEntityException("setFileJarName(" + jarName + ") already defined => " + jarFileName);
+        this.jarFileName = jarName;
     }
 
     public void setJdkVersion(JdkEnum jdkVersion) {
+        if (!firshCostructorCall) throw new AlreadySetValueEntityException("setJdkVersion(" + jdkVersion + ") already defined => " + this.jdkVersion);
         this.jdkVersion = jdkVersion;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setActualLocation(Path actualLocation) {
+        if (!firshCostructorCall) throw new AlreadySetValueEntityException("setActualLocation(" +  actualLocation + ") already defined => " + this. actualLocation);
+        this.actualLocation = actualLocation;
     }
 
 
+    /**
+     *  Métodos a llamar cuando se necesita ediatr la entidad
+     **/
 
-    public void setPath(Path path) {
-        this.path = path;
-    }
 
     public void editJarName(String jarName) {
-        if (this.jarName == null || this.jarName.isEmpty()) return;
-        this.jarName = jarName;
+        this.jarFileName = jarName;
     }
 
     public void editVersion(String version) {
-        if (this.version == null || this.version.isEmpty()) return;
-        this.version = version;
+        this.jarVersion = version;
     }
 
     public void editSoftware(String software) {
-        if (this.software == null || this.software.isEmpty()) return;
         this.software = software;
     }
 
     public void editBuild(String build) {
-        if (this.build == null || this.build.isEmpty()) return;
         this.build = build;
     }
 
     public void editJdkVersion(JdkEnum jdkVersion) {
-        if (this.jdkVersion == null) return;
         this.jdkVersion = jdkVersion;
     }
 
     public void editDescription(String description) {
-        if (this.description == null || this.description.isEmpty()) return;
         this.description = description;
     }
 
-    public void editPath(Path path) {
-        if (this.path == null) return;
-        this.path = path;
+    public void editActualLocation(Path path) {
+        this.actualLocation = path;
     }
 
-    public String getJarName() {
-        return jarName;
+    /**
+     *  Métodos getter apra la entidad
+     **/
+
+    public String getJarFileName() {
+        return jarFileName;
     }
 
-    public String getVersion() {
-        return version;
+    public String getJarVersion() {
+        return jarVersion;
     }
 
     public String getSoftware() {
@@ -101,7 +124,7 @@ public class ServerJar {
         return description;
     }
 
-    public Path getPath() {
-        return path;
+    public Path getActualLocation() {
+        return actualLocation;
     }
 }
