@@ -12,19 +12,11 @@ public class ServerJar {
     private String build; //💡
     private JdkEnum jdkVersion;
     private String description;
+    /**
+     * Este path se actualiza cuando se crea el proeycto y guarda en cache.
+     **/
     private Path actualLocation;
 
-    private boolean firshCostructorCall = false;
-    /**
-     *  Este cosntructor solo se llama cuando se selecciona un .jar personalizado pro parte del usuario,
-     *  no se llama cuando se descarga el .jar desde la nube.
-     **/
-    public ServerJar(String version, String software, String build) {
-        this.jarVersion = version;
-        this.software = software;
-        this.build = build;
-        this.firshCostructorCall = true;
-    }
 
     /**
      *  Este cosntructor solo se llama cuando se ya se descargo el .jar de la nube y desea crear la entidad apr guardar en
@@ -48,17 +40,17 @@ public class ServerJar {
      **/
 
     public void setFileJarName(String jarName) {
-        if (!firshCostructorCall) throw new AlreadySetValueEntityException("setFileJarName(" + jarName + ") already defined => " + jarFileName);
+        if (this.jarFileName != null) throw new AlreadySetValueEntityException("setFileJarName(" + jarName + ") already defined => " + jarFileName);
         this.jarFileName = jarName;
     }
 
     public void setJdkVersion(JdkEnum jdkVersion) {
-        if (!firshCostructorCall) throw new AlreadySetValueEntityException("setJdkVersion(" + jdkVersion + ") already defined => " + this.jdkVersion);
+        if (this.jdkVersion != null) throw new AlreadySetValueEntityException("setJdkVersion(" + jdkVersion + ") already defined => " + this.jdkVersion);
         this.jdkVersion = jdkVersion;
     }
 
     public void setActualLocation(Path actualLocation) {
-        if (!firshCostructorCall) throw new AlreadySetValueEntityException("setActualLocation(" +  actualLocation + ") already defined => " + this. actualLocation);
+        if (this.actualLocation != null) throw new AlreadySetValueEntityException("setActualLocation(" +  actualLocation + ") already defined => " + this. actualLocation);
         this.actualLocation = actualLocation;
     }
 

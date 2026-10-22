@@ -17,12 +17,15 @@ module org.example.mineide {
     requires java.desktop;
     requires javafx.graphics;
     requires java.sql;
+    requires annotations;
 
     opens org.example.mineide to javafx.fxml;
     opens org.example.mineide.presentation.controllers to javafx.fxml;
     opens org.example.mineide.presentation.controllers.center to javafx.fxml;
     opens org.example.mineide.presentation.controllers.mainPageOptions to javafx.fxml;
 
+    exports org.example.mineide.application.dto;
+    exports org.example.mineide.application.dto.create.project;
     exports org.example.mineide.domain.entities.files;
     exports org.example.mineide.domain.enums;
     exports org.example.mineide.domain.entities;

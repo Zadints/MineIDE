@@ -1,49 +1,44 @@
-package org.example.mineide.application.dto;
+package org.example.mineide.application.dto.create.project;
 
-import org.example.mineide.domain.annotations.Optional;
-import org.example.mineide.domain.entities.ServerFiles;
 import org.example.mineide.domain.entities.ServerJar;
 import org.example.mineide.domain.enums.JdkEnum;
 
-public class NewProjectDto {
+import java.nio.file.Path;
 
-    private String serverName;
-    private String locationNewProject;
+public class ProjectDto {
+
+    private String name;
+    private Path deployPath;
+
     private ServerJar serverJar;
-
-    private JdkEnum jdkVersion;
 
     private boolean initializeRepository;
     private boolean createReadme;
     private boolean generateGitIgnore;
     private boolean downloadDependencies;
 
-    public NewProjectDto(String serverName, String locationNewProject, ServerJar serverJar, JdkEnum jdkVersion, boolean initializeRepository, boolean createReadme, boolean generateGitIgnore, boolean downloadDependencies) {
-        this.serverName = serverName;
-        this.locationNewProject = locationNewProject;
+    public ProjectDto(String name, Path deployPath, ServerJar serverJar, boolean initializeRepository, boolean createReadme, boolean generateGitIgnore, boolean downloadDependencies) {
+        this.name = name;
+        this.deployPath = deployPath;
         this.serverJar = serverJar;
-        this.jdkVersion = jdkVersion;
         this.initializeRepository = initializeRepository;
         this.createReadme = createReadme;
         this.generateGitIgnore = generateGitIgnore;
         this.downloadDependencies = downloadDependencies;
     }
 
-    public String getServerName() {
-        return serverName;
+    public String getName() {
+        return name;
     }
 
-    public String getLocationNewProject() {
-        return locationNewProject;
+    public Path getDeployPath() {
+        return deployPath;
     }
 
     public ServerJar getServerJar() {
         return serverJar;
     }
 
-    public JdkEnum getJdkVersion() {
-        return jdkVersion;
-    }
 
     public boolean isInitializeRepository() {
         return initializeRepository;
