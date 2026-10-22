@@ -11,7 +11,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.*;
 import org.example.mineide.application.dto.MinecraftVersionDTO;
-import org.example.mineide.application.dto.NewProjectDto;
+import org.example.mineide.application.dto.create.project.ProjectDto;
+import org.example.mineide.application.dto.create.project.ServerJarSelectedDto;
 import org.example.mineide.application.services.ServerJarServices;
 import org.example.mineide.application.usecase.ProjectManagerUseCase;
 import org.example.mineide.application.usecase.StartAppUseCase;
@@ -42,7 +43,8 @@ public class CreateNewProject {
     @FXML private CheckBox chkGitIgnore;
     @FXML private CheckBox chkDownloadDependencies;
 
-    private ServerJar serverjar;
+    private ServerJarSelectedDto serverJarDto;
+    private Path pathDeployProject;
 
 
     public void initialize() {
@@ -59,13 +61,14 @@ public class CreateNewProject {
     @FXML protected void onCancel(){
         close();
     }
+    private void close(){
+        Stage stage = (Stage) btnCancel.getScene().getWindow();
+        stage.close();
+    }
 
     @FXML private void onCreateProject(){
-        String serverName = txtServerName.getText();
-        String locationNewProject = txtServerDirectory.getText();
 
-        NewProjectDto newProject = getNewProject(serverName, locationNewProject);
-
+        ProjectDto newProject = createEntityProject();
         String reasonCreated = ProjectManagerUseCase.createProject(newProject);
 
         if (!reasonCreated.isEmpty()){
@@ -80,7 +83,8 @@ public class CreateNewProject {
     }
 
     @NotNull
-    private NewProjectDto getNewProject(String serverName, String locationNewProject) {
+    private ProjectDto createEntityProject() {
+        String serverName = txtServerName.getText();
         JdkEnum jdkVersion = cbxJdkVersion.getValue();
 
         if (jdkVersion == null){
@@ -92,28 +96,38 @@ public class CreateNewProject {
         boolean generateGitIgnore = chkGitIgnore.isSelected();
         boolean downloadDependencies = chkDownloadDependencies.isSelected();
 
-        NewProjectDto newProject = new NewProjectDto(
-                serverName,
-                locationNewProject,
-            serverjar,
-            jdkVersion,
-
+        return new ProjectDto(
+            serverName,
+            pathDeployProject,
+            new ServerJar(
+                    serverJarDto.getJarLocation().getFileName().toString(),
+                    serverJarDto.getJarVersion(),
+                    serverJarDto.getSoftware(),
+                    serverJarDto.getBuild(),
+                    jdkVersion,
+                    "Mi primer proyecto",
+                    serverJarDto.getJarLocation()
+            ),
             initializeGit,
             createReadme,
             generateGitIgnore,
             downloadDependencies
         );
-        return newProject;
+    }
+    @FXML private void onBrowseLocation(ActionEvent event){
+
+        Path pathDirectory = selectPathDirectory(btnBrowseDirectory.getScene());
+        if (pathDirectory == null ) return;
+        txtServerDirectory.setText(pathDirectory.toString());
+        pathDeployProject = pathDirectory;
     }
 
     @FXML private void onBrowseJava(){
         Path path = selectArchive("server.jar", btnBrowseSoftwareJava.getScene());
         if (path == null) return;
-        try {
-            serverjar = ServerJarServices.getType(path);
-            serverjar.setActualLocation(path);
-            serverjar.setFileJarName(path.getFileName().toString());
 
+        try {
+            serverJarDto = ServerJarServices.getType(path);
         } catch (IOException e){
             launchErrorWindows(e.getMessage(), "Error", btnBrowseSoftwareJava.getScene());
         }
@@ -124,36 +138,30 @@ public class CreateNewProject {
         cbxMinecraftVersion.setDisable(true);
         cbxServerSoftware.setDisable(true);
 
-        if (serverjar != null){
-            cbxMinecraftVersion.setPromptText(serverjar.getJarVersion());
-            cbxServerSoftware.setPromptText(serverjar.getSoftware());
+        if ( serverJarDto != null){
+            cbxMinecraftVersion.setPromptText( serverJarDto.getJarVersion());
+            cbxServerSoftware.setPromptText( serverJarDto.getSoftware());
             return;
         }
-        cbxMinecraftVersion.setPromptText("Already Selected");
-        cbxServerSoftware.setPromptText("Already Selected");
+        cbxMinecraftVersion.setPromptText("Already you Selected");
+        cbxServerSoftware.setPromptText("Already you Selected");
     }
 
-
-
-
-    @FXML private void onBrowseLocation(ActionEvent event){
+    private Path selectPathDirectory(Scene scene){
         DirectoryChooser carpeta = new DirectoryChooser();
         carpeta.setTitle("select main directory");
 
-        Stage stage =  (Stage) btnBrowseDirectory.getScene().getWindow();
+        Stage stage =  (Stage) scene.getWindow();
 
         File file = carpeta.showDialog(stage);
 
-        if (file == null) return;
+        if (file == null) return null;
 
         if (!file.isDirectory()){
             txtServerDirectory.setPromptText("Invalid directory selected");
+            return null;
         }
-        txtServerDirectory.setText(file.toPath().toString());
-    }
-    private void close(){
-        Stage stage = (Stage) btnCancel.getScene().getWindow();
-        stage.close();
+        return file.toPath();
     }
     private Path selectArchive(String type, Scene scene){
         FileChooser archive = new FileChooser();
@@ -169,6 +177,7 @@ public class CreateNewProject {
         if (file == null) return null;
         return file.toPath();
     }
+
     private void getVersions(){
 
 

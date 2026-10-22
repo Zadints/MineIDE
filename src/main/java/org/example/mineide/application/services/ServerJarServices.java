@@ -1,5 +1,7 @@
 package org.example.mineide.application.services;
 
+import org.example.mineide.application.dto.create.project.ServerJarSelectedDto;
+import org.example.mineide.application.usecase.Serverjar.PaperPatchJsonUseCase;
 import org.example.mineide.application.usecase.Serverjar.PaperPatchPropertiesUseCase;
 import org.example.mineide.application.usecase.Serverjar.PaperVersionJsonUseCase;
 import org.example.mineide.domain.entities.ServerJar;
@@ -17,7 +19,7 @@ public class ServerJarServices {
      */
     private static TypeServerJar typeServerJar;
 
-    public static ServerJar getType(Path pathServerJar) throws IOException{
+    public static ServerJarSelectedDto getType(Path pathServerJar) throws IOException{
 
         if (pathServerJar == null || !Files.exists(pathServerJar))
             throw  new FileDoesNotExist("Server.jar");
@@ -30,7 +32,7 @@ public class ServerJarServices {
             }
 
             if (jar.getEntry("patch.json") != null) {
-                typeServerJar = new PaperVersionJsonUseCase();
+                typeServerJar = new PaperPatchJsonUseCase();
 
             }
 
@@ -39,7 +41,7 @@ public class ServerJarServices {
             }
 
 
-            return typeServerJar.getServerJar(jar);
+            return typeServerJar.getServerJar(jar, pathServerJar);
         }
     }
 }

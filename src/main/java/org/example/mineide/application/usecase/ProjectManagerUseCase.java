@@ -1,6 +1,6 @@
 package org.example.mineide.application.usecase;
 
-import org.example.mineide.application.dto.NewProjectDto;
+import org.example.mineide.application.dto.create.project.ProjectDto;
 import org.example.mineide.domain.entities.Project;
 import org.example.mineide.domain.entities.ServerJar;
 import org.example.mineide.domain.enums.JdkEnum;
@@ -8,13 +8,11 @@ import org.example.mineide.domain.exceptions.CreateNewProjectException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.nio.file.StandardCopyOption;
-import java.sql.Statement;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,12 +36,10 @@ public class ProjectManagerUseCase {
         }
         return true;
     }
-    private static Path evaluePath(String value) throws InvalidPathException {
-        if (value == null || value.isBlank()){
+    private static Path evaluePath(Path path) throws InvalidPathException {
+        if (path == null){
             return null;
         }
-        Path path = Path.of(value);
-
         if (!Files.exists(path)) {
             return null;
         }
@@ -63,15 +59,15 @@ public class ProjectManagerUseCase {
 
     }
 
-    public static String createProject(NewProjectDto newProjectDto) {
+    public static String createProject(ProjectDto newProjectDto) {
 
-        String serverName = newProjectDto.getServerName();
+        String serverName = newProjectDto.getName();
         if (!evalueData(serverName)) return "No ingresaste el nombre del servidor";
 
         Path pathNewProject;
 
         try {
-            pathNewProject = evaluePath(newProjectDto.getLocationNewProject());
+            pathNewProject = evaluePath(newProjectDto.getDeployPath());
 
             if (pathNewProject == null){
                 return "El campo de la ruta no cincide con ninguna carpeta o no es una ruta";
@@ -79,15 +75,6 @@ public class ProjectManagerUseCase {
         } catch (InvalidPathException e) {
             return "La ruta del directorio a crear no existe o está mal escrita";
         }
-//-------------------------------------------------------------------------------------------
-        //por default vienen con valores default xd
-
-        JdkEnum jdkVersion = newProjectDto.getJdkVersion();
-
-        if (jdkVersion == null) throw new IllegalArgumentException("jdkVersion is null");
-
-        ServerJar serverJar = newProjectDto.getServerJar();
-        serverJar.setJdkVersion(jdkVersion);
 
 //-------------------------------------------------------------------------------------------
 
@@ -102,7 +89,7 @@ public class ProjectManagerUseCase {
                 uuid,
                 serverName,
                 pathNewProject,
-                serverJar,
+                newProjectDto.getServerJar(),
                 initializeRepository,
                 createReadme,
                 generateGitIgnore,
@@ -127,12 +114,18 @@ public class ProjectManagerUseCase {
 
         try {
             createWorkspace(newProject);
+
+            Path destinationJar = newProject.getProjectLocation()
+                    .resolve(newProject.getServerJarName());
+
             copyServerJar(
                     newProject.getServerJarActualLocation(),
-                    newProject.getProjectLocation()
+                    destinationJar
             );
 
+
         } catch (IOException e){
+            System.out.println(e);
             throw new CreateNewProjectException(e.getMessage());
         }
 
@@ -148,7 +141,7 @@ public class ProjectManagerUseCase {
 
         Path projectDeployPath = project.getProjectLocation();
         Path mideDirectory = projectDeployPath.resolve(".mide");
-        Files.createDirectory(mideDirectory);
+        Files.createDirectories(mideDirectory);
         Path workspaceFile = mideDirectory.resolve("workspace.yml");
 
         String content = """
@@ -179,6 +172,7 @@ public class ProjectManagerUseCase {
                 project.getJdkVersion(),
                 project.getServerJarSoftware(),
                 project.getServerJarBuild(),
+                project.getServerJar().getJarVersion(),
                 project.getServerJarDescription(),
                 project.getServerJarActualLocation(),
 
@@ -194,21 +188,20 @@ public class ProjectManagerUseCase {
         }
 
     }
-    public static void copyServerJar(Path sourcePath, Path destinationPath)
-            throws IOException {
+    public static void copyServerJar(Path sourcePath, Path destinationPath) throws IOException {
 
-        if (sourcePath.equals(destinationPath)) return;
+        sourcePath = sourcePath.toAbsolutePath().normalize();
+        destinationPath = destinationPath.toAbsolutePath().normalize();
 
-        Path parent = destinationPath.getParent();
-
-        if (parent != null) {
-            Files.createDirectories(parent);
+        if (sourcePath.equals(destinationPath)) {
+            return;
         }
+
         Files.copy(
                 sourcePath,
-                destinationPath
+                destinationPath,
+                StandardCopyOption.REPLACE_EXISTING
         );
-
     }
 
     /*
