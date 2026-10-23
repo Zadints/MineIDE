@@ -4,13 +4,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import org.example.mineide.application.dto.NavigateCenterDto;
 import org.example.mineide.application.dto.NavigateOptionsDto;
+import org.example.mineide.presentation.controllers.ErrorPageController;
 
 import java.io.IOException;
 import java.util.ArrayDeque;
@@ -20,8 +23,12 @@ public class Navigator {
 
     private final Stage stage;
     private final Callback<Class<?>, Object> controllerFactory;
-    private final Deque<NavigateOptionsDto> history = new ArrayDeque<>();
+
+    private final Deque<NavigateOptionsDto> historyPage = new ArrayDeque<>();
     private NavigateOptionsDto currentPage;
+
+    private final Deque<NavigateCenterDto> historyCenter = new ArrayDeque<>();
+    private NavigateCenterDto currentCenter;
 
     public Navigator(Stage stage, Callback<Class<?>, Object> controllerFactory ) {
         this.stage = stage;
@@ -29,15 +36,41 @@ public class Navigator {
         this.stage.initStyle(StageStyle.TRANSPARENT);
     }
 
+
     public void navigate(NavigateOptionsDto dto) throws IOException{
         loadPage(dto);
+    }
+
+    public void navigateToCenter(BorderPane container, String fileName) throws IOException {
+        navigateToCenter(container, fileName, true);
+    }
+
+    private void navigateToCenter(BorderPane container, String fileName, boolean saveHistory) throws IOException {
+
+        if (saveHistory && currentCenter != null) {
+            historyCenter.push(currentCenter);
+        }
+
+        FXMLLoader loader = new FXMLLoader(
+                getClass().getResource(
+                        "/org/example/mineide/center/" + fileName
+                )
+        );
+
+        loader.setControllerFactory(controllerFactory);
+
+        Parent view = loader.load();
+        container.setCenter(view);
+
+        currentCenter = new NavigateCenterDto(container, fileName);
+
     }
 
     public void navigateToPage(String fxmlPath, double width, double height) throws IOException{
 
         if (fxmlPath.isEmpty()) throw new IOException("Path Fxml is Empty");
         if (currentPage != null) {
-            history.push(currentPage);
+            historyPage.push(currentPage);
         }
         var dto = new NavigateOptionsDto(
                 fxmlPath,
@@ -60,7 +93,7 @@ public class Navigator {
         if (fxmlPath.isEmpty()) throw new IOException("Path Fxml is Empty");
 
         if (currentPage != null) {
-            history.push(currentPage);
+            historyPage.push(currentPage);
         }
 
         var dto = new NavigateOptionsDto(
@@ -150,21 +183,33 @@ public class Navigator {
         ));
     }
 
-    public void back() throws IOException {
-        if (history.isEmpty()) {
-            return;
-        }
 
-        NavigateOptionsDto previousPage = history.pop();
+    public void showError(
+            String message,
+            String title,
+            Stage parentStage
+    ) throws IOException {
 
-        loadPage(previousPage);
-        currentPage = previousPage;
+        NavigateOptionsDto dto = new NavigateOptionsDto(
+                "errorPage.fxml",
+                0.30,
+                0.30,
+                true,
+                parentStage,
+                Modality.WINDOW_MODAL,
+                StageStyle.TRANSPARENT,
+                Color.TRANSPARENT,
+                false,
+                true
+        );
+
+        ErrorPageController controller =
+                (ErrorPageController) loadPage(dto);
+
+        controller.setException(message, title);
     }
 
-    private void loadPage(NavigateOptionsDto dto) throws IOException {
-
-
-
+    private Object loadPage(NavigateOptionsDto dto) throws IOException {
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource(
                         "/org/example/mineide/" + dto.fxmlName()
@@ -222,7 +267,33 @@ public class Navigator {
             targetStage.show();
         }
 
-
+        return loader.getController();
     }
 
+
+    public void backPage() throws IOException {
+        if (historyPage.isEmpty()) {
+            return;
+        }
+
+        NavigateOptionsDto previousPage = historyPage.pop();
+
+        loadPage(previousPage);
+        currentPage = previousPage;
+    }
+
+
+    public void backCenter() throws IOException {
+        if (historyCenter.isEmpty()) {
+            return;
+        }
+
+        NavigateCenterDto previousCenter = historyCenter.pop();
+
+        navigateToCenter(
+                previousCenter.container(),
+                previousCenter.fileName(),
+                false
+        );
+    }
 }

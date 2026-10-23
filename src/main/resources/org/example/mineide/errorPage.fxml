@@ -12,7 +12,8 @@
         xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="org.example.mineide.presentation.controllers.ErrorPageController"
-            styleClass="error-page">
+            styleClass="error-page"
+>
 
     <VBox alignment="CENTER"
           spacing="18"
