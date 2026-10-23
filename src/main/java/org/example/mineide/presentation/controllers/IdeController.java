@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 import org.example.mineide.application.usecase.GetTranslationUseCase;
+import org.example.mineide.application.usecase.project.CreateProjectUseCase;
 import org.example.mineide.domain.annotations.Navigate;
 import org.example.mineide.domain.annotations.ResourceRequiredSystem;
 import org.example.mineide.presentation.utils.MouseMove;
@@ -23,11 +24,10 @@ import java.io.IOException;
 
 public class IdeController {
 
-    @ResourceRequiredSystem private final GetTranslationUseCase getTranslation;
-    @Navigate private final Navigator navigator;
-
+    private final GetTranslationUseCase getTranslation;
+    private final Navigator navigator;
+    private final CreateProjectUseCase createProjectUseCase;
     @FXML private BorderPane brPanel;
-
     @FXML private Label welcomeText;
     @FXML private Button btnFile;
     @FXML private Button btnCode;
@@ -35,9 +35,10 @@ public class IdeController {
     private MouseMove mouseMove;
     @FXML private HBox titleBar;
 
-    public IdeController(GetTranslationUseCase getTranslation, Navigator navigator) {
+    public IdeController(GetTranslationUseCase getTranslation, Navigator navigator, CreateProjectUseCase createProjectUseCase) {
         this.getTranslation = getTranslation;
         this.navigator = navigator;
+        this.createProjectUseCase = createProjectUseCase;
     }
 
     public void initialize() {

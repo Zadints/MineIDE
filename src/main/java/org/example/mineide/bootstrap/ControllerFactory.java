@@ -32,7 +32,8 @@ public class ControllerFactory implements Callback<Class<?>, Object> {
         if (type == IdeController.class) {
             return new IdeController(
                     root.getTranslationUseCase(),
-                    navigator
+                    navigator,
+                    root.getCreateProjectUseCase()
             );
         }
 

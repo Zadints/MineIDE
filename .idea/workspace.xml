@@ -5,19 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bedc524-2081-4b19-b88c-77072dac0748" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/dto/NavigateCenterDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/bootstrap/ControllerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/bootstrap/ControllerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/enums/MinecraftSoftware.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/enums/McSoftwareEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/IdeContr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/IdeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/center/ServesController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/mainPageOptions/CreateProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/mainPageOptions/CreateProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/navigation/Navigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/navigation/Navigator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/multimedia/images/folder.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mineide/errorPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mineide/errorPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mineide/mainPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mineide/mainPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/styles/mainPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles/mainPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/styles/servers.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/IdeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/IdeController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
