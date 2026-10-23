@@ -47,7 +47,7 @@ public class App extends Application {
 
         factory.setNavigator(navigator);
 
-        navigator.navigate("index.fxml");
+        navigator.navigateToPage("index.fxml");
 
     }
 

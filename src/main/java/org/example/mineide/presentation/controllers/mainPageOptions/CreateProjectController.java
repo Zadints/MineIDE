@@ -14,10 +14,11 @@ import org.example.mineide.application.dto.MinecraftVersionDTO;
 import org.example.mineide.application.dto.create.project.ProjectDto;
 import org.example.mineide.application.dto.create.project.ServerJarSelectedDto;
 import org.example.mineide.application.services.ServerJarServices;
-import org.example.mineide.application.usecase.ProjectManagerUseCase;
 import org.example.mineide.application.usecase.StartAppUseCase;
+import org.example.mineide.application.usecase.project.CreateProjectUseCase;
 import org.example.mineide.domain.entities.ServerJar;
 import org.example.mineide.domain.enums.JdkEnum;
+import org.example.mineide.domain.exceptions.CreateNewProjectException;
 import org.example.mineide.presentation.controllers.ErrorPageController;
 import org.example.mineide.presentation.utils.MouseMove;
 import org.jetbrains.annotations.NotNull;
@@ -26,7 +27,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 
-public class CreateNewProject {
+public class CreateProjectController {
     @FXML private VBox header;
     @FXML private Button btnCancel;
     @FXML private Button btnCreate;
@@ -46,8 +47,14 @@ public class CreateNewProject {
     private ServerJarSelectedDto serverJarDto;
     private Path pathDeployProject;
 
+    private final CreateProjectUseCase createProjectUseCase;
 
-    public void initialize() {
+    public CreateProjectController(CreateProjectUseCase createProjectUseCase) {
+        this.createProjectUseCase = createProjectUseCase;
+    }
+
+    @FXML
+    protected void initialize() {
         MouseMove mouseMove = new MouseMove(header);
         mouseMove.start();
 
@@ -69,17 +76,15 @@ public class CreateNewProject {
     @FXML private void onCreateProject(){
 
         ProjectDto newProject = createEntityProject();
-        String reasonCreated = ProjectManagerUseCase.createProject(newProject);
-
-        if (!reasonCreated.isEmpty()){
+        try{
+            createProjectUseCase.create(newProject);
+            close();
+        }catch (CreateNewProjectException e){
             launchErrorWindows(
-                    reasonCreated,
+                    e.getMessage(),
                     "Error al crear proyecto",
                     btnCreate.getScene());
-            return;
         }
-
-        close();
     }
 
     @NotNull

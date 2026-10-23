@@ -18,6 +18,7 @@ module org.example.mineide {
     requires javafx.graphics;
     requires java.sql;
     requires annotations;
+    requires jdk.compiler;
 
     opens org.example.mineide to javafx.fxml;
     opens org.example.mineide.presentation.controllers to javafx.fxml;
@@ -35,4 +36,6 @@ module org.example.mineide {
     exports org.example.mineide.presentation.controllers;
     exports org.example.mineide.application.usecase.Serverjar;
     exports org.example.mineide.application.services;
+    exports org.example.mineide.application.usecase.project;
+    exports org.example.mineide.domain.repository.project;
 }

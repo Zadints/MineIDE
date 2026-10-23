@@ -14,7 +14,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.example.mineide.application.usecase.GetTranslationUseCase;
-import org.example.mineide.application.usecase.ProjectManagerUseCase;
+import org.example.mineide.application.usecase.project.CreateProjectUseCase;
 import org.example.mineide.domain.annotations.Navigate;
 import org.example.mineide.domain.annotations.ResourceRequiredSystem;
 import org.example.mineide.presentation.utils.MouseMove;
@@ -24,16 +24,18 @@ import java.io.IOException;
 
 public class IndexController {
 
-    @ResourceRequiredSystem private final GetTranslationUseCase getTranslation;
-    @Navigate private final Navigator navigator;
+    private final GetTranslationUseCase getTranslation;
+    private final Navigator navigator;
+    private final CreateProjectUseCase createProjectUseCase;
 
     @FXML private Button btnClose;
     @FXML private VBox header;
     @FXML private StackPane content;
 
-    public IndexController(GetTranslationUseCase getTranslation, Navigator navigator){
+    public IndexController(GetTranslationUseCase getTranslation, Navigator navigator, CreateProjectUseCase createProjectUseCase){
         this.getTranslation = getTranslation;
         this.navigator = navigator;
+        this.createProjectUseCase = createProjectUseCase;
     }
 
     public void initialize() {
@@ -46,60 +48,21 @@ public class IndexController {
 
     }
     @FXML protected void onCreateProject(){
+
         try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource(
-                            "/org/example/mineide/mainPageOptions/createNewProject.fxml"
-                    )
+
+            Stage stage = (Stage) btnClose.getScene().getWindow();
+
+            navigator.awaitOpenWindow(
+                    "mainPageOptions/createNewProject.fxml",
+                    stage,
+                    0.60,
+                    0.85
             );
 
-            Parent root = loader.load();
-            Stage parentStage = (Stage) btnClose.getScene().getWindow();
-            Stage stage = new Stage();
+            if (!createProjectUseCase.isCreatedProject()) return;
 
-            stage.initOwner(parentStage);
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initStyle(StageStyle.TRANSPARENT);
-
-
-            Scene scene = new Scene(root);
-            scene.setFill(Color.TRANSPARENT);
-
-            scene.getStylesheets().addAll(
-                    getClass().getResource("/styles/mainPage.css").toExternalForm(),
-                    getClass().getResource("/styles/index.css").toExternalForm()
-            );
-            stage.initStyle(StageStyle.TRANSPARENT);
-            Rectangle2D screen = Screen.getPrimary().getVisualBounds();
-
-            double width = screen.getWidth() * 0.60;
-            double height = screen.getHeight() * 0.85;
-
-            stage.setWidth(width);
-            stage.setHeight(height);
-
-            stage.setX(
-                    screen.getMinX() +
-                            (screen.getWidth() - width) / 2
-            );
-
-            stage.setY(
-                    screen.getMinY() +
-                            (screen.getHeight() - height) / 2
-            );
-            stage.setMinWidth(900);
-            stage.setMinHeight(600);
-            stage.setMaximized(false);
-            stage.centerOnScreen();
-            stage.setTitle("Create New Project");
-            stage.setScene(scene);
-            stage.showAndWait();
-
-            if (!ProjectManagerUseCase.isOpenProject()) return;
-
-            stage.hide();
-
-            navigator.navigate("mainPage.fxml", 0.98, 0.98);
+            navigator.navigateToPage("mainPage.fxml", 0.98, 0.98);
 
         } catch (IOException e) {
             e.printStackTrace();
