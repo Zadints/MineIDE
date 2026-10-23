@@ -5,26 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bedc524-2081-4b19-b88c-77072dac0748" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/dto/NavigateOptionsDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/usecase/project/CreateProjectUseCase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/repository/project/ProjectDeployer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/repository/project/ProjectRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/infraestructure/project/FileSystemProjectDeployer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/infraestructure/project/InMemoryProjectRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/infraestructure/project/SqlProjectRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/infraestructure/server/ServerManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/usecase/ProjectManagerUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/bootstrap/AppCompositionRoot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/bootstrap/AppCompositionRoot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/bootstrap/ControllerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/bootstrap/ControllerFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/exceptions/FileDoesNotExist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/exceptions/FileDoesNotExist.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/IndexController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/center/ConsoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/center/ConsoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/mainPageOptions/CreateNewProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/mainPageOptions/CreateProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/navigation/Navigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/navigation/Navigator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mineide/mainPageOptions/createNewProject.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mineide/mainPageOptions/createNewProject.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
