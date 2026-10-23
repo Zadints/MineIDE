@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -20,7 +21,7 @@ import org.example.mineide.presentation.navigation.Navigator;
 
 import java.io.IOException;
 
-public class IdeContr {
+public class IdeController {
 
     @ResourceRequiredSystem private final GetTranslationUseCase getTranslation;
     @Navigate private final Navigator navigator;
@@ -32,14 +33,9 @@ public class IdeContr {
     @FXML private Button btnCode;
     @FXML private Button btnGit;
     private MouseMove mouseMove;
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
-
     @FXML private HBox titleBar;
 
-    public IdeContr(GetTranslationUseCase getTranslation, Navigator navigator) {
+    public IdeController(GetTranslationUseCase getTranslation, Navigator navigator) {
         this.getTranslation = getTranslation;
         this.navigator = navigator;
     }
@@ -47,6 +43,7 @@ public class IdeContr {
     public void initialize() {
         this.mouseMove = new MouseMove(titleBar);
         mouseMove.start();
+        registerMouseNavigation();
     }
 
 
@@ -116,28 +113,21 @@ public class IdeContr {
 
 
     @FXML protected  void onFilesClick(){
-        LoadContent("files.fxml");
+        loadContent("files.fxml");
     }
     @FXML protected void onConsoleClick () {
-        LoadContent("console.fxml");
+        loadContent("console.fxml");
     }
     @FXML protected void onGuideClick(){
-        LoadContent("guide.fxml");
+        loadContent("guide.fxml");
     }
     @FXML protected void onBackupsClick() {
-        LoadContent("backups.fxml");
+        loadContent("backups.fxml");
     }
 
-    private void LoadContent(String fileName){
+    private void loadContent(String fileName) {
         try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("/org/example/mineide/center/" + fileName)
-            );
-
-            Parent view = loader.load();
-
-            brPanel.setCenter(view);
-
+            navigator.navigateToCenter(brPanel, fileName);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -169,7 +159,32 @@ public class IdeContr {
         }
     }
 
+    private void registerMouseNavigation() {
+        brPanel.sceneProperty().addListener((observable, oldScene, newScene) -> {
+            if (newScene == null) {
+                return;
+            }
 
+            newScene.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
+                if (event.getButton() == MouseButton.BACK) {
+                    try {
+                        navigator.backCenter();
+                        event.consume();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else if (event.getButton() == MouseButton.FORWARD) {
+                    /*
+                    try {
+                        navigator.forwardCenter();
+                        event.consume();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }*/
+                }
+            });
+        });
+    }
 
     @FXML
     protected void onFileClick() {

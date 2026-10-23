@@ -10,16 +10,16 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.*;
-import org.example.mineide.application.dto.MinecraftVersionDTO;
 import org.example.mineide.application.dto.create.project.ProjectDto;
 import org.example.mineide.application.dto.create.project.ServerJarSelectedDto;
 import org.example.mineide.application.services.ServerJarServices;
-import org.example.mineide.application.usecase.StartAppUseCase;
 import org.example.mineide.application.usecase.project.CreateProjectUseCase;
 import org.example.mineide.domain.entities.ServerJar;
 import org.example.mineide.domain.enums.JdkEnum;
+import org.example.mineide.domain.enums.McSoftwareEnum;
 import org.example.mineide.domain.exceptions.CreateNewProjectException;
 import org.example.mineide.presentation.controllers.ErrorPageController;
+import org.example.mineide.presentation.navigation.Navigator;
 import org.example.mineide.presentation.utils.MouseMove;
 import org.jetbrains.annotations.NotNull;
 
@@ -31,12 +31,15 @@ public class CreateProjectController {
     @FXML private VBox header;
     @FXML private Button btnCancel;
     @FXML private Button btnCreate;
-    @FXML private ComboBox<String> cbxServerSoftware;
+
+    @FXML private ComboBox<McSoftwareEnum> cbxServerSoftware;
     @FXML private ComboBox<String> cbxMinecraftVersion;
+    @FXML private ComboBox<JdkEnum> cbxJdkVersion;
+
     @FXML private TextField txtServerName;
     @FXML private Button btnBrowseDirectory;
     @FXML private TextField txtServerDirectory;
-    @FXML private ComboBox<JdkEnum> cbxJdkVersion;
+
     @FXML private Button btnBrowseSoftwareJava;
     @FXML private TextField txtJavaSofware;
     @FXML private CheckBox chkGit;
@@ -48,9 +51,11 @@ public class CreateProjectController {
     private Path pathDeployProject;
 
     private final CreateProjectUseCase createProjectUseCase;
+    private final Navigator navigator;
 
-    public CreateProjectController(CreateProjectUseCase createProjectUseCase) {
+    public CreateProjectController(CreateProjectUseCase createProjectUseCase, Navigator navigator) {
         this.createProjectUseCase = createProjectUseCase;
+        this.navigator = navigator;
     }
 
     @FXML
@@ -58,10 +63,18 @@ public class CreateProjectController {
         MouseMove mouseMove = new MouseMove(header);
         mouseMove.start();
 
-        for (MinecraftVersionDTO item : StartAppUseCase.getMinecraftVersionList()){
-            cbxMinecraftVersion.getItems().add(item.toVersion());
-            cbxServerSoftware.getItems().add(item.toSoftware());
-        }
+        cbxServerSoftware.getItems().add(McSoftwareEnum.PAPER);
+        cbxServerSoftware.getItems().add(McSoftwareEnum.PURPUR);
+        cbxServerSoftware.getItems().add(McSoftwareEnum.FORGE);
+        cbxServerSoftware.getItems().add(McSoftwareEnum.SPIGOT);
+        cbxServerSoftware.getItems().add(McSoftwareEnum.VANILLA);
+        cbxServerSoftware.getItems().add(McSoftwareEnum.BUNGEECORD);
+        cbxServerSoftware.getItems().add(McSoftwareEnum.VELOCITY);
+        cbxServerSoftware.getItems().add(McSoftwareEnum.ARCLIGHT);
+
+        //agregar aqui las versiones compatibles despues que retorna
+        // api para poder colocar en el enum cbxMinecraftVersion
+
         cbxJdkVersion.getItems().addAll(JdkEnum.values());
     }
 
@@ -75,6 +88,24 @@ public class CreateProjectController {
 
     @FXML private void onCreateProject(){
 
+        if (serverJarDto == null ){
+            launchErrorWindows(
+                    "Debes seleccionar un archivo JAR de servidor.",
+                    "Falta seleccionar el servidor",
+                    btnCreate.getScene()
+            );
+            return;
+        }
+
+        if (pathDeployProject == null) {
+            launchErrorWindows(
+                    "Debes seleccionar el directorio del proyecto.",
+                    "Falta seleccionar el directorio",
+                    btnCreate.getScene()
+            );
+            return;
+        }
+
         ProjectDto newProject = createEntityProject();
         try{
             createProjectUseCase.create(newProject);
@@ -87,8 +118,10 @@ public class CreateProjectController {
         }
     }
 
-    @NotNull
     private ProjectDto createEntityProject() {
+
+
+
         String serverName = txtServerName.getText();
         JdkEnum jdkVersion = cbxJdkVersion.getValue();
 
@@ -183,64 +216,12 @@ public class CreateProjectController {
         return file.toPath();
     }
 
-    private void getVersions(){
-
-
-    }
-
     private void launchErrorWindows(String errorMessage, String errorTitle, Scene sceneActual){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(
-                            "/org/example/mineide/errorPage.fxml"
-                    )
-            );
-
-            Parent root = loader.load();
-            ErrorPageController controller = loader.getController();
-            controller.setException(errorMessage,errorTitle);
-
-            Stage parentStage = (Stage) sceneActual.getWindow();
-            Stage stage = new Stage();
-
-            stage.initOwner(parentStage);
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.initStyle(StageStyle.TRANSPARENT);
-
-
-            Scene scene = new Scene(root);
-            scene.setFill(Color.TRANSPARENT);
-
-            scene.getStylesheets().add(
-                    getClass().getResource("/styles/mainPage.css").toExternalForm()
-            );
-            stage.initStyle(StageStyle.TRANSPARENT);
-            Rectangle2D screen = Screen.getPrimary().getVisualBounds();
-
-            double width = screen.getWidth() * 0.30;
-            double height = screen.getHeight() * 0.45;
-
-            stage.setWidth(width);
-            stage.setHeight(height);
-
-            stage.setX(
-                    screen.getMinX() +
-                            (screen.getWidth() - width) / 2
-            );
-
-            stage.setY(
-                    screen.getMinY() +
-                            (screen.getHeight() - height) / 2
-            );
-            stage.setResizable(false);
-            stage.setMaximized(false);
-            stage.centerOnScreen();
-            stage.setTitle("Create New Project");
-            stage.setScene(scene);
-            stage.showAndWait();
-
-
+            Stage stage = (Stage) sceneActual.getWindow();
+            navigator.showError(errorMessage, errorTitle, stage);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getCause());
         }
     }
 }

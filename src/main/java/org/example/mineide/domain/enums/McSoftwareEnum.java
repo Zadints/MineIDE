@@ -1,6 +1,6 @@
 package org.example.mineide.domain.enums;
 
-public enum MinecraftSoftware {
+public enum McSoftwareEnum {
     VANILLA,
     BUKKIT,
     CRAFTBUKKIT,
