@@ -3,6 +3,7 @@ package org.example.mineide.bootstrap;
 import javafx.util.Callback;
 import org.example.mineide.presentation.controllers.IdeContr;
 import org.example.mineide.presentation.controllers.IndexController;
+import org.example.mineide.presentation.controllers.mainPageOptions.CreateProjectController;
 import org.example.mineide.presentation.navigation.Navigator;
 
 public class ControllerFactory implements Callback<Class<?>, Object> {
@@ -17,19 +18,25 @@ public class ControllerFactory implements Callback<Class<?>, Object> {
     @Override
     public Object call(Class<?> type) {
 
-
-
         if (type == IndexController.class) {
             return new IndexController(
-                    root.getTranslation(),
-                    navigator
+                    root.getTranslationUseCase(),
+                    navigator,
+                    root.getCreateProjectUseCase()
+
             );
         }
 
         if (type == IdeContr.class) {
             return new IdeContr(
-                    root.getTranslation(),
+                    root.getTranslationUseCase(),
                     navigator
+            );
+        }
+
+        if (type == CreateProjectController.class) {
+            return new CreateProjectController(
+                    root.getCreateProjectUseCase()
             );
         }
 

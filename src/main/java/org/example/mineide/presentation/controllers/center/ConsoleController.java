@@ -1,8 +1,15 @@
 package org.example.mineide.presentation.controllers.center;
 
 import javafx.fxml.FXML;
+import org.example.mineide.infraestructure.server.ServerManager;
 
 public class ConsoleController {
+
+    @FXML
+    public void initialize() {
+
+    }
+
     @FXML protected void onClearConsole(){
 
     }

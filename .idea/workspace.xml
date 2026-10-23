@@ -5,19 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6bedc524-2081-4b19-b88c-77072dac0748" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/dto/create/project/ServerJarSelectedDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/dto/NavigateOptionsDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/usecase/project/CreateProjectUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/repository/project/ProjectDeployer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/repository/project/ProjectRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/infraestructure/project/FileSystemProjectDeployer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/infraestructure/project/InMemoryProjectRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/infraestructure/project/SqlProjectRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/infraestructure/server/ServerManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/dto/NewProjectDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/dto/create/project/ProjectDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/services/ServerJarServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/services/ServerJarServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/usecase/ProjectManagerUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/usecase/ProjectManagerUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/usecase/Serverjar/PaperPatchJsonUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/usecase/Serverjar/PaperPatchJsonUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/usecase/Serverjar/PaperPatchPropertiesUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/usecase/Serverjar/PaperPatchPropertiesUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/usecase/Serverjar/PaperVersionJsonUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/usecase/Serverjar/PaperVersionJsonUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/usecase/ServersUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/usecase/ServersUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/entities/ServerJar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/entities/ServerJar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/repository/TypeServerJar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/repository/TypeServerJar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/mainPageOptions/CreateNewProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/mainPageOptions/CreateNewProject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/application/usecase/ProjectManagerUseCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/bootstrap/AppCompositionRoot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/bootstrap/AppCompositionRoot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/bootstrap/ControllerFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/bootstrap/ControllerFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/exceptions/FileDoesNotExist.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/domain/exceptions/FileDoesNotExist.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/IndexController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/IndexController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/center/ConsoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/center/ConsoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/mainPageOptions/CreateNewProject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/controllers/mainPageOptions/CreateProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/navigation/Navigator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mineide/presentation/navigation/Navigator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mineide/mainPageOptions/createNewProject.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mineide/mainPageOptions/createNewProject.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +35,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Interface" />
         <option value="Exception" />
         <option value="Class" />
+        <option value="Interface" />
+        <option value="Record" />
       </list>
     </option>
   </component>
@@ -49,6 +57,15 @@
     &quot;accountId&quot;: &quot;4fc51eef-1c02-4151-bb2b-e8b04a7c64b8&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.jdks/ms-21.0.8/lib/src.zip!/java.base/java/lang/String.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.jdks/ms-21.0.8/lib/src.zip!/java.base/java/util/jar/JarFile.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.14.2/jackson-databind-2.14.2-sources.jar!/com/fasterxml/jackson/databind/JsonNode.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/jetbrains/annotations/13.0/annotations-13.0-sources.jar!/org/jetbrains/annotations/NotNull.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/21/javafx-base-21-sources.jar!/javafx/util/Callback.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/21/javafx-graphics-21-sources.jar!/javafx/stage/DirectoryChooser.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/21/javafx-graphics-21-sources.jar!/javafx/stage/Stage.java" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -81,7 +98,8 @@
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -92,6 +110,7 @@
       <recent name="D:\proyectos\Java\MineIDE\src\main\resources\styles\center" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.mineide.infraestructure.project" />
       <recent name="org.example.mineide.application.usecase.Serverjar" />
       <recent name="org.example.mineide.domain.exceptions" />
     </key>
@@ -136,5 +155,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

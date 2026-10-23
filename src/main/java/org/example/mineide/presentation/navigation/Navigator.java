@@ -5,17 +5,23 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
+import org.example.mineide.application.dto.NavigateOptionsDto;
 
 import java.io.IOException;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class Navigator {
 
     private final Stage stage;
     private final Callback<Class<?>, Object> controllerFactory;
+    private final Deque<NavigateOptionsDto> history = new ArrayDeque<>();
+    private NavigateOptionsDto currentPage;
 
     public Navigator(Stage stage, Callback<Class<?>, Object> controllerFactory ) {
         this.stage = stage;
@@ -23,27 +29,154 @@ public class Navigator {
         this.stage.initStyle(StageStyle.TRANSPARENT);
     }
 
-
-
-
-    public void navigate(String fxmlPath) throws IOException{
-        navigate(fxmlPath, 0.90, 0.95);
+    public void navigate(NavigateOptionsDto dto) throws IOException{
+        loadPage(dto);
     }
 
-    public void navigate(String fxmlPath, double widthRatio, double heightRatio) throws IOException {
+    public void navigateToPage(String fxmlPath, double width, double height) throws IOException{
+
+        if (fxmlPath.isEmpty()) throw new IOException("Path Fxml is Empty");
+        if (currentPage != null) {
+            history.push(currentPage);
+        }
+        var dto = new NavigateOptionsDto(
+                fxmlPath,
+                width,
+                height,
+                false,
+                null,
+                null,
+                null,
+                Color.TRANSPARENT,
+                false,
+                false
+        );
+
+        loadPage(dto);
+        currentPage = dto;
+    }
+    public void navigateToPage(String fxmlPath) throws IOException{
+
+        if (fxmlPath.isEmpty()) throw new IOException("Path Fxml is Empty");
+
+        if (currentPage != null) {
+            history.push(currentPage);
+        }
+
+        var dto = new NavigateOptionsDto(
+                fxmlPath,
+                0.90,
+                0.95,
+                false,
+                null,
+                null,
+                null,
+                Color.TRANSPARENT,
+                false,
+                false
+        );
+
+        loadPage(dto);
+        currentPage = dto;
+    }
+
+    public void awaitOpenWindow(String fxmlPath, Stage parentStage, double width, double height, boolean isMaximized) throws IOException{
+
+        if (fxmlPath.isEmpty()) throw new IOException("Path Fxml is Empty");
+
+        loadPage(new NavigateOptionsDto(
+                fxmlPath,
+                width,
+                height,
+                true,
+                parentStage,
+                Modality.WINDOW_MODAL,
+                StageStyle.TRANSPARENT,
+                Color.TRANSPARENT,
+                isMaximized,
+                true
+        ));
+    }
+    public void awaitOpenWindow(String fxmlPath, Stage parentStage, double width, double height) throws IOException{
+
+        if (fxmlPath.isEmpty()) throw new IOException("Path Fxml is Empty");
+
+        loadPage(new NavigateOptionsDto(
+                fxmlPath,
+                width,
+                height,
+                true,
+                parentStage,
+                Modality.WINDOW_MODAL,
+                StageStyle.TRANSPARENT,
+                Color.TRANSPARENT,
+                false,
+                true
+        ));
+    }
+    public void openWindow(String fxmlPath, Stage parentStage, double width, double height , boolean isMaximized) throws IOException{
+
+        if (fxmlPath.isEmpty()) throw new IOException("Path Fxml is Empty");
+
+        loadPage(new NavigateOptionsDto(
+                fxmlPath,
+                width,
+                height,
+                true,
+                parentStage,
+                Modality.WINDOW_MODAL,
+                StageStyle.TRANSPARENT,
+                Color.TRANSPARENT,
+                isMaximized,
+                false
+        ));
+    }
+
+    public void openWindow(String fxmlPath, Stage parentStage, double width, double height) throws IOException{
+
+        if (fxmlPath.isEmpty()) throw new IOException("Path Fxml is Empty");
+
+        loadPage(new NavigateOptionsDto(
+                fxmlPath,
+                width,
+                height,
+                true,
+                parentStage,
+                Modality.WINDOW_MODAL,
+                StageStyle.TRANSPARENT,
+                Color.TRANSPARENT,
+                false,
+                false
+        ));
+    }
+
+    public void back() throws IOException {
+        if (history.isEmpty()) {
+            return;
+        }
+
+        NavigateOptionsDto previousPage = history.pop();
+
+        loadPage(previousPage);
+        currentPage = previousPage;
+    }
+
+    private void loadPage(NavigateOptionsDto dto) throws IOException {
 
 
 
         FXMLLoader loader = new FXMLLoader(
-                getClass().getResource("/org/example/mineide/" + fxmlPath)
+                getClass().getResource(
+                        "/org/example/mineide/" + dto.fxmlName()
+                )
         );
 
         loader.setControllerFactory(controllerFactory);
 
         Parent root = loader.load();
-        Scene scene = new Scene(root);
 
-        scene.setFill(Color.TRANSPARENT);
+        Scene scene = new Scene(root);
+        scene.setFill(dto.sceneSetFill());
 
         scene.getStylesheets().addAll(
                 getClass().getResource("/styles/index.css").toExternalForm(),
@@ -54,18 +187,42 @@ public class Navigator {
 
         Rectangle2D screen = Screen.getPrimary().getVisualBounds();
 
-        double width = screen.getWidth() * widthRatio;
-        double height = screen.getHeight() * heightRatio;
+        double width = screen.getWidth() * dto.widthRatio();
+        double height = screen.getHeight() * dto.heightRatio();
 
-        stage.setWidth(width);
-        stage.setHeight(height);
+        Stage targetStage;
 
-        stage.setScene(scene);
-        stage.centerOnScreen();
-        stage.show();
+        if (dto.newWindow()) {
+            targetStage = new Stage();
+
+            if (dto.parentStage() != null) {
+                targetStage.initOwner(dto.parentStage());
+            }
+
+            if (dto.stageInitModality() != null) {
+                targetStage.initModality(dto.stageInitModality());
+            }
+
+            if (dto.stageInitStyle() != null) {
+                targetStage.initStyle(dto.stageInitStyle());
+            }
+        } else {
+            targetStage = stage;
+        }
+
+        targetStage.setWidth(width);
+        targetStage.setHeight(height);
+        targetStage.setMaximized(dto.stageSetMaximized());
+        targetStage.setScene(scene);
+        targetStage.centerOnScreen();
+
+        if (dto.stageShowAndAwait()) {
+            targetStage.showAndWait();
+        } else {
+            targetStage.show();
+        }
+
+
     }
-
-
-
 
 }
